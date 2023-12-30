@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "759374855220",
+    "project_id": "koti-fd1b3",
+    "storage_bucket": "koti-fd1b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:759374855220:android:dcfe779efc4825d8591e61",
+        "android_client_info": {
+          "package_name": "com.example.koti"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChxGlelj-2ENqpGY0QqmsZm3D9_KODWfY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

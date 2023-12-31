@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="seed">#C29ABF</color>
-    <color name="md_theme_light_primary">#87458A</color>
+    <color name="md_theme_light_primary">#D083C8</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
     <color name="md_theme_light_primaryContainer">#FFD6FA</color>
     <color name="md_theme_light_onPrimaryContainer">#36003D</color>
@@ -61,4 +61,5 @@
     <color name="md_theme_dark_surfaceTint">#FAACF9</color>
     <color name="md_theme_dark_outlineVariant">#4D444C</color>
     <color name="md_theme_dark_scrim">#000000</color>
+    <color name="md_theme_gray_text">#3B3B3B</color>
 </resources>

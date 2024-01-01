@@ -2,42 +2,45 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/room_background">
 
-
-    <ImageView
-        android:id="@+id/welcomeLogo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/ivWelcomeLogoMargin"
-        android:layout_marginStart="@dimen/ivWelcomeLogoStartEndMargin"
-        android:layout_marginEnd="@dimen/ivWelcomeLogoStartEndMargin"
-        android:src="@drawable/koti_cropped_logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="" />
 
     <TextView
-        android:id="@+id/textWelcome"
-        style="@style/h4"
+        android:id="@+id/textWelcomePrime"
+        style="@style/TextShadowStyleH4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/tvWelcomePrimaryMarginBottom"
+        android:gravity="center_horizontal"
+        android:text="@string/welcome_text_prime"
+
+        android:layout_marginStart="@dimen/tvWelcomePrimarySideMargin"
+        android:layout_marginEnd="@dimen/tvWelcomePrimarySideMargin"
+        app:layout_constraintBottom_toTopOf="@id/textWelcomeSecondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textWelcomeSecondary"
+        style="@style/TextShadowStyleH2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/tvWelcomeMargin"
-        android:text="@string/welcome_start"
+        android:layout_marginBottom="@dimen/tvWelcomeSecondaryMarginBottom"
+        android:text="@string/welcome_text_secondary"
+        app:layout_constraintBottom_toTopOf="@id/introButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcomeLogo" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/introButton"
-        style="@style/blueButtonStyle"
+        style="@style/redButtonStyle"
         android:layout_width="@dimen/smallButtonWidth"
         android:layout_height="@dimen/smallButtonHeight"
+        android:layout_marginBottom="@dimen/buttonBottomMargin"
+        android:text="@string/start_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/start_button_text"
-        android:layout_marginBottom="@dimen/buttonBottomMargin"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

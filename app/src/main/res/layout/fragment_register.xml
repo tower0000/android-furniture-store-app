@@ -1,6 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/md_theme_light_background">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLoginStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLoginEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/registerTitle"
+        style="@style/h4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/tvLoginTitleTopMargin"
+        android:text="@string/register_title"
+        app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailFieldRegistration"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/edLoginMargin"
+        android:hint="@string/email_hint"
+        app:endIconMode="clear_text"
+        app:hintTextAppearance="@style/editText"
+        app:layout_constraintEnd_toStartOf="@id/guidelineLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
+        app:layout_constraintTop_toBottomOf="@id/registerTitle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edEmailRegistration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/user_ic"
+            android:drawablePadding="@dimen/edPaddingUser"
+            android:inputType="textEmailAddress"
+            android:paddingStart="@dimen/edUserStartPadding"
+            android:paddingEnd="0dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passFieldRegistration"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/edLoginMargin"
+        android:hint="@string/pass_hint"
+        app:endIconMode="password_toggle"
+        app:hintTextAppearance="@style/editText"
+        app:layout_constraintEnd_toStartOf="@id/guidelineLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
+        app:layout_constraintTop_toBottomOf="@id/emailFieldRegistration">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edPassRegistration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/lock_ic"
+            android:drawablePadding="@dimen/edPadding"
+            android:inputType="textPassword"
+            android:paddingStart="@dimen/edLockStartPadding"
+            android:paddingEnd="0dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passFieldRegistrationConfirm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/edLoginMargin"
+        android:hint="@string/confirm_password_hint"
+        app:endIconMode="password_toggle"
+        app:hintTextAppearance="@style/editText"
+        app:layout_constraintEnd_toStartOf="@id/guidelineLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
+        app:layout_constraintTop_toBottomOf="@id/passFieldRegistration">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edPassRegistrationConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/lock_ic"
+            android:drawablePadding="@dimen/edPadding"
+            android:inputType="textPassword"
+            android:paddingStart="@dimen/edLockStartPadding"
+            android:paddingEnd="0dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/registerButton"
+        style="@style/redButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/smallButtonHeight"
+        android:layout_marginTop="@dimen/loginButtonMargin"
+        android:layout_marginBottom="@dimen/buttonBottomMargin"
+        android:text="@string/create_account_button"
+        app:layout_constraintEnd_toEndOf="@id/guidelineLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
+        app:layout_constraintTop_toBottomOf="@id/passFieldRegistrationConfirm" />
+
+    <TextView
+        android:id="@+id/continueWith"
+        style="@style/h2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/tvContinueWithTopMargin"
+        android:text="@string/or_continue_with"
+        app:layout_constraintEnd_toEndOf="@id/guidelineLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
+        app:layout_constraintTop_toBottomOf="@id/registerButton" />
+
+    <ImageButton
+        android:id="@+id/facebookRegister"
+        style="@style/roundButtonStyle"
+        android:layout_width="@dimen/serviceButtonDiameter"
+        android:layout_height="@dimen/serviceButtonDiameter"
+        android:layout_marginTop="@dimen/auth_services_top_margin"
+        android:layout_marginEnd="@dimen/imgCenterMargin"
+        android:contentDescription="@string/facebook_authentication_button_img_desc"
+        android:padding="@dimen/facebook_logo_padding"
+        android:src="@drawable/facebook_ic"
+        app:layout_constraintEnd_toStartOf="@id/guidelineCenter"
+        app:layout_constraintTop_toBottomOf="@id/continueWith" />
+
+    <ImageButton
+        android:id="@+id/googleRegister"
+        style="@style/roundButtonStyle"
+        android:layout_width="@dimen/serviceButtonDiameter"
+        android:layout_height="@dimen/serviceButtonDiameter"
+        android:layout_marginStart="@dimen/imgCenterMargin"
+        android:layout_marginTop="@dimen/auth_services_top_margin"
+        android:contentDescription="@string/google_authentication_button_img_desc"
+        android:padding="@dimen/google_icon_padding"
+        android:scaleType="fitCenter"
+        android:src="@drawable/google"
+        app:layout_constraintStart_toEndOf="@id/guidelineCenter"
+        app:layout_constraintTop_toBottomOf="@id/continueWith" />
+
+    <TextView
+        android:id="@+id/redirectToAuthButton"
+        style="@style/h2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/tvSignUpTopMargin"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/sign_up_text_button"
+        android:textColor="@color/md_theme_light_primary"
+        app:layout_constraintEnd_toEndOf="@id/guidelineLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
+        app:layout_constraintTop_toBottomOf="@id/googleRegister"
+        tools:ignore="TouchTargetSizeCheck" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,4 +8,20 @@
     <dimen name="tvWelcomeSecondaryMarginBottom">44dp</dimen>
     <dimen name="tvWelcomePrimaryMarginBottom">14dp</dimen>
     <dimen name="tvWelcomePrimarySideMargin">38dp</dimen>
+    <dimen name="tvLoginTitleTopMargin">55dp</dimen>
+    <dimen name="edLoginMargin">20dp</dimen>
+    <dimen name="edPadding">10dp</dimen>
+    <dimen name="edLockStartPadding">13dp</dimen>
+    <dimen name="edUserStartPadding">9dp</dimen>
+    <dimen name="edPaddingUser">5dp</dimen>
+    <dimen name="forgotPasswordMargin">9dp</dimen>
+    <dimen name="loginButtonMargin">52dp</dimen>
+    <dimen name="edContinueWithMargin">75dp</dimen>
+    <dimen name="imgCenterMargin">8dp</dimen>
+    <dimen name="google_icon_padding">8dp</dimen>
+    <dimen name="facebook_logo_padding">2dp</dimen>
+    <dimen name="auth_services_top_margin">15dp</dimen>
+    <dimen name="tvSignUpTopMargin">20dp</dimen>
+    <dimen name="serviceButtonDiameter">49dp</dimen>
+    <dimen name="tvContinueWithTopMargin">60dp</dimen>
 </resources>

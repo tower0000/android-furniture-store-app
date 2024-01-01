@@ -3,7 +3,7 @@
 
     <style name="h4">
         <item name="android:fontFamily">@font/rubik_medium</item>
-        <item name="android:textColor">@color/md_theme_light_onPrimary</item>
+        <item name="android:textColor">@color/md_theme_dark_shadow</item>
         <item name="android:textSize">@dimen/h4TextSize</item>
     </style>
 
@@ -27,17 +27,18 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
-    <style name="whiteButtonStyle">
-        <item name="android:background">@drawable/white_background</item>
+    <style name="roundButtonStyle">
+        <item name="android:background">@drawable/round_button</item>
         <item name="android:fontFamily">@font/rubik_medium</item>
-        <item name="android:textColor">@color/md_theme_light_shadow</item>
         <item name="android:textSize">@dimen/h2TextSize</item>
         <item name="android:textAllCaps">false</item>
     </style>
 
+
+
+
     <style name="editText">
-        <item name="android:background">@drawable/white_background</item>
-        <item name="android:gravity">center</item>
+        <item name="android:background">@color/md_theme_light_outline</item>
         <item name="singleLine">true</item>
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/rubik_light</item>
@@ -60,14 +61,17 @@
         <item name="android:shadowRadius">2</item>
         <item name="android:fontFamily">@font/rubik_light</item>
         <item name="android:textColor">@color/md_theme_light_onPrimary</item>
-        <item name="android:textSize">@dimen/h2TextSize</item>
+        <item name="android:textSize">@dimen/h2ShadowTextSize</item>
     </style>
 
 
 
+
+
     <dimen name="h4TextSize">38sp</dimen>
-    <dimen name="h2TextSize">15sp</dimen>
+    <dimen name="h2TextSize">18sp</dimen>
     <dimen name="h3TextSize">22sp</dimen>
+    <dimen name="h2ShadowTextSize">15dp</dimen>
 
 
 </resources>

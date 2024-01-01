@@ -1,6 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/md_theme_light_background">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLoginStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLoginEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/loginTitle"
+        style="@style/h4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/tvLoginTitleTopMargin"
+        android:text="@string/login_title"
+        app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/edLoginMargin"
+        android:hint="@string/email_hint"
+        app:endIconMode="clear_text"
+        app:hintTextAppearance="@style/editText"
+        app:layout_constraintEnd_toStartOf="@id/guidelineLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
+        app:layout_constraintTop_toBottomOf="@id/loginTitle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/user_ic"
+            android:drawablePadding="@dimen/edPaddingUser"
+            android:inputType="textEmailAddress"
+            android:paddingStart="@dimen/edUserStartPadding"
+            android:paddingEnd="0dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/edLoginMargin"
+        android:hint="@string/pass_hint"
+        app:endIconMode="password_toggle"
+        app:hintTextAppearance="@style/editText"
+        app:layout_constraintEnd_toStartOf="@id/guidelineLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
+        app:layout_constraintTop_toBottomOf="@id/emailField">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/lock_ic"
+            android:drawablePadding="@dimen/edPadding"
+            android:inputType="textPassword"
+            android:paddingStart="@dimen/edLockStartPadding"
+            android:paddingEnd="0dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/forgotPassword"
+        style="@style/h2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/forgotPasswordMargin"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/forgot_password"
+        android:textColor="@color/md_theme_light_primary"
+        app:layout_constraintEnd_toEndOf="@id/guidelineLoginEnd"
+        app:layout_constraintTop_toBottomOf="@id/passField"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/loginButton"
+        style="@style/redButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/smallButtonHeight"
+        android:layout_marginTop="@dimen/loginButtonMargin"
+        android:layout_marginBottom="@dimen/buttonBottomMargin"
+        android:text="@string/login"
+        app:layout_constraintEnd_toEndOf="@id/guidelineLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
+        app:layout_constraintTop_toBottomOf="@id/forgotPassword" />
+
+    <TextView
+        android:id="@+id/continueWithLog"
+        style="@style/h2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/edContinueWithMargin"
+        android:text="@string/or_continue_with"
+        app:layout_constraintEnd_toEndOf="@id/guidelineLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
+        app:layout_constraintTop_toBottomOf="@id/loginButton" />
+
+    <ImageButton
+        android:id="@+id/facebookAuth"
+        style="@style/roundButtonStyle"
+        android:layout_width="@dimen/serviceButtonDiameter"
+        android:layout_height="@dimen/serviceButtonDiameter"
+        android:layout_marginTop="@dimen/auth_services_top_margin"
+        android:layout_marginEnd="@dimen/imgCenterMargin"
+        android:contentDescription="@string/facebook_authentication_button_img_desc"
+        android:padding="@dimen/facebook_logo_padding"
+        android:src="@drawable/facebook_ic"
+        app:layout_constraintEnd_toStartOf="@id/guidelineCenter"
+        app:layout_constraintTop_toBottomOf="@id/continueWithLog" />
+
+    <ImageButton
+        android:id="@+id/googleAuth"
+        style="@style/roundButtonStyle"
+        android:layout_width="@dimen/serviceButtonDiameter"
+        android:layout_height="@dimen/serviceButtonDiameter"
+        android:layout_marginStart="@dimen/imgCenterMargin"
+        android:layout_marginTop="@dimen/auth_services_top_margin"
+        android:contentDescription="@string/google_authentication_button_img_desc"
+        android:padding="@dimen/google_icon_padding"
+        android:scaleType="fitCenter"
+        android:src="@drawable/google"
+        app:layout_constraintStart_toEndOf="@id/guidelineCenter"
+        app:layout_constraintTop_toBottomOf="@id/continueWithLog" />
+
+    <TextView
+        android:id="@+id/redirectToRegisterButton"
+        style="@style/h2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/tvSignUpTopMargin"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/sign_up_text_button"
+        android:textColor="@color/md_theme_light_primary"
+        app:layout_constraintEnd_toEndOf="@id/guidelineLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
+        app:layout_constraintTop_toBottomOf="@id/googleAuth"
+        tools:ignore="TouchTargetSizeCheck" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

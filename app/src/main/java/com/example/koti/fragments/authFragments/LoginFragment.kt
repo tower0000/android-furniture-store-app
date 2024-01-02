@@ -43,7 +43,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             loginButton.setOnClickListener{
                 val email = edEmail.text.toString().trim()
                 val password = edPass.text.toString()
-                viewModel.login(email, password)
+                if (password == "") {
+                    Toast.makeText(requireContext(), "Password is null", Toast.LENGTH_SHORT).show()
+                } else {
+                    viewModel.login(email, password)
+                }
             }
         }
 
@@ -61,7 +65,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                         }
                     }
                     is Resource.Error -> {
-                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                         binding.loginButton.revertAnimation()
                     }
                     else -> Unit

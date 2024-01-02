@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.koti.R
 import com.example.koti.databinding.FragmentIntroductionBinding
 import com.example.koti.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class IntroductionFragment : Fragment(R.layout.fragment_introduction) {
     private lateinit var binding: FragmentIntroductionBinding
 

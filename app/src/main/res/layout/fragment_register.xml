@@ -165,7 +165,7 @@
         android:layout_marginTop="@dimen/tvSignUpTopMargin"
         android:clickable="true"
         android:focusable="true"
-        android:text="@string/sign_up_text_button"
+        android:text="@string/login_textbutton"
         android:textColor="@color/md_theme_light_primary"
         app:layout_constraintEnd_toEndOf="@id/guidelineLoginEnd"
         app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"

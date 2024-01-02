@@ -2,6 +2,7 @@ package com.example.koti.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.koti.data.User
+import com.example.koti.util.Constants.USER_COLLECTION
 import com.example.koti.util.RegisterFieldsState
 import com.example.koti.util.RegisterValidation
 import com.example.koti.util.Resource
@@ -9,6 +10,7 @@ import com.example.koti.util.validateEmail
 import com.example.koti.util.validatePassword
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -19,23 +21,25 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
-    private val firebaseAuth: FirebaseAuth
+    private val firebaseAuth: FirebaseAuth,
+    private val db: FirebaseFirestore
 ) : ViewModel() {
 
-    private val _register = MutableStateFlow<Resource<FirebaseUser>>(Resource.Unspecified())
-    val register: Flow<Resource<FirebaseUser>> = _register
+    private val _register = MutableStateFlow<Resource<User>>(Resource.Unspecified())
+    val register: Flow<Resource<User>> = _register
 
     private val _validation = Channel<RegisterFieldsState>()
     val validation = _validation.receiveAsFlow()
-    fun createAccountWithEmailAndPassword(user: User, password: String) {
-        if (checkValidation(user, password)) {
+    fun createAccountWithEmailAndPassword(user: User, password: String, passwordConfirm: String) {
+        if (checkValidation(user, password, passwordConfirm)) {
             runBlocking {
                 _register.emit(Resource.Loading())
             }
             firebaseAuth.createUserWithEmailAndPassword(user.email, password)
                 .addOnSuccessListener {
                     it.user?.let {
-                        _register.value = Resource.Success(it)
+                        saveUserInfo(it.uid, user)
+                    //_register.value = Resource.Success(it)
                     }
                 }.addOnFailureListener {
                     _register.value = Resource.Error(it.message.toString())
@@ -43,7 +47,7 @@ class RegisterViewModel @Inject constructor(
         } else {
             val registerFieldsState = RegisterFieldsState(
                 validateEmail(user.email),
-                validatePassword(password)
+                validatePassword(password, passwordConfirm)
             )
             runBlocking {
                 _validation.send(registerFieldsState)
@@ -51,11 +55,21 @@ class RegisterViewModel @Inject constructor(
         }
     }
 
-    private fun checkValidation(user: User, password: String): Boolean {
+    private fun saveUserInfo(userUid: String, user: User) {
+        db.collection(USER_COLLECTION)
+            .document(userUid)
+            .set(user)
+            .addOnSuccessListener {
+            _register.value = Resource.Success(user)
+            }.addOnFailureListener {
+                _register.value = Resource.Error(it.message.toString())
+            }
+    }
+
+    private fun checkValidation(user: User, password: String, passwordConfirm: String): Boolean {
         val emailValidation = validateEmail(user.email)
-        val passwordValidation = validatePassword(password)
-        val shouldRegister = emailValidation is RegisterValidation.Success &&
+        val passwordValidation = validatePassword(password, passwordConfirm)
+        return emailValidation is RegisterValidation.Success &&
                 passwordValidation is RegisterValidation.Success
-        return shouldRegister
     }
 }

@@ -15,4 +15,5 @@
     <string name="register_title">Create an\naccount</string>
     <string name="create_account_button">Register</string>
     <string name="confirm_password_hint">Confirm password</string>
+    <string name="login_textbutton">Login</string>
 </resources>

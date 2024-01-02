@@ -71,7 +71,7 @@
     <dimen name="h4TextSize">38sp</dimen>
     <dimen name="h2TextSize">18sp</dimen>
     <dimen name="h3TextSize">22sp</dimen>
-    <dimen name="h2ShadowTextSize">15dp</dimen>
+    <dimen name="h2ShadowTextSize">15sp</dimen>
 
 
 </resources>

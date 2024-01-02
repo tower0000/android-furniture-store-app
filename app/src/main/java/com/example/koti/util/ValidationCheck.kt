@@ -11,10 +11,14 @@ fun validateEmail(email: String): RegisterValidation {
     return RegisterValidation.Success
 }
 
-fun validatePassword(password: String): RegisterValidation {
+fun validatePassword(password: String, passwordConfirm: String): RegisterValidation {
     if (password.isEmpty())
         return RegisterValidation.Failed("Password cannot be empty")
     if (password.length < 6)
-        return RegisterValidation.Failed("Password should contains at least 6 characters")
+        return RegisterValidation.Failed("Password must contain at least 6 characters")
+    if (passwordConfirm.isEmpty())
+        return RegisterValidation.Failed("Please confirm your password")
+    if (password != passwordConfirm)
+        return RegisterValidation.Failed("Passwords are not the same")
     return RegisterValidation.Success
 }

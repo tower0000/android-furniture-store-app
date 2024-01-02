@@ -97,7 +97,7 @@
         app:layout_constraintTop_toBottomOf="@id/passField"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
         android:id="@+id/loginButton"
         style="@style/redButtonStyle"
         android:layout_width="0dp"
@@ -107,7 +107,8 @@
         android:text="@string/login"
         app:layout_constraintEnd_toEndOf="@id/guidelineLoginEnd"
         app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
-        app:layout_constraintTop_toBottomOf="@id/forgotPassword" />
+        app:layout_constraintTop_toBottomOf="@id/forgotPassword"
+        app:spinning_bar_color="@color/md_theme_light_background"/>
 
     <TextView
         android:id="@+id/continueWithLog"

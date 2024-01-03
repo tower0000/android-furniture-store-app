@@ -16,4 +16,8 @@
     <string name="create_account_button">Register</string>
     <string name="confirm_password_hint">Confirm password</string>
     <string name="login_textbutton">Login</string>
+    <string name="forgot_password_reset">Forgot password?</string>
+    <string name="reset_pass_hint">We will send you a message to set or reset\nyour new password</string>
+    <string name="cancel_reset_pass">Cancel</string>
+    <string name="send_pass_reset">Send</string>
 </resources>

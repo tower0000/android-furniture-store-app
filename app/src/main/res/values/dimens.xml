@@ -24,4 +24,6 @@
     <dimen name="tvSignUpTopMargin">20dp</dimen>
     <dimen name="serviceButtonDiameter">49dp</dimen>
     <dimen name="tvContinueWithTopMargin">60dp</dimen>
+    <dimen name="dialogElementsTopMargin">10dp</dimen>
+    <dimen name="dialogBottomScreenMargin">20dp</dimen>
 </resources>

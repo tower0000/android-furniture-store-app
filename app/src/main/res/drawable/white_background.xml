@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#F5F8FA"/>
+    <solid android:color="@color/md_theme_light_background"/>
     <corners android:radius="@dimen/buttonCorners"/>
+    <stroke
+        android:width="2dip"
+        android:color="@color/md_theme_light_primary" />
+    <padding
+        android:bottom="4dp"
+        android:left="4dp"
+        android:right="4dp"
+        android:top="4dp" />
 </shape>

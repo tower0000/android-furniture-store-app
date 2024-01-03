@@ -26,4 +26,6 @@
     <dimen name="tvContinueWithTopMargin">60dp</dimen>
     <dimen name="dialogElementsTopMargin">10dp</dimen>
     <dimen name="dialogBottomScreenMargin">20dp</dimen>
+    <dimen name="menuPadding">10dp</dimen>
+    <dimen name="menuHeight">70dp</dimen>
 </resources>

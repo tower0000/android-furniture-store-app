@@ -6,4 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".activities.ShoppingActivity">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/shoppingHostFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/shoppingNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/shopping_graph" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/shoppingNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/menuHeight"
+        android:background="@drawable/bottom_navigation_background"
+        android:elevation="0dp"
+        android:paddingTop="@dimen/menuPadding"
+        android:paddingBottom="@dimen/menuPadding"
+        app:itemIconTint="@drawable/bottom_nav_item_background"
+        app:itemRippleColor="@color/md_theme_light_background"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

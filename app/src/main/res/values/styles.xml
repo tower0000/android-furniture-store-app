@@ -76,6 +76,15 @@
 
     </style>
 
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorPrimary">@color/md_theme_light_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_light_background</item>
+    </style>
+
 
     <dimen name="h4TextSize">38sp</dimen>
     <dimen name="h2TextSize">18sp</dimen>

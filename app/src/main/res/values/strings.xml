@@ -20,4 +20,8 @@
     <string name="reset_pass_hint">We will send you a message to set or reset\nyour new password</string>
     <string name="cancel_reset_pass">Cancel</string>
     <string name="send_pass_reset">Send</string>
+    <string name="home_menu">Home</string>
+    <string name="home_search">Search</string>
+    <string name="home_cart">Cart</string>
+    <string name="home_profile">Profile</string>
 </resources>

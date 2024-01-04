@@ -24,4 +24,14 @@
     <string name="home_search">Search</string>
     <string name="home_cart">Cart</string>
     <string name="home_profile">Profile</string>
+    <string name="home_search_now">Search Now</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="special_price">$1600</string>
+    <string name="see_product">See product</string>
+    <string name="discount_price">$1600</string>
+    <string name="discount_price_old">$2000</string>
+    <string name="discount_item">Scotch Premium</string>
+    <string name="product_name">Chair</string>
+    <string name="best_deals">Best deals</string>
+    <string name="best_products">Best products</string>
 </resources>

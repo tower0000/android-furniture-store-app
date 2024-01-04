@@ -85,6 +85,12 @@
         <item name="colorOnPrimary">@color/md_theme_light_background</item>
     </style>
 
+    <style name="tabLayout_text" parent="TextAppearance.AppCompat">
+        <item name="textAllCaps">false</item>
+        <item name="color">@color/md_theme_gray_text</item>
+        <item name="font">@font/rubik_medium</item>
+
+    </style>
 
     <dimen name="h4TextSize">38sp</dimen>
     <dimen name="h2TextSize">18sp</dimen>

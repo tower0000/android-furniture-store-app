@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cardview_light_background"
+    android:elevation="0dp"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="88dp">
+
+        <ImageView
+            android:id="@+id/img_best_deal"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/tv_deal_product_name"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="@string/discount_item"
+            app:layout_constraintStart_toEndOf="@id/img_best_deal"
+            app:layout_constraintTop_toTopOf="@id/img_best_deal"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/rubik_light"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="11sp"/>
+
+        <TextView
+            android:id="@+id/tv_old_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/discount_price_old"
+            app:layout_constraintTop_toBottomOf="@id/tv_deal_product_name"
+            app:layout_constraintStart_toEndOf="@id/tv_new_price"
+            android:textColor="@color/md_theme_gray_text"
+            android:textSize="12sp"
+            android:fontFamily="@font/rubik_regular"
+            android:layout_marginStart="8dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_new_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/discount_price"
+            app:layout_constraintStart_toStartOf="@id/tv_deal_product_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_deal_product_name"
+
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:fontFamily="@font/rubik_regular"/>
+
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/btn_see_product"
+            android:layout_width="83dp"
+            android:layout_height="28dp"
+            android:background="@drawable/red_background"
+            android:fontFamily="@font/rubik_light"
+            android:text="@string/see_product"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/tv_deal_product_name"
+            app:layout_constraintTop_toTopOf="@id/tv_deal_product_name"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="20dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

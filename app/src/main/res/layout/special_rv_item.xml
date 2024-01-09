@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="230dp"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="0dp"
-    app:cardCornerRadius="5dp"
     app:cardBackgroundColor="@color/cardview_light_background"
-    app:cardUseCompatPadding="true"
-    >
+    app:cardCornerRadius="5dp"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,37 +17,36 @@
             android:id="@+id/imageSpecialRvItem"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
-             />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvSpecialProductName"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="@string/product_name"
-            app:layout_constraintStart_toEndOf="@id/imageSpecialRvItem"
-            app:layout_constraintTop_toTopOf="@id/imageSpecialRvItem"
-            android:layout_marginTop="7dp"
             android:layout_marginStart="18dp"
+            android:layout_marginTop="7dp"
             android:fontFamily="@font/rubik_regular"
-            android:textStyle="bold"
+            android:maxLines="2"
+            android:text="@string/product_name"
             android:textColor="@color/black"
-            android:textSize="17sp"
-            android:maxLines="2"/>
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/imageSpecialRvItem"
+            app:layout_constraintTop_toTopOf="@id/imageSpecialRvItem" />
 
         <TextView
             android:id="@+id/tvSpecialProductPrice"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_regular"
             android:text="@string/special_price"
-            app:layout_constraintStart_toStartOf="@id/tvSpecialProductName"
-            app:layout_constraintTop_toBottomOf="@id/tvSpecialProductName"
             android:textColor="@color/black"
             android:textSize="12sp"
-            android:fontFamily="@font/rubik_regular"/>
+            app:layout_constraintStart_toStartOf="@id/tvSpecialProductName"
+            app:layout_constraintTop_toBottomOf="@id/tvSpecialProductName" />
 
         <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/btn_add_to_cart"
@@ -69,17 +67,17 @@
         <LinearLayout
             android:layout_width="23dp"
             android:layout_height="23dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/icon_background"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
-                android:src="@drawable/ic_favorite"
                 android:layout_gravity="center"
                 android:layout_marginTop="7dp"
-                />
+                android:src="@drawable/ic_favorite" />
         </LinearLayout>
 
 

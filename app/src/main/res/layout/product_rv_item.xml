@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/img_product"
+            android:id="@+id/imgProduct"
             android:layout_width="114dp"
             android:layout_height="108dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,12 +27,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="@id/img_product"
-            app:layout_constraintTop_toBottomOf="@id/img_product"
-            app:layout_constraintEnd_toEndOf="@id/img_product">
+            app:layout_constraintStart_toStartOf="@id/imgProduct"
+            app:layout_constraintTop_toBottomOf="@id/imgProduct"
+            app:layout_constraintEnd_toEndOf="@id/imgProduct">
 
             <TextView
-                android:id="@+id/tv_name"
+                android:id="@+id/tvProductName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/rubik_regular"
@@ -55,7 +55,7 @@
 
 
         <TextView
-            android:id="@+id/tv_new_price"
+            android:id="@+id/tvProductNewPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
@@ -65,12 +65,12 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_price"
+            app:layout_constraintStart_toEndOf="@id/tvProductOldPrice"
             app:layout_constraintTop_toBottomOf="@id/linear_product_name"
             android:layout_marginStart="10dp"/>
 
         <TextView
-            android:id="@+id/tv_price"
+            android:id="@+id/tvProductOldPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
@@ -80,7 +80,7 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/img_product"
+            app:layout_constraintStart_toStartOf="@id/imgProduct"
             app:layout_constraintTop_toBottomOf="@id/linear_product_name" />
 
 

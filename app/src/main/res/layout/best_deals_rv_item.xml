@@ -12,7 +12,7 @@
         android:layout_height="88dp">
 
         <ImageView
-            android:id="@+id/img_best_deal"
+            android:id="@+id/imgBestDeal"
             android:layout_width="64dp"
             android:layout_height="64dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -21,12 +21,12 @@
             android:layout_marginTop="10dp" />
 
         <TextView
-            android:id="@+id/tv_deal_product_name"
+            android:id="@+id/tvBestDealProductName"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="@string/discount_item"
-            app:layout_constraintStart_toEndOf="@id/img_best_deal"
-            app:layout_constraintTop_toTopOf="@id/img_best_deal"
+            app:layout_constraintStart_toEndOf="@id/imgBestDeal"
+            app:layout_constraintTop_toTopOf="@id/imgBestDeal"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/rubik_light"
@@ -35,12 +35,12 @@
             android:textSize="11sp"/>
 
         <TextView
-            android:id="@+id/tv_old_price"
+            android:id="@+id/tvBestDealOldPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/discount_price_old"
-            app:layout_constraintTop_toBottomOf="@id/tv_deal_product_name"
-            app:layout_constraintStart_toEndOf="@id/tv_new_price"
+            app:layout_constraintTop_toBottomOf="@id/tvBestDealProductName"
+            app:layout_constraintStart_toEndOf="@id/tvBestDealNewPrice"
             android:textColor="@color/md_theme_gray_text"
             android:textSize="12sp"
             android:fontFamily="@font/rubik_regular"
@@ -48,12 +48,12 @@
             />
 
         <TextView
-            android:id="@+id/tv_new_price"
+            android:id="@+id/tvBestDealNewPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/discount_price"
-            app:layout_constraintStart_toStartOf="@id/tv_deal_product_name"
-            app:layout_constraintTop_toBottomOf="@id/tv_deal_product_name"
+            app:layout_constraintStart_toStartOf="@id/tvBestDealProductName"
+            app:layout_constraintTop_toBottomOf="@id/tvBestDealProductName"
 
             android:textColor="@color/black"
             android:textSize="12sp"
@@ -69,8 +69,8 @@
             android:textColor="@color/cardview_light_background"
             android:textSize="11sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/tv_deal_product_name"
-            app:layout_constraintTop_toTopOf="@id/tv_deal_product_name"
+            app:layout_constraintStart_toEndOf="@id/tvBestDealProductName"
+            app:layout_constraintTop_toTopOf="@id/tvBestDealProductName"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="20dp"

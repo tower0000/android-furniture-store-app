@@ -34,4 +34,9 @@
     <string name="product_name">Chair</string>
     <string name="best_deals">Best deals</string>
     <string name="best_products">Best products</string>
+    <string name="product_name_sample">Awesome product</string>
+    <string name="product_price_sample">$1000</string>
+    <string name="color">Color</string>
+    <string name="size">Size</string>
+    <string name="add_to_cart_button">Add to cart</string>
 </resources>

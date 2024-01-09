@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="seed">#B22222</color>
+    <color name="card_line">#E9EAEC</color>
     <color name="md_theme_light_primary">#B52424</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
     <color name="md_theme_light_primaryContainer">#FFDAD6</color>

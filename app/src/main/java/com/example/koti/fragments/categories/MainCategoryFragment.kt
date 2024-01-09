@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
 import android.widget.Toast
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
@@ -15,15 +14,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.koti.R
 import com.example.koti.adapters.BestDealsAdapter
-import com.example.koti.adapters.BestProductAdapter
+import com.example.koti.adapters.BestProductsAdapter
 import com.example.koti.adapters.SpecialProductsAdapter
 import com.example.koti.databinding.FragmentMainCategoryBinding
 import com.example.koti.util.Resource
 import com.example.koti.viewmodel.MainCategoryViewModel
-import com.google.api.Distribution.BucketOptions.Linear
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 private val TAG = "MainCategoryFragment"
 
@@ -33,7 +30,7 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
     private lateinit var binding: FragmentMainCategoryBinding
     private lateinit var specialProductsAdapter: SpecialProductsAdapter
     private lateinit var bestDealsAdapter: BestDealsAdapter
-    private lateinit var bestProductsAdapter: BestProductAdapter
+    private lateinit var bestProductsAdapter: BestProductsAdapter
     private val viewModel by viewModels<MainCategoryViewModel>()
 
     override fun onCreateView(
@@ -129,7 +126,7 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
     }
 
     private fun setupBestProductsRv() {
-        bestProductsAdapter = BestProductAdapter()
+        bestProductsAdapter = BestProductsAdapter()
         binding.rvBestProducts.apply {
             layoutManager =
                 GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)

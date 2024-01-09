@@ -9,11 +9,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.koti.data.Product
-import com.example.koti.databinding.BestDealsRvItemBinding
 import com.example.koti.databinding.ProductRvItemBinding
 
 
-class BestProductAdapter : RecyclerView.Adapter<BestProductAdapter.BestProductsViewHolder>() {
+class BestProductsAdapter : RecyclerView.Adapter<BestProductsAdapter.BestProductsViewHolder>() {
 
     inner class BestProductsViewHolder(private val binding: ProductRvItemBinding) :
         RecyclerView.ViewHolder(binding.root) {

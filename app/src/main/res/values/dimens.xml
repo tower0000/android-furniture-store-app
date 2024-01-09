@@ -28,4 +28,7 @@
     <dimen name="dialogBottomScreenMargin">20dp</dimen>
     <dimen name="menuPadding">10dp</dimen>
     <dimen name="menuHeight">70dp</dimen>
+    <dimen name="imageColor_size">22dp</dimen>
+    <dimen name="imageShadow_size">25dp</dimen>
+    <dimen name="checked_size">18sp</dimen>
 </resources>

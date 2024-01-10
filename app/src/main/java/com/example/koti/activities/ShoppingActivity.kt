@@ -24,6 +24,6 @@ class ShoppingActivity : AppCompatActivity() {
 
         val navController = navHostFragment.navController
 
-        binding.shoppingNavigation.setupWithNavController(navController)
+        binding.bottomNavigation.setupWithNavController(navController)
     }
 }

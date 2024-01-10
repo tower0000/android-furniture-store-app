@@ -24,9 +24,7 @@ class SpecialProductsAdapter :
         }
     }
 
-
     private val diffCallback = object : DiffUtil.ItemCallback<Product>() {
-
         override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
             return oldItem.id == newItem.id
         }
@@ -34,10 +32,10 @@ class SpecialProductsAdapter :
         override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
             return oldItem == newItem
         }
-
     }
 
     val differ = AsyncListDiffer(this, diffCallback)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpecialProductsViewHolder {
         return SpecialProductsViewHolder(
             SpecialRvItemBinding.inflate(
@@ -46,13 +44,19 @@ class SpecialProductsAdapter :
         )
     }
 
+    override fun onBindViewHolder(holder: SpecialProductsViewHolder, position: Int) {
+        val product = differ.currentList[position]
+        holder.bind(product)
+
+        holder.itemView.setOnClickListener {
+            onClick?.invoke(product)
+        }
+    }
+
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
 
-    override fun onBindViewHolder(holder: SpecialProductsViewHolder, position: Int) {
-        val product = differ.currentList[position]
-        holder.bind(product)
-    }
+    var onClick: ((Product) -> Unit)? = null
 
 }

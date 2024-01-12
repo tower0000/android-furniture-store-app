@@ -27,7 +27,11 @@
         android:id="@+id/profileFragment"
         android:name="com.example.koti.fragments.shoppingFragments.ProfileFragment"
         android:label="ProfileFragment"
-        tools:layout="@layout/fragment_profile"/>
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.koti.fragments.shoppingFragments.SearchFragment"
@@ -46,4 +50,9 @@
             android:name="product"
             app:argType="com.example.koti.data.Product" />
     </fragment>
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.example.koti.fragments.shoppingFragments.AddressFragment"
+        android:label="AddressFragment"
+        tools:layout="@layout/fragment_address"/>
 </navigation>

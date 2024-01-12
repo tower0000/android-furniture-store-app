@@ -118,7 +118,7 @@
                 android:layout_marginBottom="15dp"
                 android:text="Total"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -134,7 +134,7 @@
                 android:layout_marginBottom="15dp"
                 android:text="$150"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -158,21 +158,10 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layoutCarEmpty"
+            android:id="@+id/layoutCartEmpty"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone">
-
-
-            <ImageView
-                android:id="@+id/imageEmptyBoxTexture"
-                android:layout_width="200dp"
-                android:layout_height="250dp"
-                android:src="@drawable/ic_empty_box_texture"
-                app:layout_constraintBottom_toBottomOf="@id/imageEmptyBox"
-                app:layout_constraintEnd_toEndOf="@id/imageEmptyBox"
-                app:layout_constraintStart_toStartOf="@id/imageEmptyBox"
-                app:layout_constraintTop_toTopOf="@id/imageEmptyBox" />
 
             <ImageView
                 android:id="@+id/imageEmptyBox"
@@ -184,7 +173,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/md_theme_light_primary" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -193,10 +183,11 @@
                 android:gravity="center"
                 android:text="@string/your_shopping_cart_is_empty"
                 android:textColor="@color/black"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="@id/imageEmptyBoxTexture"
-                app:layout_constraintStart_toStartOf="@id/imageEmptyBoxTexture"
-                app:layout_constraintTop_toBottomOf="@id/imageEmptyBoxTexture" />
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="@id/imageEmptyBox"
+                app:layout_constraintStart_toStartOf="@id/imageEmptyBox"
+                app:layout_constraintTop_toBottomOf="@id/imageEmptyBox"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

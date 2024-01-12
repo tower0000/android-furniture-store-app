@@ -41,4 +41,5 @@
     <string name="add_to_cart_button">Add to cart</string>
     <string name="size_demo">L</string>
     <string name="your_shopping_cart_is_empty">Your shopping cart is empty</string>
+    <string name="support_virtual_payments">Koti dose not support virtual payments. You can pay when you receive your order.</string>
 </resources>

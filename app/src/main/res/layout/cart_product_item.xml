@@ -33,11 +33,11 @@
         <TextView
             android:id="@+id/tvProductCartName"
             style="@style/h3"
-            android:layout_width="180dp"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="Chair"
             app:layout_constraintStart_toEndOf="@id/imageCartProduct"
             app:layout_constraintTop_toTopOf="@id/imageCartProduct" />
@@ -45,10 +45,10 @@
         <TextView
             android:id="@+id/tvProductCartPrice"
             style="@style/h2"
-            android:layout_width="180dp"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
-
             android:text="$10"
+            android:textSize="17sp"
             app:layout_constraintStart_toStartOf="@id/tvProductCartName"
             app:layout_constraintTop_toBottomOf="@id/tvProductCartName" />
 
@@ -74,6 +74,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tvCartProductQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
@@ -87,7 +88,7 @@
             android:layout_width="19dp"
             android:layout_height="19dp"
             android:layout_marginTop="5dp"
-            android:src="@color/md_theme_light_primary"
+            android:src="@color/black"
             app:layout_constraintStart_toStartOf="@id/tvProductCartPrice"
             app:layout_constraintTop_toBottomOf="@id/tvProductCartPrice"/>
 

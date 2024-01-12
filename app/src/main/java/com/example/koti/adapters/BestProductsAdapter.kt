@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.koti.data.Product
 import com.example.koti.databinding.ProductRvItemBinding
+import com.example.koti.helper.getProductPrice
 
 
 class BestProductsAdapter : RecyclerView.Adapter<BestProductsAdapter.BestProductsViewHolder>() {
@@ -18,15 +19,14 @@ class BestProductsAdapter : RecyclerView.Adapter<BestProductsAdapter.BestProduct
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             binding.apply {
-                Glide.with(itemView).load(product.images[0]).into(imgProduct)
-                product.offerPercentage?.let {
-                    val remainingPricePercentage = 1f - it
-                    val priceAfterOffer = remainingPricePercentage * product.price
-                    tvProductNewPrice.text = "$ ${String.format("%.2f", priceAfterOffer)}"
-                    tvProductOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-                }
+                val priceAfterOffer = product.offerPercentage.getProductPrice(product.price)
+                tvProductNewPrice.text = "$ ${String.format("%.2f", priceAfterOffer)}"
+                tvProductOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+
                 if (product.offerPercentage == null)
                     tvProductNewPrice.visibility = View.INVISIBLE
+
+                Glide.with(itemView).load(product.images[0]).into(imgProduct)
                 tvProductOldPrice.text = "$ ${product.price}"
                 tvProductName.text = product.name
             }

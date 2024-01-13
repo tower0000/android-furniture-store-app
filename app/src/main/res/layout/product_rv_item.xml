@@ -18,7 +18,7 @@
             android:layout_width="250dp"
             android:layout_height="150dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:scaleType="fitXY"
             android:src="@color/swamp_green"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,28 +29,52 @@
             android:id="@+id/tvProductName"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            android:layout_marginStart="25dp"
             android:fontFamily="@font/inter_bold"
             android:text="@string/prodduct_name_sample"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/imgProduct"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgProduct" />
 
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_favorite"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="25dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="23dp"
             android:scaleType="centerCrop"
             android:src="@color/orange"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/imgProduct" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/star_img"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_star"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/orange_dark" />
+
+        <TextView
+            android:id="@+id/productRating"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/product_ratong_sample"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@id/star_img"
+            app:layout_constraintTop_toTopOf="@id/star_img" />
+
 
         <ImageView
             android:layout_width="30dp"

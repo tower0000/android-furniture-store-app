@@ -63,4 +63,19 @@
     <color name="md_theme_dark_outlineVariant">#534341</color>
     <color name="md_theme_dark_scrim">#000000</color>
     <color name="md_theme_gray_text">#7F000000</color>
+
+    <color name="orange">#FF9E58</color>
+    <color name="orange_dark">#E27910</color>
+    <color name="swamp_green">#606134</color>
+    <color name="swamp_green_dark">#1C1D00</color>
+    <color name="white">#FFFFFF</color>
+    <color name="grey">#3B3B3B</color>
+    <color name="grey_background">#636363</color>
+    
+    <color name="card_grey_background">#C7C7C7</color>
+    <color name="card_black_background">#211E1E</color>
+    <color name="card_black_text">#030303</color>
+
+    <color name="white_icon_background">#F4F4F4</color>
+
 </resources>

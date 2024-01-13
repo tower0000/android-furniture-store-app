@@ -86,9 +86,9 @@
     </style>
 
     <style name="tabLayout_text" parent="TextAppearance.AppCompat">
-        <item name="textAllCaps">false</item>
-        <item name="color">@color/md_theme_gray_text</item>
-        <item name="font">@font/rubik_medium</item>
+        <item name="textAllCaps">true</item>
+        <item name="color">@color/orange</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
 
     </style>
 

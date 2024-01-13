@@ -18,7 +18,9 @@ import com.example.koti.adapters.BestDealsAdapter
 import com.example.koti.adapters.BestProductsAdapter
 import com.example.koti.adapters.SpecialProductsAdapter
 import com.example.koti.databinding.FragmentMainCategoryBinding
+import com.example.koti.util.HorisontalItemDecoration
 import com.example.koti.util.Resource
+import com.example.koti.util.VerticalItemDecoration
 import com.example.koti.util.showBottomNavigationView
 import com.example.koti.viewmodel.MainCategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,6 +52,9 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
         setupSpecialProductsRv()
         setupBestDealsRv()
         setupBestProductsRv()
+
+        binding.rvBestProducts.addItemDecoration(VerticalItemDecoration())
+        binding.rvBestDealsProducts.addItemDecoration(HorisontalItemDecoration())
 
         specialProductsAdapter.onClick = {
             val b = Bundle().apply { putParcelable("product", it) }
@@ -147,7 +152,11 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
         bestProductsAdapter = BestProductsAdapter()
         binding.rvBestProducts.apply {
             layoutManager =
-                GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
+                GridLayoutManager(
+                    requireContext(),
+                    1,
+                    GridLayoutManager.VERTICAL,
+                    false)
             adapter = bestProductsAdapter
         }
     }

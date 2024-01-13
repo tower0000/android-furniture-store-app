@@ -16,19 +16,17 @@ import com.example.koti.helper.getProductPrice
 class BestProductsAdapter : RecyclerView.Adapter<BestProductsAdapter.BestProductsViewHolder>() {
 
     inner class BestProductsViewHolder(private val binding: ProductRvItemBinding) :
+
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             binding.apply {
                 val priceAfterOffer = product.offerPercentage.getProductPrice(product.price)
-                tvProductNewPrice.text = "$ ${String.format("%.2f", priceAfterOffer)}"
-                tvProductOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-
-                if (product.offerPercentage == null)
-                    tvProductNewPrice.visibility = View.INVISIBLE
+                tvProductNewPrice.text = "$ ${String.format("%.1f", priceAfterOffer)}"
+                //tvProductOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
 
                 Glide.with(itemView).load(product.images[0]).into(imgProduct)
-                tvProductOldPrice.text = "$ ${product.price}"
-                tvProductName.text = product.name
+                //tvProductOldPrice.text = "$ ${product.price}"
+                tvProductName.text = product.name.uppercase()
             }
 
         }

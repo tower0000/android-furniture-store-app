@@ -8,7 +8,7 @@
         android:id="@+id/homeHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:baselineAligned="false"
@@ -22,31 +22,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/search_box_background">
+            android:background="@color/grey_background">
 
             <TextView
-                style="@style/h2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingStart="20dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
+
+                android:fontFamily="@font/poppins_extra_bold"
+                android:paddingStart="15dp"
                 android:singleLine="true"
-                android:text="@string/home_search_now"
+                android:text="PRODUCT"
+
+                android:textColor="@color/white"
+                android:textSize="25sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginEnd="20dp"
-                android:contentDescription=""
-                android:src="@drawable/ic_search"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/md_theme_gray_text" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -60,12 +52,9 @@
             android:backgroundTint="@color/md_theme_light_background"
             android:contentDescription=""
             android:padding="8dp"
-            android:src="@drawable/ic_scan"
-            app:tint="@color/md_theme_gray_text" />
+            android:src="@drawable/ic_search"
+            app:tint="@color/white" />
 
-        <View
-            android:layout_width="10dp"
-            android:layout_height="match_parent" />
 
         <ImageView
             android:layout_width="40dp"
@@ -73,31 +62,36 @@
             android:backgroundTint="@color/md_theme_light_background"
             android:contentDescription=""
             android:padding="8dp"
-            android:src="@drawable/ic_microphone"
-            app:tint="@color/md_theme_gray_text" />
+            android:src="@drawable/ic_three_dots"
+            app:tint="@color/white" />
 
     </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
+        style="@style/h3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/homeHeader"
+        app:tabBackground="@color/grey_background"
+        app:tabIndicatorColor="@color/orange_dark"
         app:tabMode="scrollable"
-        app:tabRippleColor="@color/md_theme_light_background"
-        app:tabSelectedTextColor="@color/md_theme_light_primary"
-        app:tabTextAppearance="@style/tabLayout_text" />
+        app:tabRippleColor="@color/grey_background"
+        app:tabSelectedTextColor="@color/orange"
+        app:tabTextAppearance="@style/tabLayout_text"
+        app:tabTextColor="@color/orange" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpagerHome"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

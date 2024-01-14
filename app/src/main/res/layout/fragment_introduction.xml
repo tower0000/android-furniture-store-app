@@ -35,7 +35,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/introButton"
-        style="@style/redButtonStyle"
+        style="@style/orangeButtonStyle"
         android:layout_width="@dimen/smallButtonWidth"
         android:layout_height="@dimen/smallButtonHeight"
         android:layout_marginBottom="@dimen/buttonBottomMargin"

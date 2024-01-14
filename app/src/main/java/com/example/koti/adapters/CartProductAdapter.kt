@@ -22,7 +22,7 @@ class CartProductAdapter :
         fun bind(cartProduct: CartProduct) {
             binding.apply {
                 Glide.with(itemView).load(cartProduct.product.images[0]).into(imageCartProduct)
-                tvProductCartName.text = cartProduct.product.name
+                tvProductCartName.text = cartProduct.product.name.uppercase()
                 tvCartProductQuantity.text = cartProduct.quantity.toString()
 
                 val priceAfterPercentage =

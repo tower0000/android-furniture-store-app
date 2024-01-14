@@ -145,7 +145,7 @@
 
         <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/buttonCheckout"
-            style="@style/redButtonStyle"
+            style="@style/orangeButtonStyle"
             android:layout_width="0dp"
             android:layout_height="@dimen/smallButtonHeight"
             android:layout_marginTop="45dp"

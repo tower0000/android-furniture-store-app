@@ -91,8 +91,8 @@ class ProductDetailsFragment : Fragment() {
         }
 
         binding.apply {
-            tvProductName.text = product.name
-            tvProductPrice.text = "$ ${product.price}"
+            tvProductName.text = product.name.uppercase()
+            tvProductPrice.text = "$${product.price}"
             tvProductDescription.text = product.description
 
             if (product.colors.isNullOrEmpty())

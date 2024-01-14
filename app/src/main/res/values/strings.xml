@@ -38,10 +38,11 @@
     <string name="product_price_sample">$1000</string>
     <string name="color">Color</string>
     <string name="size">Size</string>
-    <string name="add_to_cart_button">Add to cart</string>
+    <string name="add_to_cart_button">ADD</string>
     <string name="size_demo">L</string>
     <string name="your_shopping_cart_is_empty">Your shopping cart is empty</string>
     <string name="support_virtual_payments">Koti dose not support virtual payments. You can pay when you receive your order.</string>
     <string name="prodduct_name_sample">CHAIR</string>
     <string name="product_ratong_sample">0.0</string>
+    <string name="product_desc_sample">Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</string>
 </resources>

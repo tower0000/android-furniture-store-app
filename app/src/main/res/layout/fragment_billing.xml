@@ -219,7 +219,7 @@
             android:id="@+id/buttonPlaceOrder"
             android:layout_width="0dp"
             android:layout_height="@dimen/smallButtonHeight"
-            style="@style/redButtonStyle"
+            style="@style/orangeButtonStyle"
             app:layout_constraintTop_toBottomOf="@id/totalBoxContainer"
             app:layout_constraintStart_toStartOf="@id/totalBoxContainer"
             app:layout_constraintEnd_toEndOf="@id/totalBoxContainer"

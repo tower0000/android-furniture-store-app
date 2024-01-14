@@ -44,6 +44,10 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
 
         setupCartRv()
 
+        binding.imageCloseCart.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         var totalPrice = 0f
         viewLifecycleOwner.lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {

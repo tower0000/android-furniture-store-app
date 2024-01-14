@@ -8,33 +8,32 @@
 
 
     <TextView
-        android:id="@+id/textWelcomePrime"
-        style="@style/TextShadowStyleH4"
+        android:id="@+id/tvWelcomeTitle"
+        style="@style/titleInterWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/tvWelcomePrimaryMarginBottom"
         android:gravity="center_horizontal"
         android:text="@string/welcome_text_prime"
-
         android:layout_marginStart="@dimen/tvWelcomePrimarySideMargin"
         android:layout_marginEnd="@dimen/tvWelcomePrimarySideMargin"
-        app:layout_constraintBottom_toTopOf="@id/textWelcomeSecondary"
+        app:layout_constraintBottom_toTopOf="@id/tvWelcomeSubtitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textWelcomeSecondary"
-        style="@style/TextShadowStyleH2"
+        android:id="@+id/tvWelcomeSubtitle"
+        style="@style/textInterWhite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/tvWelcomeSecondaryMarginBottom"
         android:text="@string/welcome_text_secondary"
-        app:layout_constraintBottom_toTopOf="@id/introButton"
+        app:layout_constraintBottom_toTopOf="@id/buttonIntro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/introButton"
+        android:id="@+id/buttonIntro"
         style="@style/orangeButtonStyle"
         android:layout_width="@dimen/smallButtonWidth"
         android:layout_height="@dimen/smallButtonHeight"

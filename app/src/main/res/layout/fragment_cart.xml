@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@color/grey_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,27 +28,29 @@
 
                 <ImageView
                     android:id="@+id/imageCloseCart"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ic_close"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="12dp"
+                    android:layout_marginTop="15dp"
+                    style="@style/orangeButtonStyle"
+                    android:src="@drawable/ic_back_arrow"
+                    app:tint="@color/grey"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/black" />
-
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
-                    style="@style/h3"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvBack"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
-                    android:text="My Cart"
-                    android:textColor="@color/black"
-                    android:textSize="25sp"
-                    app:layout_constraintBottom_toBottomOf="@id/imageCloseCart"
-                    app:layout_constraintStart_toStartOf="@id/imageCloseCart"
-                    app:layout_constraintTop_toTopOf="@id/imageCloseCart" />
+                    android:text="Back"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="5sp"
+                    android:textSize="23sp"
+                    android:fontFamily="@font/poppins_extra_bold"
+                    app:layout_constraintStart_toEndOf="@id/imageCloseCart"
+                    app:layout_constraintTop_toTopOf="@id/imageCloseCart"
+                    app:layout_constraintBottom_toBottomOf="@id/imageCloseCart"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.Toolbar>
@@ -110,15 +113,15 @@
 
 
             <TextView
-                style="@style/h3"
+                style="@style/subtitleInterWhite"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
-                android:text="Total"
-                android:textColor="@color/black"
-                android:textSize="20sp"
+                android:text="@string/cart_total_label"
+                android:textColor="@color/white"
+                android:textSize="23sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -126,15 +129,15 @@
 
             <TextView
                 android:id="@+id/tvTotalPrice"
-                style="@style/h3"
+                style="@style/subtitleInterWhite"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="15dp"
-                android:text="$150"
-                android:textColor="@color/black"
-                android:textSize="20sp"
+                android:text="@string/cart_price_label"
+                android:textColor="@color/white"
+                android:textSize="23sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -148,13 +151,12 @@
             style="@style/orangeButtonStyle"
             android:layout_width="0dp"
             android:layout_height="@dimen/smallButtonHeight"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="25dp"
             android:layout_marginBottom="20dp"
             android:text="Check out"
             app:layout_constraintEnd_toEndOf="@id/rightGuideLine"
             app:layout_constraintStart_toStartOf="@id/leftGuideLine"
-            app:layout_constraintTop_toBottomOf="@id/totalBoxContainer"
-            app:spinning_bar_color="@color/md_theme_light_background" />
+            app:layout_constraintTop_toBottomOf="@id/totalBoxContainer" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -165,8 +167,8 @@
 
             <ImageView
                 android:id="@+id/imageEmptyBox"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_marginBottom="130dp"
                 android:background="@drawable/empty_box_background"
                 android:src="@drawable/ic_empty_box"
@@ -174,17 +176,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/md_theme_light_primary" />
+                app:tint="@color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/h3"
+                style="@style/subtitleInterWhite"
                 android:gravity="center"
                 android:text="@string/your_shopping_cart_is_empty"
-                android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textColor="@color/white"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
                 app:layout_constraintEnd_toEndOf="@id/imageEmptyBox"
                 app:layout_constraintStart_toStartOf="@id/imageEmptyBox"
                 app:layout_constraintTop_toBottomOf="@id/imageEmptyBox"/>

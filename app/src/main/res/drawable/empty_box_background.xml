@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
-    <solid android:color="@color/md_theme_light_background" />
+    <solid android:color="@color/white_icon_background" />
     <gradient
-        android:centerColor="@color/md_theme_light_background"
-        android:endColor="#00FF0000"
+        android:centerColor="@color/orange"
+        android:endColor="@color/grey_background"
         android:gradientRadius="20dp"
-        android:startColor="#00FF0000"
+        android:startColor="@color/grey_background"
         android:type="linear" />
 
 </shape>

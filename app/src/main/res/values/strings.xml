@@ -8,14 +8,14 @@
     <string name="pass_hint">Password</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="login">Login</string>
-    <string name="or_continue_with">- OR Continue with -</string>
+    <string name="or_continue_with">Or continue with</string>
     <string name="facebook_authentication_button_img_desc">facebook authentication</string>
     <string name="google_authentication_button_img_desc">google authentication</string>
     <string name="sign_up_text_button">Sign Up</string>
     <string name="register_title">Create an\naccount</string>
-    <string name="create_account_button">Register</string>
+    <string name="button_create_account">REGISTER</string>
     <string name="confirm_password_hint">Confirm password</string>
-    <string name="login_textbutton">Login</string>
+    <string name="button_login">LOGIN</string>
     <string name="forgot_password_reset">Forgot password?</string>
     <string name="reset_pass_hint">We will send you a message to set or reset\nyour new password</string>
     <string name="cancel_reset_pass">Cancel</string>
@@ -45,4 +45,12 @@
     <string name="prodduct_name_sample">CHAIR</string>
     <string name="product_ratong_sample">0.0</string>
     <string name="product_desc_sample">Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</string>
+    <string name="have_an_account">Have an account?</string>
+    <string name="create_account">Create account</string>
+    <string name="email_pass_null">Password or email is null</string>
+    <string name="reset_link_sent">Reset link was sent to your Email</string>
+    <string name="success">Success</string>
+    <string name="cart_product_quantity_sample">1</string>
+    <string name="cart_total_label">Total:</string>
+    <string name="cart_price_label">$150</string>
 </resources>

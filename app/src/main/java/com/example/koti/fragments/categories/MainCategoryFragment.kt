@@ -9,7 +9,9 @@ import android.widget.Toast
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,8 +25,10 @@ import com.example.koti.util.Resource
 import com.example.koti.util.VerticalItemDecoration
 import com.example.koti.util.showBottomNavigationView
 import com.example.koti.viewmodel.MainCategoryViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 private val TAG = "MainCategoryFragment"
 
@@ -73,74 +77,81 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
             findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment, b)
         }
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.specialProducts.collectLatest {
-                when (it) {
-                    is Resource.Loading -> {
-                        showLoading()
-                    }
+        viewLifecycleOwner.lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.specialProducts.collectLatest {
+                    when (it) {
+                        is Resource.Loading -> {
+                            showLoading()
+                        }
 
-                    is Resource.Success -> {
-                        specialProductsAdapter.differ.submitList(it.data)
-                        hideLoading()
-                    }
+                        is Resource.Success -> {
+                            specialProductsAdapter.differ.submitList(it.data)
+                            hideLoading()
+                        }
 
-                    is Resource.Error -> {
-                        hideLoading()
-                        Log.e(TAG, it.message.toString())
-                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
-                    }
+                        is Resource.Error -> {
+                            hideLoading()
+                            Log.e(TAG, it.message.toString())
+                            Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                        }
 
-                    else -> Unit
+                        else -> Unit
+                    }
                 }
             }
         }
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.bestDealsProducts.collectLatest {
-                when (it) {
-                    is Resource.Loading -> {
-                        showLoading()
-                    }
+        viewLifecycleOwner.lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.bestDealsProducts.collectLatest {
+                    when (it) {
+                        is Resource.Loading -> {
+                            showLoading()
+                        }
 
-                    is Resource.Success -> {
-                        bestDealsAdapter.differ.submitList(it.data)
-                        hideLoading()
-                    }
+                        is Resource.Success -> {
+                            bestDealsAdapter.differ.submitList(it.data)
+                            hideLoading()
+                        }
 
-                    is Resource.Error -> {
-                        hideLoading()
-                        Log.e(TAG, it.message.toString())
-                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
-                    }
+                        is Resource.Error -> {
+                            hideLoading()
+                            Log.e(TAG, it.message.toString())
+                            Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                        }
 
-                    else -> Unit
+                        else -> Unit
+                    }
                 }
             }
         }
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.bestProducts.collectLatest {
-                when (it) {
-                    is Resource.Loading -> {
-                        binding.bestProductsProgressbar.visibility = View.VISIBLE
-                    }
+        viewLifecycleOwner.lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.bestProducts.collectLatest {
+                    when (it) {
+                        is Resource.Loading -> {
+                            binding.bestProductsProgressbar.visibility = View.VISIBLE
+                        }
 
-                    is Resource.Success -> {
-                        bestProductsAdapter.differ.submitList(it.data)
-                        binding.bestProductsProgressbar.visibility = View.GONE
-                    }
+                        is Resource.Success -> {
+                            bestProductsAdapter.differ.submitList(it.data)
+                            binding.bestProductsProgressbar.visibility = View.GONE
+                        }
 
-                    is Resource.Error -> {
-                        binding.bestProductsProgressbar.visibility = View.GONE
-                        Log.e(TAG, it.message.toString())
-                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
-                    }
+                        is Resource.Error -> {
+                            binding.bestProductsProgressbar.visibility = View.GONE
+                            Log.e(TAG, it.message.toString())
+                            Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                        }
 
-                    else -> Unit
+                        else -> Unit
+                    }
                 }
             }
         }
+
 
         binding.nestedScrollMainCategory.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, _, scrollY, _, _ ->
             if (v.getChildAt(0).bottom <= v.height + scrollY) {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_theme_light_background">
+    android:background="@color/grey_background">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineLoginStart"
@@ -28,8 +28,8 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <TextView
-        android:id="@+id/registerTitle"
-        style="@style/h4"
+        android:id="@+id/tvRegisterTitle"
+        style="@style/titleInterWhite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/tvLoginTitleTopMargin"
@@ -47,16 +47,16 @@
         app:hintTextAppearance="@style/editText"
         app:layout_constraintEnd_toStartOf="@id/guidelineLoginEnd"
         app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
-        app:layout_constraintTop_toBottomOf="@id/registerTitle">
+        app:layout_constraintTop_toBottomOf="@id/tvRegisterTitle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edEmailRegistration"
+            style="@style/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_user"
             android:drawablePadding="@dimen/edPaddingUser"
             android:inputType="textEmailAddress"
-            android:paddingStart="@dimen/edUserStartPadding"
+            android:paddingStart="@dimen/edRegistrationStartPadding"
             android:paddingEnd="0dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,12 +74,11 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edPassRegistration"
+            style="@style/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_lock"
-            android:drawablePadding="@dimen/edPadding"
             android:inputType="textPassword"
-            android:paddingStart="@dimen/edLockStartPadding"
+            android:paddingStart="@dimen/edRegistrationStartPadding"
             android:paddingEnd="0dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,38 +96,37 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edPassRegistrationConfirm"
+            style="@style/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_lock"
             android:drawablePadding="@dimen/edPadding"
             android:inputType="textPassword"
-            android:paddingStart="@dimen/edLockStartPadding"
+            android:paddingStart="@dimen/edRegistrationStartPadding"
             android:paddingEnd="0dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
-        android:id="@+id/registerButton"
+        android:id="@+id/buttonRegister"
         style="@style/orangeButtonStyle"
         android:layout_width="0dp"
         android:layout_height="@dimen/smallButtonHeight"
-        android:layout_marginTop="@dimen/loginButtonMargin"
-        android:layout_marginBottom="@dimen/buttonBottomMargin"
-        android:text="@string/create_account_button"
+        android:layout_marginTop="@dimen/buttonRegisterTopMargin"
+        android:text="@string/button_create_account"
         app:layout_constraintEnd_toEndOf="@id/guidelineLoginEnd"
         app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
         app:layout_constraintTop_toBottomOf="@id/passFieldRegistrationConfirm"
-        app:spinning_bar_color="@color/md_theme_light_background"/>
+        app:spinning_bar_color="@color/md_theme_light_background" />
 
     <TextView
-        android:id="@+id/continueWith"
-        style="@style/h2"
+        android:id="@+id/tvContinueWith"
+        style="@style/textInterWhite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/tvContinueWithTopMargin"
         android:text="@string/or_continue_with"
         app:layout_constraintEnd_toEndOf="@id/guidelineLoginEnd"
         app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
-        app:layout_constraintTop_toBottomOf="@id/registerButton" />
+        app:layout_constraintTop_toBottomOf="@id/buttonRedirectToAuth" />
 
     <ImageButton
         android:id="@+id/facebookRegister"
@@ -141,7 +139,7 @@
         android:padding="@dimen/facebook_logo_padding"
         android:src="@drawable/ic_facebook"
         app:layout_constraintEnd_toStartOf="@id/guidelineCenter"
-        app:layout_constraintTop_toBottomOf="@id/continueWith" />
+        app:layout_constraintTop_toBottomOf="@id/tvContinueWith" />
 
     <ImageButton
         android:id="@+id/googleRegister"
@@ -155,21 +153,31 @@
         android:scaleType="fitCenter"
         android:src="@drawable/google"
         app:layout_constraintStart_toEndOf="@id/guidelineCenter"
-        app:layout_constraintTop_toBottomOf="@id/continueWith" />
+        app:layout_constraintTop_toBottomOf="@id/tvContinueWith" />
 
     <TextView
-        android:id="@+id/redirectToAuthButton"
-        style="@style/h2"
+        android:id="@+id/tvHaveAccount"
+        style="@style/textInterWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/tvHaveAccountTopMargin"
+        android:text="@string/have_an_account"
+        app:layout_constraintEnd_toEndOf="@id/guidelineLoginEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
+        app:layout_constraintTop_toBottomOf="@id/buttonRegister" />
+
+    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+        android:id="@+id/buttonRedirectToAuth"
+        style="@style/whiteButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/tvSignUpTopMargin"
         android:clickable="true"
         android:focusable="true"
-        android:text="@string/login_textbutton"
-        android:textColor="@color/md_theme_light_primary"
+        android:text="@string/button_login"
         app:layout_constraintEnd_toEndOf="@id/guidelineLoginEnd"
         app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
-        app:layout_constraintTop_toBottomOf="@id/googleRegister"
+        app:layout_constraintTop_toBottomOf="@id/tvHaveAccount"
         tools:ignore="TouchTargetSizeCheck" />
 
 

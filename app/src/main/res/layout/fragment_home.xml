@@ -27,12 +27,10 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
                 android:fontFamily="@font/poppins_extra_bold"
                 android:paddingStart="15dp"
                 android:singleLine="true"
                 android:text="PRODUCT"
-
                 android:textColor="@color/white"
                 android:textSize="25sp"
                 app:layout_constraintBottom_toBottomOf="parent"

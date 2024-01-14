@@ -55,6 +55,8 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
 
         binding.rvBestProducts.addItemDecoration(VerticalItemDecoration())
         binding.rvBestDealsProducts.addItemDecoration(HorisontalItemDecoration())
+        binding.rvBestDealsProducts.addItemDecoration(VerticalItemDecoration())
+        binding.rvSpecialProducts.addItemDecoration(HorisontalItemDecoration())
 
         specialProductsAdapter.onClick = {
             val b = Bundle().apply { putParcelable("product", it) }
@@ -156,7 +158,8 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                     requireContext(),
                     1,
                     GridLayoutManager.VERTICAL,
-                    false)
+                    false
+                )
             adapter = bestProductsAdapter
         }
     }
@@ -165,7 +168,12 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
         bestDealsAdapter = BestDealsAdapter()
         binding.rvBestDealsProducts.apply {
             layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                GridLayoutManager(
+                    requireContext(),
+                    2,
+                    GridLayoutManager.HORIZONTAL,
+                    false
+                )
             adapter = bestDealsAdapter
         }
     }

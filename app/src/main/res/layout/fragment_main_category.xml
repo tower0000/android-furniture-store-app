@@ -24,50 +24,80 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvSpecialProducts"
+            <TextView
+                android:id="@+id/tvSpecialProductsTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
-                android:layout_marginEnd="25dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="25dp"
+                android:background="@color/grey_background"
+                android:fontFamily="@font/inter_bold"
+                android:singleLine="true"
+                android:text="Special Products"
+                android:textColor="@color/white"
+                android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <View
-                android:id="@+id/view_1"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                app:layout_constraintTop_toBottomOf="@id/rvSpecialProducts"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSpecialProducts"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="@id/tvSpecialProductsTitle"
+                app:layout_constraintStart_toStartOf="@id/tvSpecialProductsTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvSpecialProductsTitle" />
+
+            <TextView
+                android:id="@+id/sale_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/grey_background"
+                android:fontFamily="@font/inter_bold"
+                android:singleLine="true"
+                android:text="Up to 65% off!"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="@id/rvSpecialProducts"
+                app:layout_constraintTop_toBottomOf="@id/rvSpecialProducts" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvBestDealsProducts"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/rvSpecialProducts"
-                app:layout_constraintTop_toBottomOf="@id/view_1" />
+                app:layout_constraintTop_toBottomOf="@id/sale_title" />
 
-            <View
-                android:id="@+id/view_2"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                app:layout_constraintTop_toBottomOf="@id/rvBestDealsProducts"/>
+            <TextView
+                android:id="@+id/base_products_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/grey_background"
+                android:fontFamily="@font/inter_bold"
+                android:singleLine="true"
+                android:text="Products of the month"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="@id/rvSpecialProducts"
+                app:layout_constraintTop_toBottomOf="@id/rvBestDealsProducts" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvBestProducts"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="25dp"
                 android:overScrollMode="never"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/view_2" />
+                app:layout_constraintTop_toBottomOf="@id/base_products_title" />
 
 
             <ProgressBar

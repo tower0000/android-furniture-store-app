@@ -5,78 +5,117 @@
     android:layout_height="wrap_content"
     android:elevation="0dp"
     app:cardCornerRadius="20dp"
-    app:cardElevation="0dp"
-    >
+    app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="88dp"
-        android:background="@color/card_grey_background">
+        android:layout_width="300dp"
+        android:layout_height="110dp"
+        android:background="@color/card_grey_background"
+        android:paddingBottom="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_favorite_bd"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:scaleType="centerCrop"
+            android:src="@color/orange_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="6dp"
+            android:src="@drawable/ic_favorite"
+            app:layout_constraintBottom_toBottomOf="@id/img_favorite_bd"
+            app:layout_constraintEnd_toEndOf="@id/img_favorite_bd"
+            app:layout_constraintStart_toStartOf="@id/img_favorite_bd"
+            app:layout_constraintTop_toTopOf="@id/img_favorite_bd"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/star_img_bd"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_star"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/orange_dark" />
+
+        <TextView
+            android:id="@+id/productRating"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/product_ratong_sample"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@id/star_img_bd"
+            app:layout_constraintTop_toTopOf="@id/star_img_bd"
+            app:layout_constraintBottom_toBottomOf="@id/star_img_bd"/>
 
         <ImageView
             android:id="@+id/imgBestDeal"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="28dp"
+            android:src="@color/white"
+            android:scaleType="fitXY"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvBestDealProductName"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="@string/discount_item"
-            app:layout_constraintStart_toEndOf="@id/imgBestDeal"
-            app:layout_constraintTop_toTopOf="@id/imgBestDeal"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:fontFamily="@font/rubik_light"
-            android:textStyle="bold"
+            android:gravity="start"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/prodduct_name_sample"
             android:textColor="@color/black"
-            android:textSize="11sp"/>
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/imgBestDeal"
+            app:layout_constraintTop_toTopOf="@id/imgBestDeal" />
 
         <TextView
             android:id="@+id/tvBestDealOldPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:fontFamily="@font/inter_extra_bold"
             android:text="@string/discount_price_old"
-            app:layout_constraintTop_toBottomOf="@id/tvBestDealProductName"
-            app:layout_constraintStart_toEndOf="@id/tvBestDealNewPrice"
             android:textColor="@color/md_theme_gray_text"
             android:textSize="12sp"
-            android:fontFamily="@font/rubik_regular"
-            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toTopOf="@id/tvBestDealNewPrice"
+            app:layout_constraintEnd_toEndOf="@id/tvBestDealNewPrice"
+            app:layout_constraintStart_toStartOf="@id/tvBestDealNewPrice"
+
             />
+
 
         <TextView
             android:id="@+id/tvBestDealNewPrice"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="33sp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/grey_background"
+            android:fontFamily="@font/inter_extra_bold"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:text="@string/discount_price"
-            app:layout_constraintStart_toStartOf="@id/tvBestDealProductName"
-            app:layout_constraintTop_toBottomOf="@id/tvBestDealProductName"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:fontFamily="@font/rubik_regular"/>
-
-        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
-            android:id="@+id/btn_see_product"
-            android:layout_width="83dp"
-            android:layout_height="28dp"
-            android:background="@drawable/red_background"
-            android:fontFamily="@font/rubik_light"
-            android:text="@string/see_product"
-            android:textColor="@color/cardview_light_background"
-            android:textSize="11sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/tvBestDealProductName"
-            app:layout_constraintTop_toTopOf="@id/tvBestDealProductName"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="20dp"
-            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

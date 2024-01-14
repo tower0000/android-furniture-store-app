@@ -1,5 +1,6 @@
 package com.example.koti.adapters
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -24,7 +25,8 @@ class BestDealsAdapter : RecyclerView.Adapter<BestDealsAdapter.BestDealsViewHold
                     tvBestDealNewPrice.text = "$ ${String.format("%.2f", priceAfterOffer)}"
                 }
                 tvBestDealOldPrice.text = "$ ${product.price}"
-                tvBestDealProductName.text = product.name
+                tvBestDealOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+                tvBestDealProductName.text = product.name.uppercase()
             }
 
         }

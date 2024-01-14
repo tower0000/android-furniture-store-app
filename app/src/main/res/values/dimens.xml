@@ -3,7 +3,7 @@
     <dimen name="tvWelcomeMargin">5dp</dimen>
     <dimen name="smallButtonWidth">180dp</dimen>
     <dimen name="smallButtonHeight">55dp</dimen>
-    <dimen name="buttonCorners">5dp</dimen>
+    <dimen name="buttonCorners">11dp</dimen>
     <dimen name="buttonBottomMargin">34dp</dimen>
     <dimen name="tvWelcomeSecondaryMarginBottom">44dp</dimen>
     <dimen name="tvWelcomePrimaryMarginBottom">14dp</dimen>

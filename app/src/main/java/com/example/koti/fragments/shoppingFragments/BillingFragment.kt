@@ -15,7 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kelineyt.adapters.BillingProductsAdapter
+import com.example.koti.adapters.BillingProductsAdapter
 import com.example.koti.R
 import com.example.koti.adapters.AddressAdapter
 import com.example.koti.data.Address

@@ -73,4 +73,8 @@
             android:name="product"
             app:argType="com.example.koti.data.CartProduct[]" />
     </fragment>
+    <fragment
+        android:id="@+id/userAccountFragment"
+        android:name="com.example.koti.fragments.settings.UserAccountFragment"
+        android:label="UserAccountFragment" />
 </navigation>

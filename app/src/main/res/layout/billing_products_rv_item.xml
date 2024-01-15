@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:backgroundTint="@color/card_grey_background"
+    app:cardCornerRadius="20dp"
     app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:paddingBottom="1dp">
 
-        <View
-            android:id="@+id/topLine"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/card_grey_background"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
 
         <ImageView
             android:id="@+id/imageCartProduct"
-            android:layout_width="80dp"
-            android:layout_height="75dp"
-            android:layout_marginBottom="5dp"
-            app:layout_constraintBottom_toTopOf="@+id/topLine"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="110dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="16dp"
             android:scaleType="centerCrop"
-            android:src="@color/card_black_background"/>
+            android:src="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tvProductCartName"
@@ -37,27 +31,27 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/rubik_regular"
-            android:text="Chair"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:textStyle="bold"
+            android:lines="1"
+            android:text="@string/prodduct_name_sample"
+            style="@style/textInterBlack"
             app:layout_constraintStart_toEndOf="@id/imageCartProduct"
-            app:layout_constraintTop_toTopOf="@id/imageCartProduct"
-            android:lines="1" />
-
+            app:layout_constraintTop_toTopOf="@id/imageCartProduct" />
 
 
         <TextView
             android:id="@+id/tvProductCartPrice"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/rubik_regular"
-            android:text="$50"
-            android:textColor="@color/black"
-            android:textSize="10sp"
-            android:textStyle="bold"
+            android:layout_height="33sp"
+            android:background="@drawable/grey_background"
+            android:fontFamily="@font/inter_extra_bold"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@string/discount_price"
+            android:textSize="12sp"
+            style="@style/textInterWhite"
             app:layout_constraintStart_toStartOf="@id/tvProductCartName"
-            app:layout_constraintTop_toBottomOf="@id/tvProductCartName"/>
+            app:layout_constraintTop_toBottomOf="@id/tvProductCartName" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageCartProductColor"
@@ -66,7 +60,7 @@
             android:layout_marginTop="5dp"
             android:src="@color/card_black_background"
             app:layout_constraintStart_toStartOf="@id/tvProductCartPrice"
-            app:layout_constraintTop_toBottomOf="@id/tvProductCartPrice"/>
+            app:layout_constraintTop_toBottomOf="@id/tvProductCartPrice" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageCartProductSize"
@@ -75,8 +69,7 @@
             android:layout_marginStart="5dp"
             android:src="@color/grey"
             app:layout_constraintStart_toEndOf="@id/imageCartProductColor"
-            app:layout_constraintTop_toTopOf="@id/imageCartProductColor"/>
-
+            app:layout_constraintTop_toTopOf="@id/imageCartProductColor" />
 
 
         <TextView
@@ -84,36 +77,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="L"
-            android:textSize="11sp"
             android:textColor="@color/white"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@id/imageCartProductSize"
-            app:layout_constraintTop_toTopOf="@id/imageCartProductSize"
+            app:layout_constraintEnd_toEndOf="@id/imageCartProductSize"
             app:layout_constraintStart_toStartOf="@id/imageCartProductSize"
-            app:layout_constraintEnd_toEndOf="@id/imageCartProductSize"/>
+            app:layout_constraintTop_toTopOf="@id/imageCartProductSize" />
 
         <TextView
             android:id="@+id/tvBillingProductQuantity"
+            style="@style/textInterBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/cart_product_quantity_sample"
+            android:layout_marginEnd="10dp"
+            android:textSize="19sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="1"
-            android:layout_marginEnd="5dp"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvProductCartName"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-
-
-
-
-
-
 
 
 </androidx.cardview.widget.CardView>

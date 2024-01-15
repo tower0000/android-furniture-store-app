@@ -33,11 +33,11 @@ class AddressFragment : Fragment() {
         return binding.root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         viewLifecycleOwner.lifecycleScope.launch {
-            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.addNewAddress.collectLatest {
                     when (it) {
                         is Resource.Loading -> {
@@ -53,6 +53,7 @@ class AddressFragment : Fragment() {
                             binding.progressbarAddress.visibility = View.INVISIBLE
                             Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                         }
+
                         else -> Unit
                     }
                 }
@@ -66,11 +67,6 @@ class AddressFragment : Fragment() {
                 }
             }
         }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
 
         binding.apply {
             buttonSave.setOnClickListener {

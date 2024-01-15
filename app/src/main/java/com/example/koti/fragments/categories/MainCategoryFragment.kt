@@ -57,11 +57,6 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
         setupBestDealsRv()
         setupBestProductsRv()
 
-        binding.rvBestProducts.addItemDecoration(VerticalItemDecoration())
-        binding.rvBestDealsProducts.addItemDecoration(HorisontalItemDecoration())
-        binding.rvBestDealsProducts.addItemDecoration(VerticalItemDecoration())
-        binding.rvSpecialProducts.addItemDecoration(HorisontalItemDecoration())
-
         specialProductsAdapter.onClick = {
             val b = Bundle().apply { putParcelable("product", it) }
             findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment, b)
@@ -172,6 +167,7 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                     false
                 )
             adapter = bestProductsAdapter
+            addItemDecoration(VerticalItemDecoration())
         }
     }
 
@@ -186,24 +182,25 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                     false
                 )
             adapter = bestDealsAdapter
+            addItemDecoration(VerticalItemDecoration())
+            addItemDecoration(HorisontalItemDecoration())
         }
     }
-
-    private fun hideLoading() {
-        binding.mainCategoryProgressbar.visibility = View.GONE
-    }
-
-    private fun showLoading() {
-        binding.mainCategoryProgressbar.visibility = View.VISIBLE
-    }
-
     private fun setupSpecialProductsRv() {
         specialProductsAdapter = SpecialProductsAdapter()
         binding.rvSpecialProducts.apply {
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = specialProductsAdapter
+            addItemDecoration(HorisontalItemDecoration())
         }
+    }
+    private fun hideLoading() {
+        binding.mainCategoryProgressbar.visibility = View.GONE
+    }
+
+    private fun showLoading() {
+        binding.mainCategoryProgressbar.visibility = View.VISIBLE
     }
 
     override fun onResume() {

@@ -21,9 +21,11 @@ import com.example.koti.firebase.FirebaseCommon
 import com.example.koti.util.Resource
 import com.example.koti.util.VerticalItemDecoration
 import com.example.koti.viewmodel.CartViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class CartFragment : Fragment(R.layout.fragment_cart) {
     private lateinit var binding: FragmentCartBinding
     private val cartAdapter by lazy { CartProductAdapter() }
@@ -71,6 +73,14 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
 
         cartAdapter.onMinusClick = {
             viewModel.changeQuantity(it, FirebaseCommon.QuantityChanging.DECREASE)
+        }
+
+        binding.buttonCheckout.setOnClickListener {
+            val action = CartFragmentDirections.actionCartFragmentToBillingFragment(
+                totalPrice,
+                cartAdapter.differ.currentList.toTypedArray()
+            )
+            findNavController().navigate(action)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

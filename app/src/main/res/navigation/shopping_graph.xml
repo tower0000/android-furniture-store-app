@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_cartFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_billingFragment"
+            app:destination="@id/billingFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -55,4 +58,19 @@
         android:name="com.example.koti.fragments.shoppingFragments.AddressFragment"
         android:label="AddressFragment"
         tools:layout="@layout/fragment_address"/>
+    <fragment
+        android:id="@+id/billingFragment"
+        android:name="com.example.koti.fragments.shoppingFragments.BillingFragment"
+        android:label="BillingFragment"
+        tools:layout="@layout/fragment_billing">
+        <action
+            android:id="@+id/action_billingFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <argument
+            android:name="totalPrice"
+            app:argType="float" />
+        <argument
+            android:name="product"
+            app:argType="com.example.koti.data.CartProduct[]" />
+    </fragment>
 </navigation>

@@ -120,8 +120,6 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:text="@string/cart_total_label"
-                android:textColor="@color/white"
-                android:textSize="23sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -136,8 +134,6 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="15dp"
                 android:text="@string/cart_price_label"
-                android:textColor="@color/white"
-                android:textSize="23sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

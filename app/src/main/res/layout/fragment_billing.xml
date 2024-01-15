@@ -1,75 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fillViewport="true"
-    android:background="@color/grey_background">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_background"
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/toolbarBilling"
-            android:layout_width="0dp"
-            android:layout_height="?actionBarSize"
-            app:layout_constraintEnd_toEndOf="@id/guideline2"
-            app:layout_constraintStart_toStartOf="@id/guideline1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView
-                    android:id="@+id/imageCloseBilling"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_close"
-                    android:scaleType="centerInside"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/black" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
-                    android:fontFamily="@font/rubik_regular"
-                    android:text="Billing"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="@id/imageCloseBilling"
-                    app:layout_constraintStart_toStartOf="@id/imageCloseBilling"
-                    app:layout_constraintTop_toTopOf="@id/imageCloseBilling" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.appcompat.widget.Toolbar>
+            <ImageView
+                android:id="@+id/imageCloseBilling"
+                style="@style/orangeButtonStyle"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:padding="12dp"
+                android:src="@drawable/ic_back_arrow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/grey" />
 
+            <TextView
+                android:id="@+id/tvBack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5sp"
+                android:fontFamily="@font/poppins_extra_bold"
+                android:text="Back"
+                android:textColor="@color/white"
+                android:textSize="23sp"
+                app:layout_constraintBottom_toBottomOf="@id/imageCloseBilling"
+                app:layout_constraintStart_toEndOf="@id/imageCloseBilling"
+                app:layout_constraintTop_toTopOf="@id/imageCloseBilling" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/tvPaymentMethods"
+            style="@style/textInterWhite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Payment Methods"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/rubik_medium"
-            app:layout_constraintTop_toBottomOf="@id/toolbarBilling"
+            android:text="Payment Methods"
             app:layout_constraintStart_toStartOf="@id/guideline1"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:layout_marginTop="10dp"/>
+            app:layout_constraintTop_toBottomOf="@id/toolbarBilling" />
 
         <TextView
             android:id="@+id/tvPaymentExplanation"
+            style="@style/textInterOrange"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/support_virtual_payments"
-            android:fontFamily="@font/rubik_regular"
-            app:layout_constraintTop_toBottomOf="@id/tvPaymentMethods"
-            app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
-            android:textColor="@color/black"
-            android:textSize="15sp" />
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/tvPaymentMethods" />
 
         <View
             android:id="@+id/topLine"
@@ -77,43 +73,38 @@
             android:layout_height="1dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/white_background"
-            app:layout_constraintTop_toBottomOf="@id/tvPaymentExplanation"
-            app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintEnd_toEndOf="@id/guideline2"
             android:backgroundTint="@color/grey"
-            />
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/tvPaymentExplanation" />
 
         <TextView
             android:id="@+id/tvShoppingAddress"
+            style="@style/textInterWhite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Shipping Address"
-            android:fontFamily="@font/rubik_medium"
+            app:drawableLeftCompat="@drawable/ic_location"
+            app:drawableTint="@color/orange_dark"
             app:layout_constraintStart_toStartOf="@id/guideline1"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/topLine"
-            app:drawableTint="@color/black"
-            app:drawableLeftCompat="@drawable/ic_location" />
+            app:layout_constraintTop_toBottomOf="@id/topLine" />
 
         <ImageView
             android:id="@+id/imageAddAddress"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_add"
+            app:layout_constraintBottom_toBottomOf="@id/tvShoppingAddress"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
             app:layout_constraintTop_toTopOf="@id/tvShoppingAddress"
-            app:layout_constraintBottom_toBottomOf="@id/tvShoppingAddress"
-            android:src="@drawable/ic_add"
-            app:tint="@color/black"
-            />
+            app:tint="@color/orange_dark" />
 
         <FrameLayout
             android:id="@+id/rvFrame"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toBottomOf="@id/tvShoppingAddress">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -123,7 +114,7 @@
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/address_rv_item"/>
+                tools:listitem="@layout/address_rv_item" />
 
             <ProgressBar
                 android:id="@+id/progressbarAddress"
@@ -131,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:indeterminateTint="@color/black"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
         </FrameLayout>
 
@@ -141,24 +132,23 @@
             android:layout_height="1dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/white_background"
-            app:layout_constraintTop_toBottomOf="@id/rvFrame"
-            app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintEnd_toEndOf="@id/guideline2"
             android:backgroundTint="@color/white"
-            />
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/rvFrame" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvProducts"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toBottomOf="@id/middleLine"
-            tools:listitem="@layout/billing_products_rv_item"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            tools:listitem="@layout/billing_products_rv_item" />
 
         <View
             android:id="@+id/bottomLine"
@@ -166,11 +156,10 @@
             android:layout_height="1dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/white_background"
-            app:layout_constraintTop_toBottomOf="@id/rvProducts"
-            app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintEnd_toEndOf="@id/guideline2"
             android:backgroundTint="@color/white"
-            />
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/rvProducts" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/totalBoxContainer"
@@ -178,12 +167,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:background="@drawable/total_box_background"
-            app:layout_constraintTop_toBottomOf="@id/rvProducts"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
             app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintEnd_toEndOf="@id/guideline2">
+            app:layout_constraintTop_toBottomOf="@id/rvProducts">
 
 
             <TextView
+                style="@style/subtitleInterWhite"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -191,8 +181,6 @@
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/rubik_regular"
                 android:text="Total"
-                android:textColor="@color/black"
-                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -200,6 +188,7 @@
 
             <TextView
                 android:id="@+id/tvTotalPrice"
+                style="@style/subtitleInterWhite"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -207,8 +196,6 @@
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/rubik_regular"
                 android:text="$150"
-                android:textColor="@color/black"
-                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -218,17 +205,17 @@
 
         <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/buttonPlaceOrder"
+            style="@style/orangeButtonStyle"
             android:layout_width="0dp"
             android:layout_height="@dimen/smallButtonHeight"
-            style="@style/orangeButtonStyle"
-            app:layout_constraintTop_toBottomOf="@id/totalBoxContainer"
-            app:layout_constraintStart_toStartOf="@id/totalBoxContainer"
-            app:layout_constraintEnd_toEndOf="@id/totalBoxContainer"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="45dp"
             android:layout_marginBottom="20dp"
             android:text="Place Order"
-            app:spinning_bar_color="@color/white"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/totalBoxContainer"
+            app:layout_constraintStart_toStartOf="@id/totalBoxContainer"
+            app:layout_constraintTop_toBottomOf="@id/totalBoxContainer"
+            app:spinning_bar_color="@color/white" />
 
 
         <androidx.constraintlayout.widget.Guideline

@@ -14,8 +14,20 @@
     </style>
 
     <style name="textInterWhite">
-        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/h3TextSize</item>
+    </style>
+
+    <style name="textInterBlack">
+        <item name="android:fontFamily">@font/inter_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/h3TextSize</item>
+    </style>
+
+    <style name="textInterOrange">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textColor">@color/orange</item>
         <item name="android:textSize">@dimen/h3TextSize</item>
     </style>
 
@@ -94,7 +106,7 @@
 
     <dimen name="h1TextSize">38sp</dimen>
     <dimen name="h2TextSize">22sp</dimen>
-    <dimen name="h3TextSize">18sp</dimen>
+    <dimen name="h3TextSize">15sp</dimen>
     <dimen name="h4TextSize">12sp</dimen>
     <dimen name="h2ShadowTextSize">15sp</dimen>
 

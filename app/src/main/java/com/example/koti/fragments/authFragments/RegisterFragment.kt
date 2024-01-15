@@ -45,7 +45,7 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonRegister.setOnClickListener {
+        binding.buttonRedirectToAuth.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
 

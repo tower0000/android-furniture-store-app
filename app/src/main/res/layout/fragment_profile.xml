@@ -1,6 +1,375 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/grey_background"
+    android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/progressbarSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintParent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvSettings"
+                style="@style/subtitleInterWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Settings"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintProfile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/tvSettings">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imageUser"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/tvUserName"
+                    style="@style/textInterWhite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="3dp"
+                    android:text="Name"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toEndOf="@id/imageUser"
+                    app:layout_constraintTop_toTopOf="@+id/imageUser" />
+
+
+                <TextView
+                    android:id="@+id/tv_edit_personal_details"
+                    style="@style/textInterOrange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit personal details"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/tvUserName"
+                    app:layout_constraintTop_toBottomOf="@id/tvUserName" />
+
+                <ImageView
+                    android:id="@+id/arrow"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_arrow"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_edit_personal_details"
+                    app:layout_constraintEnd_toEndOf="@id/constraintProfile"
+                    app:layout_constraintTop_toTopOf="@id/tvUserName"
+                    app:tint="@color/grey_edit_text_background" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tvOrders"
+                style="@style/subtitleInterWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Orders"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@id/constraintProfile" />
+
+
+            <LinearLayout
+                android:id="@+id/linearOrders"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/grey_background"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@id/tvOrders">
+
+                <LinearLayout
+                    android:id="@+id/linearAllOrders"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/grey_background"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_profile_radius"
+                        android:layout_height="@dimen/icon_profile_radius"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/settings_items_background"
+                        android:src="@drawable/ic_all_orders"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tvAllOrders"
+                        style="@style/textInterWhite"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:text="All orders" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_arrow"
+                        app:tint="@color/grey_edit_text_background" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linearTrackOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_profile_radius"
+                        android:layout_height="@dimen/icon_profile_radius"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/settings_items_background"
+                        android:backgroundTint="@color/grey"
+                        android:src="@drawable/ic_search"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tvTrackOrders"
+                        style="@style/textInterWhite"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:text="Track Orders" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_arrow"
+                        app:tint="@color/grey_edit_text_background" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearBilling"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_profile_radius"
+                        android:layout_height="@dimen/icon_profile_radius"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/settings_items_background"
+                        android:src="@drawable/ic_billing"
+                        android:backgroundTint="@color/orange"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tvBilling"
+                        style="@style/textInterWhite"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:text="Billing" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_arrow"
+                        app:tint="@color/grey_edit_text_background" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tvNotifications"
+                style="@style/subtitleInterWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Notifications"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@id/linearOrders" />
+
+            <LinearLayout
+                android:id="@+id/linearNotifications"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@id/tvNotifications">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_profile_radius"
+                        android:layout_height="@dimen/icon_profile_radius"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/settings_items_background"
+                        android:src="@drawable/ic_notification"
+                        android:backgroundTint="@color/green"
+                        app:tint="@color/white"  />
+
+                    <TextView
+                        style="@style/textInterWhite"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:text="Notifications" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchNotification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        app:thumbTint="@color/white"
+                        app:trackTint="@color/green"
+
+                        android:checked="true" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tvRegional"
+                style="@style/subtitleInterWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Regional"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@id/linearNotifications" />
+
+            <LinearLayout
+                android:id="@+id/linear_regional"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@id/tvRegional">
+
+                <LinearLayout
+                    android:id="@+id/linearLogOut"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_profile_radius"
+                        android:layout_height="@dimen/icon_profile_radius"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_logout"
+                        android:paddingStart="8dp"
+                        android:background="@drawable/settings_items_background"
+                        android:backgroundTint="@color/red_error"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:id="@+id/logout"
+                        style="@style/textInterWhite"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:text="Logout" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_arrow"
+                        app:tint="@color/grey_edit_text_background" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tvVersion"
+                style="@style/smallTextInterGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Version 1.0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/linear_regional" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.04" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.96" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>

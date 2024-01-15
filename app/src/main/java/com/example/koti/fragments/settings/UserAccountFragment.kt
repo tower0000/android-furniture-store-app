@@ -134,11 +134,16 @@ class UserAccountFragment : Fragment() {
                 viewModel.resetPassword(email)
             }
         }
+
+        binding.imageCloseUserAccount.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun showUserInformation(data: User) {
         binding.apply {
-            Glide.with(this@UserAccountFragment).load(data.imagePath).into(imageUser)
+            if (data.imagePath != "")
+                Glide.with(this@UserAccountFragment).load(data.imagePath).into(imageUser)
             edFirstName.setText(data.firstName)
             edLastName.setText(data.lastName)
             edEmail.setText(data.email)

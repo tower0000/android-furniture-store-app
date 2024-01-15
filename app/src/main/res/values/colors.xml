@@ -16,6 +16,7 @@
 
     <color name="white_icon_background">#F4F4F4</color>
 
-    <color name="red_error">#FF0000</color>
+    <color name="red_error">#BB1000</color>
+    <color name="green">#44BB0F</color>
 
 </resources>

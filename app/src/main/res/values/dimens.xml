@@ -8,7 +8,7 @@
     <dimen name="tvWelcomeSecondaryMarginBottom">44dp</dimen>
     <dimen name="tvWelcomePrimaryMarginBottom">14dp</dimen>
     <dimen name="tvWelcomePrimarySideMargin">38dp</dimen>
-    <dimen name="tvLoginTitleTopMargin">55dp</dimen>
+    <dimen name="tvLoginTitleTopMargin">40dp</dimen>
     <dimen name="edLoginMargin">20dp</dimen>
     <dimen name="edPadding">10dp</dimen>
     <dimen name="edRegistrationStartPadding">13dp</dimen>
@@ -24,7 +24,7 @@
     <dimen name="tvSignUpTopMargin">5dp</dimen>
     <dimen name="serviceButtonDiameter">49dp</dimen>
     <dimen name="tvContinueWithTopMargin">10dp</dimen>
-    <dimen name="dialogElementsTopMargin">2dp</dimen>
+    <dimen name="dialogElementsTopMargin">6dp</dimen>
     <dimen name="dialogBottomScreenMargin">20dp</dimen>
     <dimen name="menuPadding">10dp</dimen>
     <dimen name="menuHeight">60dp</dimen>
@@ -32,4 +32,5 @@
     <dimen name="imageShadow_size">25dp</dimen>
     <dimen name="checked_size">18sp</dimen>
     <dimen name="tvHaveAccountTopMargin">10dp</dimen>
+    <dimen name="icon_profile_radius">27dp</dimen>
 </resources>

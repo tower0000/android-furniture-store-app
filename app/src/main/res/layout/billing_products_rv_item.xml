@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:backgroundTint="@color/md_theme_light_background"
+    android:backgroundTint="@color/card_grey_background"
     app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginTop="10dp"
-            android:background="@color/md_theme_light_background"
+            android:background="@color/card_grey_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -28,7 +28,7 @@
             app:layout_constraintBottom_toTopOf="@+id/topLine"
             app:layout_constraintStart_toStartOf="parent"
             android:scaleType="centerCrop"
-            android:src="@color/md_theme_dark_onPrimaryContainer"/>
+            android:src="@color/card_black_background"/>
 
         <TextView
             android:id="@+id/tvProductCartName"
@@ -64,7 +64,7 @@
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_marginTop="5dp"
-            android:src="@color/md_theme_dark_onPrimaryContainer"
+            android:src="@color/card_black_background"
             app:layout_constraintStart_toStartOf="@id/tvProductCartPrice"
             app:layout_constraintTop_toBottomOf="@id/tvProductCartPrice"/>
 
@@ -73,7 +73,7 @@
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_marginStart="5dp"
-            android:src="@color/md_theme_gray_text"
+            android:src="@color/grey"
             app:layout_constraintStart_toEndOf="@id/imageCartProductColor"
             app:layout_constraintTop_toTopOf="@id/imageCartProductColor"/>
 
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:text="L"
             android:textSize="11sp"
-            android:textColor="@color/md_theme_light_background"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/imageCartProductSize"
             app:layout_constraintTop_toTopOf="@id/imageCartProductSize"
             app:layout_constraintStart_toStartOf="@id/imageCartProductSize"

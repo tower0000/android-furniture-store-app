@@ -95,7 +95,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="25dp"
-            android:background="@color/card_line"
+            android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvProductDescription" />
@@ -181,7 +181,7 @@
             app:layout_constraintEnd_toEndOf="@id/tvProductName"
             app:layout_constraintStart_toEndOf="@id/tvProductPrice"
             app:layout_constraintTop_toBottomOf="@id/tvProductPriceTitle"
-            app:spinning_bar_color="@color/md_theme_light_background" />
+            app:spinning_bar_color="@color/white" />
 
 
 
@@ -191,7 +191,6 @@
             android:layout_height="wrap_content"
             android:text="$199"
             android:textColor="@color/white"
-
             android:textSize="32sp"
             android:fontFamily="@font/inter_extra_bold"
             app:layout_constraintBottom_toBottomOf="@id/buttonAddToCart"

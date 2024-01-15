@@ -8,7 +8,7 @@
         android:id="@+id/imageShadow"
         android:layout_width="@dimen/imageShadow_size"
         android:layout_height="@dimen/imageShadow_size"
-        android:src="@color/md_theme_light_primary"
+        android:src="@color/orange_dark"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -17,7 +17,7 @@
         android:id="@+id/imageColor"
         android:layout_width="@dimen/imageColor_size"
         android:layout_height="@dimen/imageColor_size"
-        android:src="@color/md_theme_light_primaryContainer"
+        android:src="@color/white_icon_background"
         app:layout_constraintBottom_toBottomOf="@id/imageShadow"
         app:layout_constraintEnd_toEndOf="@id/imageShadow"
         app:layout_constraintStart_toStartOf="@id/imageShadow"

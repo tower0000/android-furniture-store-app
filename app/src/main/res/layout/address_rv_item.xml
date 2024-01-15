@@ -12,7 +12,7 @@
         android:fontFamily="@font/rubik_medium"
         android:text="Home"
         android:textAllCaps="false"
-        android:textColor="@color/md_theme_gray_text"
+        android:textColor="@color/grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

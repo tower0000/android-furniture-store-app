@@ -47,7 +47,7 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/md_theme_light_background"
+            android:backgroundTint="@color/white"
             android:contentDescription=""
             android:padding="8dp"
             android:src="@drawable/ic_search"
@@ -57,7 +57,7 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/md_theme_light_background"
+            android:backgroundTint="@color/white"
             android:contentDescription=""
             android:padding="8dp"
             android:src="@drawable/ic_three_dots"

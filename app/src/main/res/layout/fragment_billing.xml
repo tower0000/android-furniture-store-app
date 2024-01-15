@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@color/grey_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -79,7 +80,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvPaymentExplanation"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
-            android:backgroundTint="@color/md_theme_gray_text"
+            android:backgroundTint="@color/grey"
             />
 
         <TextView
@@ -143,7 +144,7 @@
             app:layout_constraintTop_toBottomOf="@id/rvFrame"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
-            android:backgroundTint="@color/md_theme_gray_text"
+            android:backgroundTint="@color/white"
             />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -168,7 +169,7 @@
             app:layout_constraintTop_toBottomOf="@id/rvProducts"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
-            android:backgroundTint="@color/md_theme_gray_text"
+            android:backgroundTint="@color/white"
             />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -227,7 +228,7 @@
             android:layout_marginTop="45dp"
             android:layout_marginBottom="20dp"
             android:text="Place Order"
-            app:spinning_bar_color="@color/md_theme_light_background"/>
+            app:spinning_bar_color="@color/white"/>
 
 
         <androidx.constraintlayout.widget.Guideline

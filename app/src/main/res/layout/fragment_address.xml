@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/grey_background">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarAddresses"
@@ -50,7 +51,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/white_background"
-        android:backgroundTint="@color/md_theme_gray_text"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="@id/guideline1"
         app:layout_constraintTop_toBottomOf="@id/toolbarAddresses" />
@@ -189,7 +190,7 @@
             android:fontFamily="@font/rubik_medium"
             android:text="Delete"
             android:textAllCaps="false"
-            android:textColor="@color/md_theme_gray_text"
+            android:textColor="@color/grey"
             android:textSize="12dp"
             android:visibility="visible"
             android:layout_weight="1"
@@ -205,7 +206,7 @@
             android:fontFamily="@font/rubik_medium"
             android:text="Save"
             android:textAllCaps="false"
-            android:textColor="@color/md_theme_light_background"
+            android:textColor="@color/grey"
             android:textSize="12dp"
             android:visibility="visible"
             android:layout_weight="1"

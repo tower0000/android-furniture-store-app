@@ -19,6 +19,29 @@
         <item name="android:textSize">@dimen/h3TextSize</item>
     </style>
 
+    <style name="textGreyNeutral">
+        <item name="android:fontFamily">@font/manrope_regular</item>
+        <item name="android:textColor">@color/neutral_70</item>
+        <item name="android:textSize">@dimen/h3TextSize</item>
+    </style>
+
+    <style name="textGreenNeutral">
+        <item name="android:fontFamily">@font/manrope_regular</item>
+        <item name="android:textColor">@color/green</item>
+        <item name="android:textSize">@dimen/h3TextSize</item>
+    </style>
+
+    <style name="titleBlackNeutral">
+        <item name="android:fontFamily">@font/manrope_extra_bold</item>
+        <item name="android:textColor">@color/neutral_90</item>
+        <item name="android:textSize">@dimen/h1TextSize</item>
+    </style>
+
+    <style name="circular_image">
+        <item name="cornerSize">50%</item>
+    </style>
+
+
     <style name="textInterBlack">
         <item name="android:fontFamily">@font/inter_bold</item>
         <item name="android:textColor">@color/black</item>
@@ -65,12 +88,44 @@
         <item name="android:background">@drawable/orange_background</item>
         <item name="android:fontFamily">@font/inter_extra_bold</item>
         <item name="android:textColor">@color/grey</item>
+        <item name="height">@dimen/smallButtonHeight</item>
         <item name="android:textSize">@dimen/h4TextSize</item>
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="greenButtonStyle">
+        <item name="android:background">@drawable/green_button_background</item>
+        <item name="fontFamily">@font/manrope_semi_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/h4TextSize</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="outlinedButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/green</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.Button</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
+    </style>
+
+
+    <style name="TextAppearance.App.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/manrope_semi_bold</item>
+        <item name="android:textColor">@color/green</item>
+        <item name="android:textSize">@dimen/h4TextSize</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">11dp</item>
+        <item name="strokeColor">@color/green</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+
+
+
     <style name="whiteButtonStyle">
-        <item name="android:background">@drawable/white_background</item>
+        <item name="android:background">@drawable/white_edit_text_background</item>
         <item name="android:fontFamily">@font/inter_bold</item>
         <item name="android:textColor">@color/grey</item>
         <item name="android:textSize">@dimen/h4TextSize</item>
@@ -79,18 +134,27 @@
 
     <style name="roundButtonStyle">
         <item name="android:background">@drawable/round_button</item>
-        <item name="android:fontFamily">@font/rubik_medium</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
         <item name="android:textSize">@dimen/h3TextSize</item>
         <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="editText">
-        <item name="android:background">@drawable/white_background</item>
+        <item name="backgroundTint">@color/white</item>
         <item name="singleLine">true</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/h3TextSize</item>
-        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textColor">@color/neutral_90</item>
+        <item name="android:textSize">@dimen/h4TextSize</item>
+        <item name="android:fontFamily">@font/manrope_regular</item>
+    </style>
+
+    <style name="editTextField">
+        <item name="singleLine">true</item>
+        <item name="android:background">@drawable/white_edit_text_background</item>
+        <item name="android:textColorHint">@color/neutral_90</item>
+        <item name="hintTextColor">@color/neutral_90</item>
+        <item name="android:textSize">@dimen/h4TextSize</item>
+        <item name="android:fontFamily">@font/manrope_regular</item>
+
     </style>
 
     <style name="DialogStyle" parent="Theme.Design.Light.BottomSheetDialog">
@@ -116,11 +180,11 @@
 
     </style>
 
-    <dimen name="h1TextSize">38sp</dimen>
+    <dimen name="h1TextSize">32sp</dimen>
     <dimen name="h2TextSize">22sp</dimen>
     <dimen name="h3TextSize">18sp</dimen>
-    <dimen name="h4TextSize">13sp</dimen>
-    <dimen name="h2ShadowTextSize">15sp</dimen>
+    <dimen name="h4TextSize">15sp</dimen>
+    <dimen name="h5TextSize">13sp</dimen>
 
 
 </resources>

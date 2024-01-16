@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/grey_edit_text_background"/>
+    <solid android:color="@color/white"/>
     <corners android:radius="@dimen/buttonCorners"/>
     <stroke
-        android:width="2dip"
-        android:color="@color/grey" />
+        android:width="1dip"
+        android:color="@color/red" />
     <padding
         android:bottom="4dp"
         android:left="4dp"

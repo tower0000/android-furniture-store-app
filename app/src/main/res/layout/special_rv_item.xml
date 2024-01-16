@@ -98,7 +98,7 @@
             android:fontFamily="@font/inter_extra_bold"
             android:text="@string/discount_price"
             android:textColor="@color/black"
-            android:background="@drawable/white_background"
+            android:background="@drawable/white_edit_text_background"
             android:gravity="center"
             android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="parent"

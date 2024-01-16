@@ -118,7 +118,7 @@
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/white_background"
+            android:background="@drawable/white_edit_text_background"
             android:gravity="center"
             android:hint="Email"
             style="@style/editText"

@@ -321,7 +321,7 @@
                         android:layout_height="@dimen/icon_profile_radius"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/settings_items_background"
-                        android:backgroundTint="@color/red_error"
+                        android:backgroundTint="@color/red"
                         android:paddingStart="8dp"
                         android:src="@drawable/ic_logout"
                         app:tint="@color/white" />

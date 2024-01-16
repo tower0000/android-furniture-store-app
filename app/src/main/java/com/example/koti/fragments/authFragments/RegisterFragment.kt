@@ -52,12 +52,13 @@ class RegisterFragment : Fragment() {
         binding.apply {
             buttonRegister.setOnClickListener {
                 val user = User(
-                    "", "",
-                    edEmailRegistration.text.toString().trim(), ""
+                    edRegisterFirstName.text.toString().trim(),
+                    edRegisterLastName.text.toString().trim(),
+                    edRegisterEmail.text.toString().trim(),
+                    ""
                 )
-                val password = edPassRegistration.text.toString()
-                val passwordConfirm = edPassRegistrationConfirm.text.toString()
-                viewModel.createAccountWithEmailAndPassword(user, password, passwordConfirm)
+                val password = edRegisterPass.text.toString()
+                viewModel.createAccountWithEmailAndPassword(user, password)
             }
         }
 
@@ -80,6 +81,7 @@ class RegisterFragment : Fragment() {
 
                         is Resource.Error -> {
                             binding.buttonRegister.revertAnimation()
+                            binding.buttonRegister.setBackgroundDrawable(resources.getDrawable(R.drawable.green_button_background))
                         }
 
                         else -> Unit
@@ -93,7 +95,7 @@ class RegisterFragment : Fragment() {
                 viewModel.validation.collect { validation ->
                     if (validation.email is RegisterValidation.Failed) {
                         withContext(Dispatchers.Main) {
-                            binding.edEmailRegistration.apply {
+                            binding.edRegisterEmail.apply {
                                 Toast.makeText(
                                     requireContext(),
                                     validation.email.message,
@@ -101,10 +103,13 @@ class RegisterFragment : Fragment() {
                                 ).show()
                             }
                         }
+                        setEmailFieldOnError()
+                    } else {
+                        setEmailFieldOnNormal()
                     }
                     if (validation.password is RegisterValidation.Failed) {
                         withContext(Dispatchers.Main) {
-                            binding.edPassRegistration.apply {
+                            binding.edRegisterPass.apply {
                                 Toast.makeText(
                                     requireContext(),
                                     validation.password.message,
@@ -112,9 +117,28 @@ class RegisterFragment : Fragment() {
                                 ).show()
                             }
                         }
+                        setPassFieldOnError()
+                    } else {
+                        setPassFieldOnNormal()
                     }
                 }
             }
         }
+    }
+
+    private fun setEmailFieldOnError(){
+        binding.textFieldEmail.setBackgroundDrawable(resources.getDrawable(R.drawable.error_edit_text_background))
+    }
+
+    private fun setEmailFieldOnNormal(){
+        binding.textFieldEmail.setBackgroundDrawable(resources.getDrawable(R.drawable.white_edit_text_background))
+    }
+
+    private fun setPassFieldOnError(){
+        binding.textFieldPass.setBackgroundDrawable(resources.getDrawable(R.drawable.error_edit_text_background))
+    }
+
+    private fun setPassFieldOnNormal(){
+        binding.textFieldPass.setBackgroundDrawable(resources.getDrawable(R.drawable.white_edit_text_background))
     }
 }

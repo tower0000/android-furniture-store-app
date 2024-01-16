@@ -30,8 +30,8 @@ class RegisterViewModel @Inject constructor(
 
     private val _validation = Channel<RegisterFieldsState>()
     val validation = _validation.receiveAsFlow()
-    fun createAccountWithEmailAndPassword(user: User, password: String, passwordConfirm: String) {
-        if (checkValidation(user, password, passwordConfirm)) {
+    fun createAccountWithEmailAndPassword(user: User, password: String) {
+        if (checkValidation(user, password)) {
             runBlocking {
                 _register.emit(Resource.Loading())
             }
@@ -47,7 +47,7 @@ class RegisterViewModel @Inject constructor(
         } else {
             val registerFieldsState = RegisterFieldsState(
                 validateEmail(user.email),
-                validatePassword(password, passwordConfirm)
+                validatePassword(password)
             )
             runBlocking {
                 _validation.send(registerFieldsState)
@@ -66,9 +66,9 @@ class RegisterViewModel @Inject constructor(
             }
     }
 
-    private fun checkValidation(user: User, password: String, passwordConfirm: String): Boolean {
+    private fun checkValidation(user: User, password: String): Boolean {
         val emailValidation = validateEmail(user.email)
-        val passwordValidation = validatePassword(password, passwordConfirm)
+        val passwordValidation = validatePassword(password)
         return emailValidation is RegisterValidation.Success &&
                 passwordValidation is RegisterValidation.Success
     }

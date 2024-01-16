@@ -2,17 +2,15 @@
     <!-- Base application theme. -->
     <style name="Theme.Koti" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/orange</item>
-        <item name="colorPrimaryVariant">@color/orange_dark</item>
-        <item name="colorOnPrimary">@color/grey</item>
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryVariant">@color/red</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/swamp_green</item>
         <item name="colorSecondaryVariant">@color/swamp_green_dark</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/grey_background</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
         <!-- Bottom navigation theme. -->
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
     </style>

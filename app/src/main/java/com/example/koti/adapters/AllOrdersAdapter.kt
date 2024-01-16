@@ -36,10 +36,10 @@ class AllOrdersAdapter : Adapter<AllOrdersAdapter.OrdersViewHolder>() {
                         ColorDrawable(resources.getColor(R.color.swamp_green))
                     }
                     is OrderStatus.Canceled -> {
-                        ColorDrawable(resources.getColor(R.color.red_error))
+                        ColorDrawable(resources.getColor(R.color.red))
                     }
                     is OrderStatus.Returned -> {
-                        ColorDrawable(resources.getColor(R.color.red_error))
+                        ColorDrawable(resources.getColor(R.color.red))
                     }
                 }
 

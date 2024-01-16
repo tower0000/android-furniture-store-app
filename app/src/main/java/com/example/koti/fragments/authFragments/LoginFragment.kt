@@ -1,5 +1,6 @@
 package com.example.koti.fragments.authFragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Paint
 import android.os.Bundle
@@ -17,13 +18,16 @@ import com.example.koti.R
 import com.example.koti.activities.ShoppingActivity
 import com.example.koti.databinding.FragmentLoginBinding
 import com.example.koti.dialog.setupBottomSheetDialog
+import com.example.koti.util.RegisterValidation
 import com.example.koti.util.Resource
 import com.example.koti.viewmodel.IntroductionViewModel
 import com.example.koti.viewmodel.LoginViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
@@ -42,8 +46,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonForgotPassword.paintFlags = Paint.UNDERLINE_TEXT_FLAG
-
         binding.buttonRedirectToRegister.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
@@ -52,12 +54,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             buttonLogin.setOnClickListener {
                 val email = edEmail.text.toString().trim()
                 val password = edPass.text.toString()
-                if (password == "" || email == "") {
-                    Toast.makeText(requireContext(), getString(R.string.email_pass_null), Toast.LENGTH_SHORT).show()
-
-                } else {
-                    viewModel.login(email, password)
-                }
+                viewModel.login(email, password)
             }
         }
 
@@ -115,7 +112,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                         is Resource.Error -> {
                             Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                             binding.buttonLogin.revertAnimation()
-
+                            binding.buttonLogin.setBackgroundDrawable(resources.getDrawable(R.drawable.green_button_background))
                         }
 
                         else -> Unit
@@ -123,5 +120,56 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 }
             }
         }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.validation.collect { validation ->
+                    if (validation.email is RegisterValidation.Failed) {
+                        withContext(Dispatchers.Main) {
+                            binding.edEmail.apply {
+                                Toast.makeText(
+                                    requireContext(),
+                                    validation.email.message,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+                        setEmailFieldOnError()
+                    } else {
+                        setEmailFieldOnNormal()
+                    }
+                    if (validation.password is RegisterValidation.Failed) {
+                        withContext(Dispatchers.Main) {
+                            binding.edPass.apply {
+                                Toast.makeText(
+                                    requireContext(),
+                                    validation.password.message,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+                        setPassFieldOnError()
+                    } else {
+                        setPassFieldOnNormal()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setEmailFieldOnError(){
+        binding.textFieldEmail.setBackgroundDrawable(resources.getDrawable(R.drawable.error_edit_text_background))
+    }
+
+    private fun setEmailFieldOnNormal(){
+        binding.textFieldEmail.setBackgroundDrawable(resources.getDrawable(R.drawable.white_edit_text_background))
+    }
+
+    private fun setPassFieldOnError(){
+        binding.textFieldPass.setBackgroundDrawable(resources.getDrawable(R.drawable.error_edit_text_background))
+    }
+
+    private fun setPassFieldOnNormal(){
+        binding.textFieldPass.setBackgroundDrawable(resources.getDrawable(R.drawable.white_edit_text_background))
     }
 }

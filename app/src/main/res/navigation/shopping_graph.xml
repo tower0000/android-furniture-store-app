@@ -42,10 +42,10 @@
             app:destination="@id/userAccountFragment" />
     </fragment>
     <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.example.koti.fragments.shoppingFragments.SearchFragment"
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.koti.fragments.shoppingFragments.FavoritesFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/fragment_search">
+        tools:layout="@layout/fragment_favorites">
         <action
             android:id="@+id/action_searchFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />

@@ -40,6 +40,10 @@ class AllOrdersFragment : Fragment() {
 
         setupOrdersRv()
 
+        binding.imageCloseOrders.setOnClickListener{
+            findNavController().navigateUp()
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.allOrders.collectLatest {

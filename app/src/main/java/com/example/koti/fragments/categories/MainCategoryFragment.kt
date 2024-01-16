@@ -186,6 +186,7 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
             addItemDecoration(HorisontalItemDecoration())
         }
     }
+
     private fun setupSpecialProductsRv() {
         specialProductsAdapter = SpecialProductsAdapter()
         binding.rvSpecialProducts.apply {
@@ -195,6 +196,7 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
             addItemDecoration(HorisontalItemDecoration())
         }
     }
+
     private fun hideLoading() {
         binding.mainCategoryProgressbar.visibility = View.GONE
     }

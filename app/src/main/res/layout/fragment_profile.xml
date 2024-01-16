@@ -28,21 +28,32 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/imageSettings"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/ic_settings"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/grey" />
+
             <TextView
                 android:id="@+id/tvSettings"
                 style="@style/subtitleInterWhite"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="8dp"
                 android:text="Settings"
-                app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintBottom_toBottomOf="@id/imageSettings"
+                app:layout_constraintStart_toEndOf="@id/imageSettings"
+                app:layout_constraintTop_toTopOf="@id/imageSettings" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintProfile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="@id/guideline2"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toBottomOf="@+id/tvSettings">
@@ -196,8 +207,8 @@
                         android:layout_height="@dimen/icon_profile_radius"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/settings_items_background"
-                        android:src="@drawable/ic_billing"
                         android:backgroundTint="@color/orange"
+                        android:src="@drawable/ic_billing"
                         app:tint="@color/white" />
 
                     <TextView
@@ -251,9 +262,9 @@
                         android:layout_height="@dimen/icon_profile_radius"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/settings_items_background"
-                        android:src="@drawable/ic_notification"
                         android:backgroundTint="@color/green"
-                        app:tint="@color/white"  />
+                        android:src="@drawable/ic_notification"
+                        app:tint="@color/white" />
 
                     <TextView
                         style="@style/textInterWhite"
@@ -269,10 +280,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:checked="true"
                         app:thumbTint="@color/white"
-                        app:trackTint="@color/green"
 
-                        android:checked="true" />
+                        app:trackTint="@color/green" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -310,10 +321,10 @@
                         android:layout_width="@dimen/icon_profile_radius"
                         android:layout_height="@dimen/icon_profile_radius"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_logout"
-                        android:paddingStart="8dp"
                         android:background="@drawable/settings_items_background"
                         android:backgroundTint="@color/red_error"
+                        android:paddingStart="8dp"
+                        android:src="@drawable/ic_logout"
                         app:tint="@color/white" />
 
                     <TextView
@@ -344,12 +355,12 @@
                 style="@style/smallTextInterGrey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="15dp"
                 android:text="Version 1.0"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="@id/guideline2"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintTop_toBottomOf="@+id/linear_regional" />
+                app:layout_constraintBottom_toBottomOf="parent" />
 
 
             <androidx.constraintlayout.widget.Guideline

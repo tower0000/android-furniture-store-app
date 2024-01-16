@@ -6,14 +6,14 @@
         android:title="@string/home_menu" />
 
     <item
-        android:id="@+id/searchFragment"
-        android:icon="@drawable/ic_search"
-        android:title="@string/home_search" />
-
-    <item
         android:id="@+id/cartFragment"
         android:icon="@drawable/ic_shopping_cart"
         android:title="@string/home_cart" />
+
+    <item
+        android:id="@+id/favoritesFragment"
+        android:icon="@drawable/ic_bookmark"
+        android:title="@string/home_search" />
 
     <item
         android:id="@+id/profileFragment"

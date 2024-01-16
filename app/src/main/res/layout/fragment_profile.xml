@@ -53,15 +53,15 @@
                 android:id="@+id/constraintProfile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="@id/guideline2"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toBottomOf="@+id/tvSettings">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imageUser"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:src="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -69,13 +69,12 @@
 
                 <TextView
                     android:id="@+id/tvUserName"
-                    style="@style/textInterWhite"
+                    style="@style/subtitleInterWhite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="3dp"
                     android:text="Name"
-                    android:textSize="18sp"
                     app:layout_constraintStart_toEndOf="@id/imageUser"
                     app:layout_constraintTop_toTopOf="@+id/imageUser" />
 

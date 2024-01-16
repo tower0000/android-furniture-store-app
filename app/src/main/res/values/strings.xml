@@ -53,4 +53,8 @@
     <string name="cart_product_quantity_sample">1</string>
     <string name="cart_total_label">Total:</string>
     <string name="cart_price_label">$150</string>
+    <string name="price_small_title">Price:</string>
+    <string name="cont_desc_button_add_to_bookmark">Add product to favorite button</string>
+    <string name="button_back">Back</string>
+    <string name="cont_desc_button_get_back">Button get back</string>
 </resources>

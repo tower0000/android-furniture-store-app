@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.koti.R
 import com.example.koti.data.Product
 import com.example.koti.databinding.SpecialRvItemBinding
 
@@ -20,6 +21,7 @@ class SpecialProductsAdapter :
                 Glide.with(itemView).load(product.images[0]).into(imageSpecialRvItem)
                 tvSpecialProductName.text = product.name.uppercase()
                 tvSpecialProductPrice.text = "$ ${product.price}"
+                bookmarkedSpecialProduct.setImageResource(R.drawable.ic_favorite)
             }
         }
     }

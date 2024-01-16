@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -13,6 +15,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.example.koti.R
 import com.example.koti.activities.ShoppingActivity
 import com.example.koti.adapters.ColorsAdapter
@@ -39,6 +42,12 @@ class ProductDetailsFragment : Fragment() {
     private var selectedColor: Int? = null
     private var selectedSize: String? = null
     private val viewModel by viewModels<DetailsViewModel>()
+    private val params = LinearLayout.LayoutParams(
+        LinearLayout.LayoutParams.WRAP_CONTENT,
+        LinearLayout.LayoutParams.WRAP_CONTENT
+    ).apply {
+        setMargins(8, 0, 8, 0)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,6 +64,7 @@ class ProductDetailsFragment : Fragment() {
 
         val product = args.product
 
+        setupImageIndicators()
         setupSizesRv()
         setupColorsRs()
         setupViewpager()
@@ -76,20 +86,24 @@ class ProductDetailsFragment : Fragment() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.addToCart.collectLatest {
-                    when(it){
-                        is Resource.Loading ->{
+                    when (it) {
+                        is Resource.Loading -> {
                             binding.buttonAddToCart.startAnimation()
                         }
-                        is Resource.Success ->{
+
+                        is Resource.Success -> {
                             binding.buttonAddToCart.revertAnimation()
-                            Toast.makeText(requireContext(),"Product added!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "Product added!", Toast.LENGTH_SHORT)
+                                .show()
                         }
-                        is Resource.Error ->{
+
+                        is Resource.Error -> {
                             binding.buttonAddToCart.revertAnimation()
-                            Toast.makeText(requireContext(),it.message, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                         }
+
                         else -> Unit
                     }
                 }
@@ -100,6 +114,7 @@ class ProductDetailsFragment : Fragment() {
             tvProductName.text = product.name.uppercase()
             tvProductPrice.text = "$${product.price}"
             tvProductDescription.text = product.description
+            favSpecialProduct.setImageResource(R.drawable.ic_favorite)
 
             if (product.colors.isNullOrEmpty())
                 tvProductColors.visibility = View.INVISIBLE
@@ -112,6 +127,41 @@ class ProductDetailsFragment : Fragment() {
         product.colors?.let { colorsAdapter.differ.submitList(it) }
         product.sizes?.let { sizesAdapter.differ.submitList(it) }
     }
+
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        binding.viewPagerProductImages.unregisterOnPageChangeCallback(pageChangeListener)
+//    }
+
+    private fun setupImageIndicators() {
+        val product = args.product
+        val dotsImage = Array(product.images.size) { ImageView(requireContext()) }
+
+        dotsImage.forEach {
+            it.setImageResource(R.drawable.non_active_dot)
+            binding.slideDotLL.addView(it, params)
+        }
+
+        // default first dot selected
+        dotsImage[0].setImageResource(R.drawable.active_dot)
+
+        val pageChangeListener = object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                dotsImage.mapIndexed { index, imageView ->
+                    if (position == index) {
+                        imageView.setImageResource(
+                            R.drawable.active_dot
+                        )
+                    } else {
+                        imageView.setImageResource(R.drawable.non_active_dot)
+                    }
+                }
+                super.onPageSelected(position)
+            }
+        }
+        binding.viewPagerProductImages.registerOnPageChangeCallback(pageChangeListener)
+    }
+
 
     private fun setupViewpager() {
         binding.apply {

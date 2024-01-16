@@ -12,30 +12,31 @@
 
         <ImageView
             android:id="@+id/imageClose"
+            style="@style/orangeButtonStyle"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:padding="12dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            style="@style/orangeButtonStyle"
+            android:padding="12dp"
             android:src="@drawable/ic_back_arrow"
-            app:tint="@color/grey"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/grey"
+            android:contentDescription="@string/cont_desc_button_get_back" />
 
         <TextView
             android:id="@+id/tvBack"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Back"
             android:layout_marginStart="10dp"
-            android:textColor="@color/white"
             android:layout_marginTop="5sp"
-            android:textSize="23sp"
             android:fontFamily="@font/poppins_extra_bold"
+            android:text="@string/button_back"
+            android:textColor="@color/white"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="@id/imageClose"
             app:layout_constraintStart_toEndOf="@id/imageClose"
-            app:layout_constraintTop_toTopOf="@id/imageClose"
-            app:layout_constraintBottom_toBottomOf="@id/imageClose"/>
+            app:layout_constraintTop_toTopOf="@id/imageClose" />
 
 
         <androidx.cardview.widget.CardView
@@ -54,48 +55,67 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPagerProductImages"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
+                android:layout_height="match_parent"
+                android:scrollIndicators="bottom" />
 
         </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/tvProductName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="25dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardProductImages"
-                android:fontFamily="@font/inter_extra_bold"
-                android:textSize="28sp"
-                android:text="@string/product_name_sample"
-                android:textColor="@color/white" />
+        <LinearLayout
+            android:id="@+id/slideDotLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/cardProductImages"
+            android:gravity="center"/>
 
+        <TextView
+            android:id="@+id/tvProductName"
+            style="@style/subtitleInterWhite"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="25dp"
+            android:text="@string/product_name_sample"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/slideDotLL" />
+
+        <ImageView
+            android:id="@+id/favSpecialProduct"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="25dp"
+            android:padding="6dp"
+            android:src="@drawable/ic_favorite"
+            app:layout_constraintBottom_toBottomOf="@id/tvProductName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvProductName"
+            app:tint="@color/white"
+            android:contentDescription="@string/cont_desc_button_add_to_bookmark" />
 
         <TextView
             android:id="@+id/tvProductDescription"
-            style="@style/textInterWhite"
+            style="@style/smallTextInterOrange"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="25dp"
             android:text="@string/product_desc_sample"
-            android:textColor="@color/orange"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="@id/tvProductName"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tvProductName"
             app:layout_constraintTop_toBottomOf="@id/tvProductName" />
 
         <View
             android:id="@+id/line"
             android:layout_width="0dp"
-            android:layout_height="1dp"
+            android:layout_height="2dp"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="25dp"
-            android:background="@color/white"
+            android:background="@color/grey_edit_text_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvProductDescription" />
@@ -108,7 +128,9 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@id/line"
             app:layout_constraintStart_toStartOf="@id/line"
-            app:layout_constraintTop_toBottomOf="@id/line">
+            app:layout_constraintTop_toBottomOf="@id/line"
+            app:layout_constraintBottom_toTopOf="@id/tvProductPriceTitle"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -159,47 +181,42 @@
             android:id="@+id/tvProductPriceTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Price: "
-            android:textColor="@color/white"
             android:layout_marginTop="5dp"
-            android:textSize="16sp"
             android:fontFamily="@font/inter_extra_bold"
+            android:text="@string/price_small_title"
+            style="@style/smallTextInterWhite"
             app:layout_constraintEnd_toStartOf="@id/buttonAddToCart"
             app:layout_constraintStart_toStartOf="@id/tvProductName"
-            app:layout_constraintTop_toBottomOf="@id/linearProductPreferences"/>
+            app:layout_constraintTop_toBottomOf="@id/linearProductPreferences"
+            app:layout_constraintBottom_toTopOf="@id/tvProductPrice"/>
 
         <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/buttonAddToCart"
             style="@style/orangeButtonStyle"
             android:layout_width="0dp"
             android:layout_height="@dimen/smallButtonHeight"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="5dp"
             android:text="@string/add_to_cart_button"
-            android:layout_marginEnd="10dp"
-            android:textColor="@color/grey"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/tvProductName"
+            app:layout_constraintBottom_toBottomOf="@id/tvProductPrice"
+            app:layout_constraintTop_toTopOf="@id/tvProductPriceTitle"
+            app:layout_constraintEnd_toEndOf="@id/linearProductPreferences"
             app:layout_constraintStart_toEndOf="@id/tvProductPrice"
-            app:layout_constraintTop_toBottomOf="@id/tvProductPriceTitle"
             app:spinning_bar_color="@color/white" />
-
 
 
         <TextView
             android:id="@+id/tvProductPrice"
+            style="@style/subtitleInterWhite"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="$199"
-            android:textColor="@color/white"
-            android:textSize="32sp"
-            android:fontFamily="@font/inter_extra_bold"
-            app:layout_constraintBottom_toBottomOf="@id/buttonAddToCart"
+            android:text="@string/product_price_sample"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/buttonAddToCart"
             app:layout_constraintStart_toStartOf="@id/tvProductName"
-            app:layout_constraintTop_toTopOf="@id/buttonAddToCart"/>
+            android:layout_marginBottom="20dp"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.core.widget.NestedScrollView>

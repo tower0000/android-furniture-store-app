@@ -5,44 +5,31 @@
     android:layout_height="match_parent"
     android:background="@color/grey_background">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarAddresses"
+    <ImageView
+        android:id="@+id/imageCloseAddress"
+        style="@style/orangeButtonStyle"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:padding="4dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/grey" />
+
+    <TextView
+        android:id="@+id/tvAddresses"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/guideline2"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/imageAddressClose"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_close"
-                android:scaleType="centerInside"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/black" />
-
-
-            <TextView
-                android:id="@+id/tvPaymentMethods"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="Addresses"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/imageAddressClose"
-                app:layout_constraintStart_toEndOf="@id/imageAddressClose"
-                app:layout_constraintTop_toTopOf="@+id/imageAddressClose" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4sp"
+        android:fontFamily="@font/poppins_extra_bold"
+        android:text="Address"
+        android:textColor="@color/white"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toBottomOf="@id/imageCloseAddress"
+        app:layout_constraintStart_toEndOf="@id/imageCloseAddress"
+        app:layout_constraintTop_toTopOf="@id/imageCloseAddress" />
 
 
     <View
@@ -54,12 +41,13 @@
         android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@id/toolbarAddresses" />
+        app:layout_constraintTop_toBottomOf="@id/imageCloseAddress" />
 
     <EditText
         android:id="@+id/edAddressTitle"
         android:layout_width="0dp"
         android:layout_height="45dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/white_background"
         android:fontFamily="@font/rubik_regular"
         android:gravity="start|center_vertical"
@@ -70,14 +58,14 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@+id/topLine"
-        android:layout_marginTop="15dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/imageCloseAddress" />
 
     <EditText
         android:id="@+id/edFullName"
+        style="@style/editText"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        style="@style/editText"
+        android:layout_marginTop="15dp"
         android:gravity="start|center_vertical"
         android:hint="Full Name"
         android:paddingStart="20dp"
@@ -85,8 +73,7 @@
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@+id/edAddressTitle"
-        android:layout_marginTop="15dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/edAddressTitle" />
 
     <EditText
         android:id="@+id/edStreet"
@@ -109,16 +96,19 @@
         android:id="@+id/linear"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@+id/edPhone"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toBottomOf="@+id/edPhone">
 
         <EditText
             android:id="@+id/edCity"
             android:layout_width="378dp"
             android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
             android:background="@drawable/white_background"
             android:fontFamily="@font/rubik_regular"
             android:gravity="start|center_vertical"
@@ -126,15 +116,15 @@
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:singleLine="true"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="5dp" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/edState"
             android:layout_width="378dp"
             android:layout_height="45dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
             android:background="@drawable/white_background"
             android:fontFamily="@font/rubik_regular"
             android:gravity="start|center_vertical"
@@ -142,19 +132,17 @@
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:singleLine="true"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:layout_marginStart="5dp"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
+
     <EditText
         android:id="@+id/edPhone"
         android:layout_width="0dp"
         android:layout_height="45dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/white_background"
         android:fontFamily="@font/rubik_regular"
-        android:layout_marginTop="10dp"
         android:gravity="start|center_vertical"
         android:hint="Phone"
         android:paddingStart="20dp"
@@ -169,46 +157,43 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@id/guideline1"
         app:layout_constraintTop_toBottomOf="@id/linear"
-        app:layout_constraintVertical_bias="0.494"
-        android:layout_marginTop="45dp"
-        android:orientation="horizontal">
-
+        app:layout_constraintVertical_bias="0.494">
 
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonDelelte"
             android:layout_width="0dp"
             android:layout_height="40dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginBottom="20dp"
+            android:layout_weight="1"
             android:background="@drawable/white_background"
             android:fontFamily="@font/rubik_medium"
             android:text="Delete"
             android:textAllCaps="false"
             android:textColor="@color/grey"
             android:textSize="12dp"
-            android:visibility="visible"
-            android:layout_weight="1"
-            android:layout_marginEnd="5dp"
-            />
+            android:visibility="visible" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonSave"
             android:layout_width="0dp"
             android:layout_height="40dp"
+            android:layout_marginStart="5dp"
             android:layout_marginBottom="20dp"
+            android:layout_weight="1"
             android:background="@drawable/orange_background"
             android:fontFamily="@font/rubik_medium"
             android:text="Save"
             android:textAllCaps="false"
             android:textColor="@color/grey"
-            android:visibility="visible"
-            android:layout_weight="1"
-            android:layout_marginStart="5dp"
-            />
+            android:visibility="visible" />
 
     </LinearLayout>
 
@@ -217,11 +202,11 @@
         android:id="@+id/progressbarAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="45dp"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"

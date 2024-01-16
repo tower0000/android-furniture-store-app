@@ -57,4 +57,5 @@
     <string name="cont_desc_button_add_to_bookmark">Add product to favorite button</string>
     <string name="button_back">Back</string>
     <string name="cont_desc_button_get_back">Button get back</string>
+    <string name="your_favs_is_empty">You don\'t have any favorite products yet</string>
 </resources>

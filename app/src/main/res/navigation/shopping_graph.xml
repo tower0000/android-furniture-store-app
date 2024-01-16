@@ -44,11 +44,15 @@
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.koti.fragments.shoppingFragments.FavoritesFragment"
-        android:label="SearchFragment"
+        android:label="FavoritesFragment"
         tools:layout="@layout/fragment_favorites">
         <action
-            android:id="@+id/action_searchFragment_to_productDetailsFragment"
+            android:id="@+id/action_favoritesFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_favoritesFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/productDetailsFragment"

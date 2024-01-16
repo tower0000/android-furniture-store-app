@@ -42,12 +42,6 @@ class ProductDetailsFragment : Fragment() {
     private var selectedColor: Int? = null
     private var selectedSize: String? = null
     private val viewModel by viewModels<DetailsViewModel>()
-    private val params = LinearLayout.LayoutParams(
-        LinearLayout.LayoutParams.WRAP_CONTENT,
-        LinearLayout.LayoutParams.WRAP_CONTENT
-    ).apply {
-        setMargins(8, 0, 8, 0)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -85,6 +79,10 @@ class ProductDetailsFragment : Fragment() {
             viewModel.addUpdateProductsInCart(CartProduct(product, 1, selectedColor, selectedSize))
         }
 
+        binding.buttonAddToFav.setOnClickListener {
+            viewModel.addProductsToFavorites(CartProduct(product, 1, selectedColor, selectedSize))
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.addToCart.collectLatest {
@@ -110,11 +108,35 @@ class ProductDetailsFragment : Fragment() {
             }
         }
 
+        viewLifecycleOwner.lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.addToFavorites.collectLatest {
+                    when (it) {
+                        is Resource.Loading -> {
+                            binding.buttonAddToFav.setImageResource(R.drawable.ic_favorite)
+                        }
+
+                        is Resource.Success -> {
+                            binding.buttonAddToFav.setImageResource(R.drawable.ic_favorite_clicked)
+                            Toast.makeText(requireContext(), "Product added!", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+
+                        is Resource.Error -> {
+                            binding.buttonAddToFav.setImageResource(R.drawable.ic_favorite)
+                            Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                        }
+
+                        else -> Unit
+                    }
+                }
+            }
+        }
+
         binding.apply {
             tvProductName.text = product.name.uppercase()
             tvProductPrice.text = "$${product.price}"
             tvProductDescription.text = product.description
-            favSpecialProduct.setImageResource(R.drawable.ic_favorite)
 
             if (product.colors.isNullOrEmpty())
                 tvProductColors.visibility = View.INVISIBLE
@@ -134,6 +156,12 @@ class ProductDetailsFragment : Fragment() {
 //    }
 
     private fun setupImageIndicators() {
+        val params = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        ).apply {
+            setMargins(8, 0, 8, 0)
+        }
         val product = args.product
         val dotsImage = Array(product.images.size) { ImageView(requireContext()) }
 

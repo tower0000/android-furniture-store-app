@@ -23,6 +23,9 @@ class DetailsViewModel @Inject constructor(
     private val _addToCart = MutableStateFlow<Resource<CartProduct>>(Resource.Unspecified())
     val addToCart = _addToCart.asStateFlow()
 
+    private val _addToFavorites = MutableStateFlow<Resource<CartProduct>>(Resource.Unspecified())
+    val addToFavorites = _addToFavorites.asStateFlow()
+
     fun addUpdateProductsInCart(cartProduct: CartProduct) {
         viewModelScope.launch { _addToCart.emit(Resource.Loading()) }
         firestore.collection("user").document(auth.uid!!).collection("cart")
@@ -68,4 +71,38 @@ class DetailsViewModel @Inject constructor(
             }
         }
     }
+
+    fun addProductsToFavorites(favProduct: CartProduct) {
+        viewModelScope.launch { _addToFavorites.emit(Resource.Loading()) }
+        firestore.collection("user").document(auth.uid!!).collection("favorites")
+            .whereEqualTo("product.id", favProduct.product.id).get()
+            .addOnSuccessListener {
+                it.documents.let {
+                    if (it.isEmpty()) {
+                        addNewProductToFavorites(favProduct)
+                    } else {
+                        val product = it.first().toObject(CartProduct::class.java)
+                        if (product == favProduct) {
+                        } else {
+                            addNewProductToFavorites(favProduct)
+                        }
+                    }
+                }
+            }.addOnFailureListener {
+                viewModelScope.launch { _addToFavorites.emit(Resource.Error(it.message.toString())) }
+            }
+    }
+
+    private fun addNewProductToFavorites(favProduct: CartProduct) {
+        firebaseCommon.addProductToFavorites(favProduct) { addedProduct, e ->
+            viewModelScope.launch {
+                if (e == null)
+                    _addToCart.emit(Resource.Success(addedProduct!!))
+                else
+                    _addToCart.emit(Resource.Error(e.message.toString()))
+            }
+
+        }
+    }
+
 }

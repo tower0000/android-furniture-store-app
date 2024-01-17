@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_background"
+    android:background="@color/neutral_20"
     tools:context=".activities.ShoppingActivity">
 
     <androidx.fragment.app.FragmentContainerView
@@ -22,15 +22,15 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/menuHeight"
+        android:layout_height="@dimen/bottomMenuHeight"
         android:background="@drawable/bottom_navigation_background"
-        android:elevation="0dp"
+        android:elevation="2dp"
         android:paddingTop="@dimen/menuPadding"
         android:paddingBottom="@dimen/menuPadding"
         app:itemIconTint="@drawable/bottom_nav_item_background"
-        app:itemRippleColor="@color/orange"
+        app:itemRippleColor="@color/neutral_20"
         app:labelVisibilityMode="unlabeled"
-        app:itemIconSize="27dp"
+        app:itemIconSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

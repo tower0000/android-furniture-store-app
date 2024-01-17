@@ -1,5 +1,6 @@
 package com.example.koti.adapters
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -20,7 +21,15 @@ class SpecialProductsAdapter :
             binding.apply {
                 Glide.with(itemView).load(product.images[0]).into(imageSpecialRvItem)
                 tvSpecialProductName.text = product.name.uppercase()
-                tvSpecialProductPrice.text = "$ ${product.price}"
+
+                product.offerPercentage?.let {
+                    val remainingPricePercentage = 1f - it
+                    val priceAfterOffer = remainingPricePercentage * product.price
+                    tvSpecialProductPrice.text = "$${String.format("%.2f", priceAfterOffer)}"
+                }
+                tvSpecialProductOldPrice.text = "$${String.format("%.2f", product.price)}"
+                tvSpecialProductOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+
                 bookmarkedSpecialProduct.setImageResource(R.drawable.ic_favorite)
             }
         }

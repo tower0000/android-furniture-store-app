@@ -26,8 +26,8 @@
     <string name="add_to_cart">Add to cart</string>
     <string name="special_price">$1600</string>
     <string name="see_product">See product</string>
-    <string name="discount_price">$1600</string>
-    <string name="discount_price_old">$2000</string>
+    <string name="discount_price">$1600.00</string>
+    <string name="discount_price_old">$2000.00</string>
     <string name="discount_item">Scotch Premium</string>
     <string name="product_name">Chair</string>
     <string name="best_deals">Best deals</string>
@@ -41,7 +41,7 @@
     <string name="your_shopping_cart_is_empty">Your shopping cart is empty</string>
     <string name="support_virtual_payments">Koti dose not support virtual payments. You can pay when you receive your order.</string>
     <string name="prodduct_name_sample">CHAIR</string>
-    <string name="product_ratong_sample">0.0</string>
+    <string name="product_rating_sample">0.0 (0)</string>
     <string name="product_desc_sample">Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</string>
     <string name="have_an_account">Have an account?</string>
     <string name="create_account">Create Account</string>
@@ -72,4 +72,7 @@
     <string name="pass_null">Password field can\'t be empty</string>
     <string name="cancel_reset_pass">Cancel</string>
     <string name="send_pass_reset">SEND</string>
+    <string name="tv_home_image_title">Build The Kitchen\nOf Your Dreams!</string>
+    <string name="tv_home_image_subtitle">Get discounts up to 75% for\nkitchen sets and cupboards</string>
+    <string name="button_shop_now">Shop Now</string>
 </resources>

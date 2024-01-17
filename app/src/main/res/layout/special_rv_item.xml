@@ -4,86 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="20dp"
+    app:cardCornerRadius="16dp"
     app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="230dp"
-        android:layout_height="match_parent"
-        android:background="@color/orange"
-        android:paddingBottom="8dp">
+        android:layout_width="160dp"
+        android:layout_height="240dp"
+        android:background="@color/white"
+        android:paddingBottom="14dp">
 
         <ImageView
             android:id="@+id/imageSpecialRvItem"
-            android:layout_width="120dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="30dp"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginTop="14dp"
             android:scaleType="fitXY"
             android:src="@color/grey"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
             android:id="@+id/tvSpecialProductName"
-            android:layout_width="87dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="1"
-            android:gravity="start"
-            android:fontFamily="@font/inter_extra_bold"
-            android:text="@string/prodduct_name_sample"
-            android:textColor="@color/grey"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/imageSpecialRvItem"
-            app:layout_constraintTop_toTopOf="@id/imageSpecialRvItem" />
+            style="@style/textCardBlack"
+            android:text="@string/product_name_sample"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="@id/imageSpecialRvItem"
+            app:layout_constraintEnd_toEndOf="@id/imageSpecialRvItem"
+            app:layout_constraintTop_toBottomOf="@id/imageSpecialRvItem" />
 
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_favorite_spec"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
-            android:src="@color/orange_dark"
+            android:src="@color/red"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/star_img_spec"
+            android:id="@+id/imgStarSpec"
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:src="@drawable/ic_star"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/grey" />
+            app:layout_constraintStart_toStartOf="@id/imageSpecialRvItem"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:tint="@color/orange_dark" />
 
         <TextView
             android:id="@+id/productRatingSpec"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="3dp"
-            android:fontFamily="@font/inter_bold"
-            android:text="@string/product_ratong_sample"
-            android:textColor="@color/grey"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@id/star_img_spec"
-            app:layout_constraintStart_toEndOf="@id/star_img_spec"
-            app:layout_constraintTop_toTopOf="@id/star_img_spec" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            style="@style/textCardBlack"
+            android:text="@string/product_rating_sample"
+            app:layout_constraintBottom_toBottomOf="@id/imgStarSpec"
+            app:layout_constraintStart_toEndOf="@id/imgStarSpec"
+            app:layout_constraintTop_toTopOf="@id/imgStarSpec" />
 
 
         <ImageView
             android:id="@+id/bookmarkedSpecialProduct"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:padding="6dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:padding="7dp"
             android:src="@drawable/ic_favorite"
             app:layout_constraintBottom_toBottomOf="@id/img_favorite_spec"
             app:layout_constraintEnd_toEndOf="@id/img_favorite_spec"
@@ -93,17 +86,37 @@
 
         <TextView
             android:id="@+id/tvSpecialProductPrice"
-            android:layout_width="59sp"
+            android:layout_width="0sp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/inter_extra_bold"
             android:text="@string/discount_price"
-            android:textColor="@color/black"
-            android:background="@drawable/white_edit_text_background"
-            android:gravity="center"
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="17sp"
+            android:fontFamily="@font/manrope_bold"
+            style="@style/textCardBlack"
+            android:layout_marginBottom="17dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvSpecialProductOldPrice"
+            app:layout_constraintStart_toStartOf="@id/imageSpecialRvItem"
+            app:layout_constraintEnd_toEndOf="@id/imageSpecialRvItem" />
+
+        <TextView
+            android:id="@+id/tvSpecialProductOldPrice"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:text="@string/discount_price"
+            style="@style/textCardBlack"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toTopOf="@id/imgStarSpec"
+            app:layout_constraintStart_toStartOf="@id/imageSpecialRvItem"
+            app:layout_constraintEnd_toEndOf="@id/imageSpecialRvItem" />
+
+        <ImageView
+            android:id="@+id/goToProduct"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_arrow"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:tint="@color/neutral_50" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

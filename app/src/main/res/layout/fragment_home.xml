@@ -2,15 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/neutral_20">
 
     <LinearLayout
         android:id="@+id/homeHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="17dp"
         android:baselineAligned="false"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,69 +20,74 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/searchBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/grey_background">
+            style="@style/searchBar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/searchBarHeight"
+            android:layout_weight="1">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_extra_bold"
-                android:paddingStart="15dp"
-                android:singleLine="true"
-                android:text="PRODUCT"
-                android:textColor="@color/white"
-                android:textSize="25sp"
+            <ImageView
+                android:id="@+id/buttonSearch"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="3dp"
+                android:backgroundTint="@color/white"
+                android:contentDescription=""
+                android:padding="8dp"
+                android:src="@drawable/ic_search"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/neutral_90" />
+
+
+            <EditText
+                style="@style/textSearchBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="7dp"
+                android:background="@null"
+                android:hint="Search"
+                android:singleLine="true"
+                android:textColorHint="@color/neutral_60"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/buttonSearch"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-            android:layout_width="10dp"
-            android:layout_height="match_parent" />
 
         <ImageView
-            android:layout_width="40dp"
+            android:layout_width="30dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
             android:backgroundTint="@color/white"
             android:contentDescription=""
-            android:padding="8dp"
-            android:src="@drawable/ic_search"
-            app:tint="@color/white" />
-
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:contentDescription=""
-            android:padding="8dp"
+            android:padding="5dp"
             android:src="@drawable/ic_three_dots"
-            app:tint="@color/white" />
+            app:tint="@color/neutral_90" />
 
     </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
-        style="@style/textInterWhite"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/homeHeader"
-        app:tabBackground="@color/grey_background"
-        app:tabIndicatorColor="@color/orange_dark"
+        android:layout_marginTop="2dp"
+        app:tabBackground="@color/neutral_20"
+        app:tabIndicatorColor="@color/green"
         app:tabMode="scrollable"
-        app:tabRippleColor="@color/grey_background"
-        app:tabSelectedTextColor="@color/orange"
-        app:tabTextAppearance="@style/tabLayout_text"
-        app:tabTextColor="@color/orange" />
+        app:tabRippleColor="@color/white"
+        app:tabSelectedTextColor="@color/neutral_90"
+        app:tabTextAppearance="@style/tabLayoutCategoriesText"
+        app:tabTextColor="@color/neutral_60" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpagerHome"

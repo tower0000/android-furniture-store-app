@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:fontFamily="@font/inter_bold"
-            android:text="@string/product_ratong_sample"
+            android:text="@string/product_rating_sample"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/star_img"
             app:layout_constraintStart_toEndOf="@id/star_img"

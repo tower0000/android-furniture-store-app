@@ -25,8 +25,8 @@
     <dimen name="serviceButtonDiameter">49dp</dimen>
     <dimen name="tvContinueWithTopMargin">10dp</dimen>
     <dimen name="dialogBottomScreenMargin">20dp</dimen>
-    <dimen name="menuPadding">10dp</dimen>
-    <dimen name="menuHeight">60dp</dimen>
+    <dimen name="menuPadding">5dp</dimen>
+    <dimen name="bottomMenuHeight">60dp</dimen>
     <dimen name="imageColor_size">22dp</dimen>
     <dimen name="imageShadow_size">25dp</dimen>
     <dimen name="checked_size">18sp</dimen>
@@ -42,4 +42,7 @@
     <dimen name="imageHeight">650dp</dimen>
     <dimen name="auth_ed_top_margin">13dp</dimen>
     <dimen name="editTextHeight">50dp</dimen>
+    <dimen name="searchBarHeight">44dp</dimen>
+    <dimen name="homeSideMargin">16dp</dimen>
+    <dimen name="homeImageHeight">200dp</dimen>
 </resources>

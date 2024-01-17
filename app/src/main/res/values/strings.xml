@@ -75,4 +75,6 @@
     <string name="tv_home_image_title">Build The Kitchen\nOf Your Dreams!</string>
     <string name="tv_home_image_subtitle">Get discounts up to 75% for\nkitchen sets and cupboards</string>
     <string name="button_shop_now">Shop Now</string>
+    <string name="discount_sample">45% OFF</string>
+    <string name="home_favorites">Favorites</string>
 </resources>

@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.koti.data.Product
 import com.example.koti.databinding.ProductRvItemBinding
 import com.example.koti.helper.getProductPrice
+import kotlin.math.roundToInt
 
 
 class BestProductsAdapter : RecyclerView.Adapter<BestProductsAdapter.BestProductsViewHolder>() {
@@ -20,12 +21,18 @@ class BestProductsAdapter : RecyclerView.Adapter<BestProductsAdapter.BestProduct
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             binding.apply {
-                val priceAfterOffer = product.offerPercentage.getProductPrice(product.price)
-                tvProductNewPrice.text = "$ ${String.format("%.1f", priceAfterOffer)}"
-                //tvProductOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-
                 Glide.with(itemView).load(product.images[0]).into(imgProduct)
-                //tvProductOldPrice.text = "$ ${product.price}"
+                product.offerPercentage?.let {
+                    val remainingPricePercentage = 1f - it
+                    val priceAfterOffer = remainingPricePercentage * product.price
+                    tvProductNewPrice.text = "$${String.format("%.2f", priceAfterOffer)}"
+
+                    val discountInPercent = (it * 100).roundToInt()
+                    tvDiscountPercentProduct.text = "${discountInPercent}% OFF"
+                }
+                tvProductOldPrice.text = "$${String.format("%.2f", product.price)}"
+                tvProductOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+
                 tvProductName.text = product.name.uppercase()
             }
 

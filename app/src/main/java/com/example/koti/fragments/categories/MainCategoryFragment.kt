@@ -20,12 +20,12 @@ import com.example.koti.adapters.BestDealsAdapter
 import com.example.koti.adapters.BestProductsAdapter
 import com.example.koti.adapters.SpecialProductsAdapter
 import com.example.koti.databinding.FragmentMainCategoryBinding
+import com.example.koti.util.BestProductsItemDecoration
 import com.example.koti.util.HorisontalItemDecoration
 import com.example.koti.util.Resource
 import com.example.koti.util.VerticalItemDecoration
 import com.example.koti.util.showBottomNavigationView
 import com.example.koti.viewmodel.MainCategoryViewModel
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -162,12 +162,12 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
             layoutManager =
                 GridLayoutManager(
                     requireContext(),
-                    1,
+                    2,
                     GridLayoutManager.VERTICAL,
                     false
                 )
             adapter = bestProductsAdapter
-            addItemDecoration(VerticalItemDecoration())
+            addItemDecoration(BestProductsItemDecoration())
         }
     }
 

@@ -14,68 +14,47 @@
         android:paddingBottom="14dp">
 
         <ImageView
-            android:id="@+id/imageSpecialRvItem"
+            android:id="@+id/imgSpecialProduct"
             android:layout_width="0dp"
             android:layout_height="120dp"
             android:layout_marginStart="14dp"
-            android:layout_marginEnd="14dp"
             android:layout_marginTop="14dp"
+            android:layout_marginEnd="14dp"
             android:scaleType="fitXY"
             android:src="@color/grey"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
             android:id="@+id/tvSpecialProductName"
+            style="@style/textCardBlack"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            style="@style/textCardBlack"
-            android:text="@string/product_name_sample"
             android:maxLines="1"
-            app:layout_constraintStart_toStartOf="@id/imageSpecialRvItem"
-            app:layout_constraintEnd_toEndOf="@id/imageSpecialRvItem"
-            app:layout_constraintTop_toBottomOf="@id/imageSpecialRvItem" />
+            android:text="@string/product_name_sample"
+            app:layout_constraintEnd_toEndOf="@id/imgSpecialProduct"
+            app:layout_constraintStart_toStartOf="@id/imgSpecialProduct"
+            app:layout_constraintTop_toBottomOf="@id/imgSpecialProduct" />
 
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_favorite_spec"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:scaleType="centerCrop"
             android:src="@color/red"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imgStarSpec"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/ic_star"
-            app:layout_constraintStart_toStartOf="@id/imageSpecialRvItem"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:tint="@color/orange_dark" />
-
-        <TextView
-            android:id="@+id/productRatingSpec"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            style="@style/textCardBlack"
-            android:text="@string/product_rating_sample"
-            app:layout_constraintBottom_toBottomOf="@id/imgStarSpec"
-            app:layout_constraintStart_toEndOf="@id/imgStarSpec"
-            app:layout_constraintTop_toTopOf="@id/imgStarSpec" />
-
-
-        <ImageView
             android:id="@+id/bookmarkedSpecialProduct"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:padding="7dp"
             android:src="@drawable/ic_favorite"
             app:layout_constraintBottom_toBottomOf="@id/img_favorite_spec"
@@ -84,29 +63,50 @@
             app:layout_constraintTop_toTopOf="@id/img_favorite_spec"
             app:tint="@color/white" />
 
+        <ImageView
+            android:id="@+id/imgStarSpec"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/ic_star"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/imgSpecialProduct"
+            app:tint="@color/orange_dark" />
+
+        <TextView
+            android:id="@+id/productRatingSpec"
+            style="@style/textCardBlack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/product_rating_sample"
+            app:layout_constraintBottom_toBottomOf="@id/imgStarSpec"
+            app:layout_constraintStart_toEndOf="@id/imgStarSpec"
+            app:layout_constraintTop_toTopOf="@id/imgStarSpec" />
+
+
         <TextView
             android:id="@+id/tvSpecialProductPrice"
+            style="@style/textCardBlack"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="17dp"
+            android:fontFamily="@font/manrope_bold"
             android:text="@string/discount_price"
             android:textSize="17sp"
-            android:fontFamily="@font/manrope_bold"
-            style="@style/textCardBlack"
-            android:layout_marginBottom="17dp"
             app:layout_constraintBottom_toBottomOf="@id/tvSpecialProductOldPrice"
-            app:layout_constraintStart_toStartOf="@id/imageSpecialRvItem"
-            app:layout_constraintEnd_toEndOf="@id/imageSpecialRvItem" />
+            app:layout_constraintEnd_toEndOf="@id/imgSpecialProduct"
+            app:layout_constraintStart_toStartOf="@id/imgSpecialProduct" />
 
         <TextView
             android:id="@+id/tvSpecialProductOldPrice"
+            style="@style/textCardBlack"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
-            android:text="@string/discount_price"
-            style="@style/textCardBlack"
             android:layout_marginBottom="5dp"
+            android:text="@string/discount_price"
             app:layout_constraintBottom_toTopOf="@id/imgStarSpec"
-            app:layout_constraintStart_toStartOf="@id/imageSpecialRvItem"
-            app:layout_constraintEnd_toEndOf="@id/imageSpecialRvItem" />
+            app:layout_constraintEnd_toEndOf="@id/imgSpecialProduct"
+            app:layout_constraintStart_toStartOf="@id/imgSpecialProduct" />
 
         <ImageView
             android:id="@+id/goToProduct"
@@ -114,8 +114,8 @@
             android:layout_height="12dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/ic_arrow"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:tint="@color/neutral_50" />
 
 

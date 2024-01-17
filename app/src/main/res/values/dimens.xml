@@ -25,7 +25,7 @@
     <dimen name="serviceButtonDiameter">49dp</dimen>
     <dimen name="tvContinueWithTopMargin">10dp</dimen>
     <dimen name="dialogBottomScreenMargin">20dp</dimen>
-    <dimen name="menuPadding">5dp</dimen>
+    <dimen name="menuPadding">4dp</dimen>
     <dimen name="bottomMenuHeight">60dp</dimen>
     <dimen name="imageColor_size">22dp</dimen>
     <dimen name="imageShadow_size">25dp</dimen>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/neutral_20">
+    android:background="@drawable/auth_pages_background">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineLoginStart"

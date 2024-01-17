@@ -19,7 +19,7 @@ class SpecialProductsAdapter :
 
         fun bind(product: Product) {
             binding.apply {
-                Glide.with(itemView).load(product.images[0]).into(imageSpecialRvItem)
+                Glide.with(itemView).load(product.images[0]).into(imgSpecialProduct)
                 tvSpecialProductName.text = product.name.uppercase()
 
                 product.offerPercentage?.let {

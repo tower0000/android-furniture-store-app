@@ -30,7 +30,7 @@
         app:itemIconTint="@drawable/bottom_nav_item_background"
         app:itemRippleColor="@color/neutral_20"
         app:labelVisibilityMode="unlabeled"
-        app:itemIconSize="25dp"
+        app:itemIconSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

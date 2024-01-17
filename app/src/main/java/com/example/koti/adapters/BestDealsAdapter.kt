@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.koti.data.Product
 import com.example.koti.databinding.BestDealsRvItemBinding
+import kotlin.math.roundToInt
 
 class BestDealsAdapter : RecyclerView.Adapter<BestDealsAdapter.BestDealsViewHolder>() {
 
@@ -22,9 +23,11 @@ class BestDealsAdapter : RecyclerView.Adapter<BestDealsAdapter.BestDealsViewHold
                 product.offerPercentage?.let {
                     val remainingPricePercentage = 1f - it
                     val priceAfterOffer = remainingPricePercentage * product.price
-                    tvBestDealNewPrice.text = "$ ${String.format("%.2f", priceAfterOffer)}"
+                    tvBestDealNewPrice.text = "$${String.format("%.2f", priceAfterOffer)}"
+                    val discountInPercent = (it * 100).roundToInt()
+                    tvDiscountPercent.text = "${discountInPercent}% OFF"
                 }
-                tvBestDealOldPrice.text = "$ ${product.price}"
+                tvBestDealOldPrice.text = "$${String.format("%.2f", product.price)}"
                 tvBestDealOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                 tvBestDealProductName.text = product.name.uppercase()
             }

@@ -110,10 +110,10 @@
                 android:id="@+id/sale_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="9dp"
                 style="@style/homeFragmentTitles"
                 android:singleLine="true"
-                android:text="Up to 65% off!"
+                android:text="Best deals"
                 app:layout_constraintStart_toStartOf="@id/rvSpecialProducts"
                 app:layout_constraintTop_toBottomOf="@id/rvSpecialProducts" />
 
@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"
                 style="@style/homeFragmentTitles"
                 android:singleLine="true"
-                android:text="Products of the month"
+                android:text="Best products"
                 app:layout_constraintStart_toStartOf="@id/rvSpecialProducts"
                 app:layout_constraintTop_toBottomOf="@id/rvBestDealsProducts" />
 

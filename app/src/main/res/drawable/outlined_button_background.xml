@@ -3,7 +3,7 @@
     <solid android:color="@color/white"/>
     <corners android:radius="@dimen/buttonCorners"/>
     <stroke
-        android:width="2dip"
+        android:width="1.5dip"
         android:color="@color/green" />
     <padding
         android:bottom="4dp"

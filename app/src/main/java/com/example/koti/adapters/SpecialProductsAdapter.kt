@@ -30,7 +30,6 @@ class SpecialProductsAdapter :
                 tvSpecialProductOldPrice.text = "$${String.format("%.2f", product.price)}"
                 tvSpecialProductOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
 
-                bookmarkedSpecialProduct.setImageResource(R.drawable.ic_favorite)
             }
         }
     }

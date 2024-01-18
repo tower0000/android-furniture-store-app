@@ -37,6 +37,12 @@
         <item name="android:textSize">@dimen/h5TextSize</item>
     </style>
 
+    <style name="textProductDetails">
+        <item name="android:fontFamily">@font/manrope_regular</item>
+        <item name="android:textColor">@color/neutral_90</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
     <style name="textSearchBar">
         <item name="android:fontFamily">@font/manrope_regular</item>
         <item name="android:textColor">@color/neutral_90</item>

@@ -1,5 +1,6 @@
 package com.example.koti.fragments.shoppingFragments
 
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,10 +15,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.example.koti.R
-import com.example.koti.activities.ShoppingActivity
 import com.example.koti.adapters.ColorsAdapter
 import com.example.koti.adapters.SizesAdapter
 import com.example.koti.adapters.ViewPager2Images
@@ -26,11 +26,10 @@ import com.example.koti.databinding.FragmentProductsDetailsBinding
 import com.example.koti.util.Resource
 import com.example.koti.util.hideBottomNavigationView
 import com.example.koti.viewmodel.DetailsViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlin.math.roundToInt
 
 @AndroidEntryPoint
 class ProductDetailsFragment : Fragment() {
@@ -59,7 +58,6 @@ class ProductDetailsFragment : Fragment() {
         val product = args.product
 
         setupImageIndicators()
-        setupSizesRv()
         setupColorsRs()
         setupViewpager()
 
@@ -67,15 +65,11 @@ class ProductDetailsFragment : Fragment() {
             findNavController().navigateUp()
         }
 
-        sizesAdapter.onItemClick = {
-            selectedSize = it
-        }
+//        colorsAdapter.onItemClick = {
+//            selectedColor = it
+//        }
 
-        colorsAdapter.onItemClick = {
-            selectedColor = it
-        }
-
-        binding.buttonAddToCart.setOnClickListener {
+        binding.buttonAddToCartFixed.setOnClickListener {
             viewModel.addUpdateProductsInCart(CartProduct(product, 1, selectedColor, selectedSize))
         }
 
@@ -88,17 +82,17 @@ class ProductDetailsFragment : Fragment() {
                 viewModel.addToCart.collectLatest {
                     when (it) {
                         is Resource.Loading -> {
-                            binding.buttonAddToCart.startAnimation()
+                            binding.buttonAddToCartFixed.startAnimation()
                         }
 
                         is Resource.Success -> {
-                            binding.buttonAddToCart.revertAnimation()
+                            binding.buttonAddToCartFixed.revertAnimation()
                             Toast.makeText(requireContext(), "Product added!", Toast.LENGTH_SHORT)
                                 .show()
                         }
 
                         is Resource.Error -> {
-                            binding.buttonAddToCart.revertAnimation()
+                            binding.buttonAddToCartFixed.revertAnimation()
                             Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                         }
 
@@ -113,7 +107,7 @@ class ProductDetailsFragment : Fragment() {
                 viewModel.addToFavorites.collectLatest {
                     when (it) {
                         is Resource.Loading -> {
-                            binding.buttonAddToFav.setImageResource(R.drawable.ic_favorite)
+                            binding.buttonAddToFav.setImageResource(R.drawable.ic_favorite_clicked)
                         }
 
                         is Resource.Success -> {
@@ -134,21 +128,30 @@ class ProductDetailsFragment : Fragment() {
         }
 
         binding.apply {
-            tvProductName.text = product.name.uppercase()
-            tvProductPrice.text = "$${product.price}"
-            tvProductDescription.text = product.description
+            product.offerPercentage?.let {
+                val remainingPricePercentage = 1f - it
+                val priceAfterOffer = remainingPricePercentage * product.price
+                tvProductPrice.text = "$${String.format("%.2f", priceAfterOffer)}"
 
-            if (product.colors.isNullOrEmpty())
-                tvProductColors.visibility = View.INVISIBLE
+                val discountInPercent = (it * 100).roundToInt()
+                tvDiscountPercentProduct.text = "${discountInPercent}% OFF"
+            }
+            tvProductOldPrice.text = "$${String.format("%.2f", product.price)}"
+            tvProductOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
 
-            if (product.sizes.isNullOrEmpty())
-                tvProductSizes.visibility = View.INVISIBLE
+            tvBestProductName.text = product.name.uppercase()
+
+//            if (product.colors.isNullOrEmpty())
+//                tvProductColors.visibility = View.INVISIBLE
+
         }
 
         viewPagerAdapter.differ.submitList(product.images)
         product.colors?.let { colorsAdapter.differ.submitList(it) }
         product.sizes?.let { sizesAdapter.differ.submitList(it) }
     }
+
+
 
 //    override fun onDestroy() {
 //        super.onDestroy()
@@ -198,20 +201,12 @@ class ProductDetailsFragment : Fragment() {
     }
 
     private fun setupColorsRs() {
-        binding.rvColors.apply {
-            adapter = colorsAdapter
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        }
-
+//        binding.rvColors.apply {
+//            adapter = colorsAdapter
+//            layoutManager =
+//                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+//        }
     }
 
-    private fun setupSizesRv() {
-        binding.rvSizes.apply {
-            adapter = sizesAdapter
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        }
-    }
 
 }

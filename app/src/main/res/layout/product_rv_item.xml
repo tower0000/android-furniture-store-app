@@ -40,29 +40,6 @@
             app:layout_constraintTop_toBottomOf="@id/imgProduct" />
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_favorite_spec"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:scaleType="centerCrop"
-            android:src="@color/red"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/bookmarkedProduct"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:padding="7dp"
-            android:src="@drawable/ic_favorite"
-            app:layout_constraintBottom_toBottomOf="@id/img_favorite_spec"
-            app:layout_constraintEnd_toEndOf="@id/img_favorite_spec"
-            app:layout_constraintStart_toStartOf="@id/img_favorite_spec"
-            app:layout_constraintTop_toTopOf="@id/img_favorite_spec"
-            app:tint="@color/white" />
-
         <ImageView
             android:id="@+id/imgStar"
             android:layout_width="15dp"

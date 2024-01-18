@@ -83,6 +83,8 @@ class DetailsViewModel @Inject constructor(
                     } else {
                         val product = it.first().toObject(CartProduct::class.java)
                         if (product == favProduct) {
+                            viewModelScope.launch { _addToFavorites.emit(Resource.Error("Product was deleted from favorites")) }
+//                            deleteProductFromFavorites(favProduct)
                         } else {
                             addNewProductToFavorites(favProduct)
                         }
@@ -93,13 +95,25 @@ class DetailsViewModel @Inject constructor(
             }
     }
 
+//    private fun deleteProductFromFavorites(favProduct: CartProduct) {
+//        firebaseCommon.deleteProductFromFavorites(favProduct) { addedProduct, e ->
+//            viewModelScope.launch {
+//                if (e == null)
+//                    _addToFavorites.emit(Resource.Success(addedProduct!!))
+//                else
+//                    _addToFavorites.emit(Resource.Error(e.message.toString()))
+//            }
+//
+//        }
+//    }
+
     private fun addNewProductToFavorites(favProduct: CartProduct) {
         firebaseCommon.addProductToFavorites(favProduct) { addedProduct, e ->
             viewModelScope.launch {
                 if (e == null)
-                    _addToCart.emit(Resource.Success(addedProduct!!))
+                    _addToFavorites.emit(Resource.Success(addedProduct!!))
                 else
-                    _addToCart.emit(Resource.Error(e.message.toString()))
+                    _addToFavorites.emit(Resource.Error(e.message.toString()))
             }
 
         }

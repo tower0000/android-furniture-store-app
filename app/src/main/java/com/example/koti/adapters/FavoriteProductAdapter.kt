@@ -22,7 +22,6 @@ class FavoriteProductAdapter: RecyclerView.Adapter<FavoriteProductAdapter.Favori
             binding.apply {
                 Glide.with(itemView).load(favProduct.product.images[0]).into(imgFavoriteProduct)
                 tvProductFavoriteName.text = favProduct.product.name.uppercase()
-                tvAddToCart.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
                 val priceAfterPercentage =
                     favProduct.product.offerPercentage.getProductPrice(favProduct.product.price)

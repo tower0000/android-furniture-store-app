@@ -18,9 +18,9 @@ class AddressAdapter : Adapter<AddressAdapter.AddressViewHolder>() {
             binding.apply {
                 buttonAddress.text = address.addressTitle
                 if (isSelected){
-                    buttonAddress.setBackgroundResource(R.drawable.grey_background)
+                    buttonAddress.setBackgroundResource(R.drawable.address_selected_background)
                 }else{
-                    buttonAddress.setBackgroundResource(R.drawable.white_edit_text_background)
+                    buttonAddress.setBackgroundResource(R.drawable.search_bar_background)
                 }
             }
         }

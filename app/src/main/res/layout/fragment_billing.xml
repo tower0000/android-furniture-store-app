@@ -4,105 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_background"
+    android:background="@color/neutral_20"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/toolbarBilling"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/imageCloseBilling"
-                style="@style/orangeButtonStyle"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="15dp"
-                android:padding="12dp"
-                android:src="@drawable/ic_back_arrow"
-                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/buttonCloseBilling"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_close"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/grey" />
+                android:layout_marginTop="55dp"
+                app:tint="@color/neutral_70" />
 
             <TextView
-                android:id="@+id/tvBack"
+                android:id="@+id/tvAddAddress"
+                style="@style/titleBlackNeutral"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="5sp"
-                android:fontFamily="@font/poppins_extra_bold"
-                android:text="Back"
-                android:textColor="@color/white"
+                android:text="Checkout"
+                android:layout_marginStart="7dp"
+                android:layout_marginBottom="-1dp"
                 android:textSize="23sp"
-                app:layout_constraintBottom_toBottomOf="@id/imageCloseBilling"
-                app:layout_constraintStart_toEndOf="@id/imageCloseBilling"
-                app:layout_constraintTop_toTopOf="@id/imageCloseBilling" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:fontFamily="@font/manrope_medium"
+                app:layout_constraintStart_toEndOf="@id/buttonCloseBilling"
+                app:layout_constraintBottom_toBottomOf="@id/buttonCloseBilling" />
 
         <TextView
             android:id="@+id/tvPaymentMethods"
-            style="@style/textInterWhite"
+            style="@style/textGreyNeutral"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/neutral_90"
             android:text="Payment Methods"
             app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintTop_toBottomOf="@id/toolbarBilling" />
+            app:layout_constraintTop_toBottomOf="@id/buttonCloseBilling" />
 
         <TextView
             android:id="@+id/tvPaymentExplanation"
-            style="@style/textInterOrange"
+            style="@style/textGreyNeutral"
             android:layout_width="0dp"
+            android:textSize="@dimen/h5TextSize"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="@string/support_virtual_payments"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toBottomOf="@id/tvPaymentMethods" />
 
-        <View
-            android:id="@+id/topLine"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/white_edit_text_background"
-            android:backgroundTint="@color/grey"
-            app:layout_constraintEnd_toEndOf="@id/guideline2"
-            app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintTop_toBottomOf="@id/tvPaymentExplanation" />
 
         <TextView
             android:id="@+id/tvShoppingAddress"
-            style="@style/textInterWhite"
+            style="@style/textGreyNeutral"
+            android:textSize="15sp"
+            android:textColor="@color/neutral_90"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shipping Address"
+            android:text=" Shipping Address"
             app:drawableLeftCompat="@drawable/ic_location"
-            app:drawableTint="@color/orange_dark"
+            android:layout_marginTop="15dp"
+            app:drawableTint="@color/red"
             app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintTop_toBottomOf="@id/topLine" />
+            app:layout_constraintTop_toBottomOf="@id/tvPaymentExplanation" />
 
         <ImageView
             android:id="@+id/imageAddAddress"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/ic_add"
+            android:layout_marginEnd="15dp"
             app:layout_constraintBottom_toBottomOf="@id/tvShoppingAddress"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
             app:layout_constraintTop_toTopOf="@id/tvShoppingAddress"
-            app:tint="@color/orange_dark" />
+            app:tint="@color/neutral_90" />
 
         <FrameLayout
             android:id="@+id/rvFrame"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toBottomOf="@id/tvShoppingAddress">
 
@@ -125,28 +111,42 @@
 
         </FrameLayout>
 
-        <View
-            android:id="@+id/middleLine"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/white_edit_text_background"
-            android:backgroundTint="@color/white"
-            app:layout_constraintEnd_toEndOf="@id/guideline2"
+        <ImageView
+            android:id="@+id/imgCartIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintTop_toBottomOf="@id/rvFrame" />
+            app:layout_constraintTop_toBottomOf="@id/rvFrame"
+            android:src="@drawable/ic_cart"
+            android:layout_marginTop="10dp"
+            android:padding="3dp"
+            app:tint="@color/green" />
+
+
+        <TextView
+            android:id="@+id/tvProducts"
+            style="@style/textGreyNeutral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/neutral_90"
+            android:layout_marginStart="2dp"
+            android:text="Your Products"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/imgCartIcon"
+            app:layout_constraintTop_toTopOf="@id/imgCartIcon"
+            app:layout_constraintBottom_toBottomOf="@id/imgCartIcon"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvProducts"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="4dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintTop_toBottomOf="@id/middleLine"
+            app:layout_constraintTop_toBottomOf="@id/tvProducts"
             tools:listitem="@layout/billing_products_rv_item" />
 
         <View
@@ -163,36 +163,61 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/totalBoxContainer"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/total_box_background"
+            android:layout_height="@dimen/smallButtonHeight"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/checkout_background"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
             app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintTop_toBottomOf="@id/rvProducts">
+            app:layout_constraintTop_toBottomOf="@id/bottomLine">
+
+            <ImageView
+                android:id="@+id/icCart"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/ic_shopping_cart"
+                app:tint="@color/green" />
 
 
             <TextView
-                style="@style/subtitleInterWhite"
+                android:id="@+id/tvCartTotal"
+                style="@style/titleBlackNeutral"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:text="Total"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/manrope_regular"
+                android:text="@string/cart_total_label"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:background="@drawable/total_box_background"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="4.5dp"
+                app:layout_constraintStart_toEndOf="@id/tvCartTotal"
+                app:layout_constraintEnd_toStartOf="@id/tvTotalPrice"
+                app:layout_constraintBottom_toBottomOf="@id/tvCartTotal" />
+
 
             <TextView
                 android:id="@+id/tvTotalPrice"
-                style="@style/subtitleInterWhite"
+                style="@style/titleBlackNeutral"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="15dp"
-                android:text="$150"
+                android:layout_marginEnd="15dp"
+                android:text="@string/cart_price_label"
+                android:textSize="18dp"
+                android:fontFamily="@font/manrope_regular"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -202,13 +227,12 @@
 
         <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/buttonPlaceOrder"
-            style="@style/orangeButtonStyle"
+            style="@style/greenButtonStyle"
             android:layout_width="0dp"
             android:layout_height="@dimen/smallButtonHeight"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:text="Place Order"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/totalBoxContainer"
             app:layout_constraintStart_toStartOf="@id/totalBoxContainer"
             app:layout_constraintTop_toBottomOf="@id/totalBoxContainer"

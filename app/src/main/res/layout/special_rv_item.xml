@@ -57,6 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="@string/product_rating_sample"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@id/imgStarSpec"
             app:layout_constraintStart_toEndOf="@id/imgStarSpec"
             app:layout_constraintTop_toTopOf="@id/imgStarSpec" />

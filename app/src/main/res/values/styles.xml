@@ -181,7 +181,7 @@
         <item name="backgroundTint">@color/white</item>
         <item name="singleLine">true</item>
         <item name="android:textColor">@color/neutral_90</item>
-        <item name="android:textSize">@dimen/h4TextSize</item>
+        <item name="android:textSize">@dimen/h5TextSize</item>
         <item name="android:fontFamily">@font/manrope_regular</item>
     </style>
 
@@ -234,7 +234,7 @@
         <item name="android:textSize">@dimen/h2TextSize</item>
     </style>
 
-    <dimen name="h1TextSize">32sp</dimen>
+    <dimen name="h1TextSize">30sp</dimen>
     <dimen name="h2TextSize">24sp</dimen>
     <dimen name="h3TextSize">18sp</dimen>
     <dimen name="h4TextSize">15sp</dimen>

@@ -36,7 +36,7 @@ class AddressFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.imageCloseAddress.setOnClickListener {
+        binding.buttonCloseAddress.setOnClickListener {
             findNavController().navigateUp()
         }
 

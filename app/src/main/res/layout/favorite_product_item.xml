@@ -32,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="1dp"
             android:layout_marginEnd="10dp"
             android:maxLines="1"
             android:text="@string/product_name_sample"
@@ -46,7 +46,7 @@
             android:id="@+id/imgStarCart"
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:layout_marginBottom="9dp"
+            android:layout_marginBottom="12dp"
             android:src="@drawable/ic_star"
             app:layout_constraintBottom_toBottomOf="@id/imgFavoriteProduct"
             app:layout_constraintStart_toStartOf="@id/tvProductFavoriteName"
@@ -59,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="@string/product_rating_sample"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@id/imgStarCart"
             app:layout_constraintStart_toEndOf="@id/imgStarCart"
             app:layout_constraintTop_toTopOf="@id/imgStarCart" />
@@ -91,8 +92,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/saleShapeProduct"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
+            android:layout_width="57dp"
+            android:layout_height="23dp"
             android:layout_marginStart="7dp"
             android:src="@color/red"
             app:layout_constraintBottom_toBottomOf="@id/tvProductFavoriteOldPrice"
@@ -116,8 +117,8 @@
             android:id="@+id/deleteShape"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:src="@color/green"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -138,8 +139,8 @@
             android:id="@+id/linearAddFavToCart"
             android:layout_width="130dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="13dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/white_edit_text_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent">

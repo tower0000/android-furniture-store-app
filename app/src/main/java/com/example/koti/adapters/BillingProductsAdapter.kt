@@ -1,6 +1,7 @@
 package com.example.koti.adapters
 
 import android.graphics.Color
+import android.graphics.Paint
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.koti.data.CartProduct
 import com.example.koti.databinding.BillingProductsRvItemBinding
 import com.example.koti.helper.getProductPrice
+import kotlin.math.roundToInt
 
 class BillingProductsAdapter : Adapter<BillingProductsAdapter.BillingProductsViewHolder>() {
 
@@ -20,22 +22,19 @@ class BillingProductsAdapter : Adapter<BillingProductsAdapter.BillingProductsVie
         fun bind(billingProduct: CartProduct) {
             binding.apply {
                 Glide.with(itemView).load(billingProduct.product.images[0]).into(imgCartProduct)
-                tvProductCartName.text = billingProduct.product.name.uppercase()
-                tvBillingProductQuantity.text = billingProduct.quantity.toString()
+                billingProduct.product.offerPercentage?.let {
+                    val remainingPricePercentage = 1f - it
+                    val priceAfterOffer = remainingPricePercentage * billingProduct.product.price
+                    tvCartProductPrice.text = "$${String.format("%.2f", priceAfterOffer)}"
 
-                val priceAfterPercentage =
-                    billingProduct.product.offerPercentage.getProductPrice(billingProduct.product.price)
-                tvProductCartPrice.text = "$ ${String.format("%.2f", priceAfterPercentage)}"
-
-                imageCartProductColor.setImageDrawable(
-                    ColorDrawable(
-                        billingProduct.selectedColor ?: Color.TRANSPARENT
-                    )
-                )
-                tvCartProductSize.text = billingProduct.selectedSize ?: "".also {
-                    imageCartProductSize.setImageDrawable(ColorDrawable(Color.TRANSPARENT))
+                    val discountInPercent = (it * 100).roundToInt()
                 }
+                tvCartProductOldPrice.text = "$${String.format("%.2f", billingProduct.product.price)}"
+                tvCartProductOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+
+                tvProductCartName.text = billingProduct.product.name.uppercase()
             }
+
         }
 
     }

@@ -96,8 +96,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/saleShapeProduct"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
+            android:layout_width="57dp"
+            android:layout_height="23dp"
             android:src="@color/red"
             app:layout_constraintBottom_toBottomOf="@id/imgProduct"
             app:layout_constraintStart_toStartOf="@id/imgProduct"

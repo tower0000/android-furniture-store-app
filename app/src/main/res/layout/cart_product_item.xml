@@ -60,6 +60,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
+            android:textSize="11sp"
             android:text="@string/product_rating_sample"
             app:layout_constraintBottom_toBottomOf="@id/imgStarCart"
             app:layout_constraintStart_toEndOf="@id/imgStarCart"
@@ -93,8 +94,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/saleShapeProduct"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
+            android:layout_width="57dp"
+            android:layout_height="23dp"
             android:src="@color/red"
             android:layout_marginStart="7dp"
             app:layout_constraintBottom_toBottomOf="@id/tvCartProductOldPrice"

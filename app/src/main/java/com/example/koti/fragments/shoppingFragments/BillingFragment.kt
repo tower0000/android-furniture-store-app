@@ -67,7 +67,7 @@ class BillingFragment : Fragment() {
         setupBillingProductsRv()
         setupAddressRv()
 
-        binding.imageCloseBilling.setOnClickListener {
+        binding.buttonCloseBilling.setOnClickListener {
             findNavController().navigateUp()
         }
 

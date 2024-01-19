@@ -46,6 +46,7 @@
     <TextView
         android:id="@+id/tvWelcomeSubtitle"
         style="@style/textGreyNeutral"
+        android:textSize="@dimen/h4TextSize"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/tvWelcomeSecondaryMarginBottom"

@@ -43,8 +43,7 @@ class UserAccountViewModel @Inject constructor(
     private val _updateInfo = MutableStateFlow<Resource<User>>(Resource.Unspecified())
     val updateInfo = _updateInfo.asStateFlow()
 
-    private val _resetPassword = MutableSharedFlow<Resource<String>>()
-    val resetPassword = _resetPassword.asSharedFlow()
+
 
     init {
         getUser()
@@ -133,22 +132,5 @@ class UserAccountViewModel @Inject constructor(
                 _updateInfo.emit(Resource.Error(it.message.toString()))
             }
         }
-    }
-    fun resetPassword(email: String) {
-        viewModelScope.launch {
-            _resetPassword.emit(Resource.Loading())
-        }
-        auth
-            .sendPasswordResetEmail(email)
-            .addOnSuccessListener {
-                viewModelScope.launch {
-                    _resetPassword.emit(Resource.Success(email))
-                }
-            }.addOnFailureListener {
-                viewModelScope.launch {
-                    _resetPassword.emit(Resource.Error(it.message.toString()))
-                }
-            }
-
     }
 }

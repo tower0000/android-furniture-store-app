@@ -103,6 +103,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
                         is Resource.Success -> {
                             binding.buttonLogin.revertAnimation()
+                            binding.buttonLogin.setBackgroundDrawable(resources.getDrawable(R.drawable.green_button_background))
                             Intent(requireActivity(), ShoppingActivity::class.java).also { intent ->
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                                 startActivity(intent)

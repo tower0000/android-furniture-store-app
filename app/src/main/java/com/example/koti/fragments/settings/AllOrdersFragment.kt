@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.koti.adapters.AllOrdersAdapter
 import com.example.koti.databinding.FragmentOrdersBinding
 import com.example.koti.util.Resource
+import com.example.koti.util.VerticalItemDecoration
 import com.example.koti.viewmodel.AllOrdersViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -40,7 +41,7 @@ class AllOrdersFragment : Fragment() {
 
         setupOrdersRv()
 
-        binding.imageCloseOrders.setOnClickListener{
+        binding.buttonCloseOrders.setOnClickListener{
             findNavController().navigateUp()
         }
 
@@ -54,14 +55,17 @@ class AllOrdersFragment : Fragment() {
 
                         is Resource.Success -> {
                             binding.progressbarAllOrders.visibility = View.GONE
+                            binding.rvAllOrders.visibility = View.VISIBLE
                             ordersAdapter.differ.submitList(it.data)
                             if(it.data == null){
-                                binding.tvEmptyOrders.visibility = View.VISIBLE
+                                binding.layoutOrdersEmpty.visibility = View.VISIBLE
+                                binding.rvAllOrders.visibility = View.GONE
                             }
                         }
-
                         is Resource.Error -> {
                             binding.progressbarAllOrders.visibility = View.GONE
+                            binding.layoutOrdersEmpty.visibility = View.VISIBLE
+                            binding.rvAllOrders.visibility = View.GONE
                         }
 
                         else -> Unit
@@ -80,6 +84,7 @@ class AllOrdersFragment : Fragment() {
         binding.rvAllOrders.apply {
             adapter = ordersAdapter
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            addItemDecoration(VerticalItemDecoration())
         }
     }
 }

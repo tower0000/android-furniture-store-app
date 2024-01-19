@@ -37,13 +37,13 @@ class OrderDetailFragment : Fragment() {
         hideBottomNavigationView()
 
         setupOrderRv()
-        binding.imageCloseOrder.setOnClickListener{
+        binding.buttonCloseOrders.setOnClickListener{
             findNavController().navigateUp()
         }
 
         binding.apply {
 
-            tvOrderId.text = "Order #${order.orderId}"
+            tvMyOrders.text = "Order #${order.orderId}"
 
 
             stepView.setSteps(
@@ -69,10 +69,8 @@ class OrderDetailFragment : Fragment() {
             }
 
             tvFullName.text = order.address.fullName
-            tvAddress.text = "${order.address.street} ${order.address.city}"
+            tvShippingAddress.text = "${order.address.street} ${order.address.city}"
             tvPhoneNumber.text = order.address.phone
-
-            tvTotalPrice.text = "$ ${order.totalPrice}"
 
         }
 
@@ -82,8 +80,7 @@ class OrderDetailFragment : Fragment() {
     private fun setupOrderRv() {
         binding.rvProducts.apply {
             adapter = billingProductsAdapter
-            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            addItemDecoration(VerticalItemDecoration())
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         }
     }
 }

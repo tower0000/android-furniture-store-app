@@ -4,35 +4,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_background">
+    android:background="@color/neutral_20">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutOrdersEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imageEmptyBox"
+            android:layout_width="320dp"
+            android:layout_height="320dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="50dp"
+            android:src="@drawable/ic_empty_favorites"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvEmptyCart"
+            style="@style/titleBlackNeutral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="-9dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/manrope_medium"
+            android:gravity="center"
+            android:text="@string/no_favorites"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageEmptyBox" />
+
+        <TextView
+            style="@style/textGreyNeutral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="60dp"
+            android:gravity="center"
+            android:text="@string/empty_favs_text"
+            android:textSize="@dimen/h4TextSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvEmptyCart" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
-            <ImageView
-                android:id="@+id/imageCloseOrders"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:padding="4dp"
-                android:layout_marginTop="15dp"
-                style="@style/orangeButtonStyle"
-                android:src="@drawable/ic_close"
-                app:tint="@color/grey"
-                app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintTop_toTopOf="parent"/>
+    <ImageView
+        android:id="@+id/buttonCloseOrders"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="45dp"
+        android:src="@drawable/ic_close"
+        app:tint="@color/neutral_70"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-            <TextView
-                android:id="@+id/tvBack"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="All orders"
-                android:layout_marginStart="10dp"
-                android:textColor="@color/white"
-                android:layout_marginTop="5sp"
-                android:textSize="23sp"
-                android:fontFamily="@font/poppins_extra_bold"
-                app:layout_constraintStart_toEndOf="@id/imageCloseOrders"
-                app:layout_constraintTop_toTopOf="@id/imageCloseOrders"
-                app:layout_constraintBottom_toBottomOf="@id/imageCloseOrders"/>
+    <TextView
+        android:id="@+id/tvMyOrders"
+        style="@style/titleBlackNeutral"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="My Orders"
+        android:layout_marginStart="7dp"
+        android:layout_marginBottom="-1dp"
+        android:textSize="23sp"
+        android:fontFamily="@font/manrope_medium"
+        app:layout_constraintStart_toEndOf="@id/buttonCloseOrders"
+        app:layout_constraintBottom_toBottomOf="@id/buttonCloseOrders" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -50,13 +97,13 @@
         app:layout_constraintGuide_percent="0.96" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_all_orders"
+        android:id="@+id/rvAllOrders"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline1"
-        app:layout_constraintTop_toBottomOf="@+id/imageCloseOrders"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCloseOrders"
         tools:listitem="@layout/order_item" />
 
     <ProgressBar
@@ -70,17 +117,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_empty_orders"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/inter_bold"
-        android:gravity="center"
-        android:text="No orders to show"
-        style="@style/subtitleInterWhite"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

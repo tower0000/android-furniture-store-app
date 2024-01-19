@@ -59,34 +59,6 @@ class AccessoryFragment: BaseCategoryFragment() {
             }
         }
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
-                viewModel.bestProducts.collectLatest {
-                    when (it) {
-                        is Resource.Loading -> {
-                            showBestProductsLoading()
-                        }
-
-                        is Resource.Success -> {
-                            hideBestProductsLoading()
-                            bestProductsAdapter.differ.submitList(it.data)
-                        }
-
-                        is Resource.Error -> {
-                            hideBestProductsLoading()
-                            Snackbar.make(requireView(), it.message.toString(), Snackbar.LENGTH_LONG)
-                                .show()
-                        }
-
-                        else -> Unit
-                    }
-
-                }
-            }
-        }
-    }
-
-    override fun onBestProductsPagingRequest() {
     }
 
     override fun onOfferPagingRequest() {

@@ -1,5 +1,6 @@
 package com.example.koti.fragments.shoppingFragments
 
+import android.content.res.Resources
 import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -89,6 +91,11 @@ class ProductDetailsFragment : Fragment() {
 
                         is Resource.Success -> {
                             binding.buttonAddToCartFixed.revertAnimation()
+                            binding.buttonAddToCartFixed.setBackgroundDrawable(
+                                resources.getDrawable(
+                                    R.drawable.green_button_background
+                                )
+                            )
                             Toast.makeText(requireContext(), "Product added!", Toast.LENGTH_SHORT)
                                 .show()
                         }
@@ -152,7 +159,6 @@ class ProductDetailsFragment : Fragment() {
         product.colors?.let { colorsAdapter.differ.submitList(it) }
         product.sizes?.let { sizesAdapter.differ.submitList(it) }
     }
-
 
 
 //    override fun onDestroy() {

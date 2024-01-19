@@ -303,7 +303,7 @@
                     android:textSize="17sp"
                     android:fontFamily="@font/manrope_regular"
                     android:layout_marginStart="12dp"
-                    android:text="Change password" />
+                    android:text="Change Password" />
 
                 <ImageView
                     android:layout_width="15dp"

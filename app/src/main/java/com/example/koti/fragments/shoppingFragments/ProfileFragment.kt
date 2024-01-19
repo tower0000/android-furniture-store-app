@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide
 import com.example.koti.R
 import com.example.koti.activities.AuthActivity
 import com.example.koti.databinding.FragmentProfileBinding
+import com.example.koti.dialog.setupBottomSheetDialog
 import com.example.koti.util.Resource
 import com.example.koti.util.showBottomNavigationView
 import com.example.koti.viewmodel.ProfileViewModel
@@ -59,6 +60,11 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(action)
         }
 
+        binding.clChangePass.setOnClickListener {
+            setupBottomSheetDialog { email ->
+                viewModel.resetPassword(email)
+            }
+        }
 
         binding.clLogout.setOnClickListener {
             viewModel.logout()
@@ -81,7 +87,7 @@ class ProfileFragment : Fragment() {
                             binding.progressbarSettings.visibility = View.GONE
                             Glide.with(requireView()).load(it.data!!.imagePath).error(
                                 ColorDrawable(
-                                    Color.WHITE
+                                    Color.BLACK
                                 )
                             ).into(binding.imageUser)
                             binding.tvUserName.text = "${it.data.firstName} ${it.data.lastName}"

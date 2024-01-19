@@ -96,7 +96,6 @@ class FavoritesFragment : Fragment() {
                             viewModel.addFavToCart(it)
                             viewModel.deleteFavProduct(it)
                             dialog.dismiss()
-                            findNavController().navigate(R.id.action_favoritesFragment_to_cartFragment)
                         }
                     }
                     alertDialog.create()

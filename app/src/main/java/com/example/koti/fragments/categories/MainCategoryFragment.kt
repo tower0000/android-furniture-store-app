@@ -182,7 +182,6 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                     false
                 )
             adapter = bestDealsAdapter
-            addItemDecoration(VerticalItemDecoration())
             addItemDecoration(HorisontalItemDecoration())
         }
     }

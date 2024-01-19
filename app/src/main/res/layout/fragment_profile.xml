@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_background"
+    android:background="@color/neutral_20"
     android:fillViewport="true">
 
 
@@ -29,324 +29,344 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageSettings"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="15dp"
-                android:src="@drawable/ic_settings"
-                app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/grey" />
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:src="@drawable/gradient_profile"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvSettings"
-                style="@style/subtitleInterWhite"
+                android:id="@+id/tvMyAccount"
+                style="@style/titleBlackNeutral"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Settings"
-                app:layout_constraintBottom_toBottomOf="@id/imageSettings"
-                app:layout_constraintStart_toEndOf="@id/imageSettings"
-                app:layout_constraintTop_toTopOf="@id/imageSettings" />
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="45dp"
+                android:fontFamily="@font/manrope_medium"
+                android:text="My Account"
+                android:textColor="@color/white"
+                android:textSize="23sp"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintProfile"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/white_field_background"
+                android:elevation="1dp"
                 app:layout_constraintEnd_toEndOf="@id/guideline2"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintTop_toBottomOf="@+id/tvSettings">
+                app:layout_constraintTop_toBottomOf="@+id/tvMyAccount">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imageUser"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@color/white"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="12dp"
+                    android:src="@color/green"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
 
                 <TextView
                     android:id="@+id/tvUserName"
-                    style="@style/subtitleInterWhite"
+                    style="@style/textCardBlack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/manrope_semi_bold"
                     android:text="Name"
+                    android:textSize="20sp"
                     app:layout_constraintStart_toEndOf="@id/imageUser"
                     app:layout_constraintTop_toTopOf="@+id/imageUser" />
 
 
                 <TextView
-                    android:id="@+id/tv_edit_personal_details"
-                    style="@style/textInterOrange"
+                    android:id="@+id/tvEmail"
+                    style="@style/textGreyNeutral"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Edit personal details"
+                    android:text="test@gmail.com"
                     android:textSize="13sp"
                     app:layout_constraintStart_toStartOf="@+id/tvUserName"
                     app:layout_constraintTop_toBottomOf="@id/tvUserName" />
 
                 <ImageView
-                    android:id="@+id/arrow"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_arrow"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_edit_personal_details"
-                    app:layout_constraintEnd_toEndOf="@id/constraintProfile"
-                    app:layout_constraintTop_toTopOf="@id/tvUserName"
-                    app:tint="@color/grey_edit_text_background" />
+                    android:id="@+id/buttonEditInfo"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_edit"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/neutral_90" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/tvOrders"
-                style="@style/subtitleInterWhite"
+                android:id="@+id/tvGeneral"
+                style="@style/profileTitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Orders"
+                android:layout_marginTop="15dp"
+                android:text="General"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toBottomOf="@id/constraintProfile" />
 
 
-            <LinearLayout
-                android:id="@+id/linearOrders"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@color/grey_background"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="@id/guideline2"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clAllOrders"
+                app:layout_constraintTop_toBottomOf="@id/tvGeneral"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintTop_toBottomOf="@id/tvOrders">
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                android:layout_width="0dp"
+                android:layout_marginTop="13dp"
+                android:layout_height="@dimen/profile_field_height"
+                android:background="@drawable/white_field_background"
+                android:elevation="1dp">
 
-                <LinearLayout
-                    android:id="@+id/linearAllOrders"
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/ordersIc"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:src="@drawable/ic_shopping_cart"
+                    app:tint="@color/neutral_90"
+                    android:layout_marginStart="12dp"
+                    android:padding="5dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@color/grey_background"
-                    android:orientation="horizontal">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ordersIc"
+                    style="@style/profileTitleText"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/manrope_regular"
+                    android:layout_marginStart="12dp"
+                    android:text="All orders" />
 
-                    <ImageView
-                        android:layout_width="@dimen/icon_profile_radius"
-                        android:layout_height="@dimen/icon_profile_radius"
-                        android:layout_gravity="center_vertical"
-                        android:background="@drawable/settings_items_background"
-                        android:src="@drawable/ic_all_orders"
-                        app:tint="@color/white" />
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_arrow"
+                    app:tint="@color/neutral_70" />
 
-                    <TextView
-                        android:id="@+id/tvAllOrders"
-                        style="@style/textInterWhite"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="1"
-                        android:text="All orders" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_arrow"
-                        app:tint="@color/grey_edit_text_background" />
-                </LinearLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clBilling"
+                app:layout_constraintTop_toBottomOf="@id/clAllOrders"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                android:layout_width="0dp"
+                android:layout_marginTop="13dp"
+                android:layout_height="@dimen/profile_field_height"
+                android:background="@drawable/white_field_background"
+                android:elevation="1dp">
 
+                <ImageView
+                    android:id="@+id/billingIc"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:src="@drawable/ic_bill"
+                    app:tint="@color/neutral_90"
+                    android:layout_marginStart="12dp"
+                    android:padding="4dp"/>
 
-                <LinearLayout
-                    android:id="@+id/linearTrackOrder"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/billingIc"
+                    style="@style/profileTitleText"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/manrope_regular"
+                    android:layout_marginStart="12dp"
+                    android:text="Transaction" />
 
-                    <ImageView
-                        android:layout_width="@dimen/icon_profile_radius"
-                        android:layout_height="@dimen/icon_profile_radius"
-                        android:layout_gravity="center_vertical"
-                        android:background="@drawable/settings_items_background"
-                        android:backgroundTint="@color/grey"
-                        android:src="@drawable/ic_search"
-                        app:tint="@color/white" />
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_arrow"
+                    app:tint="@color/neutral_70" />
 
-                    <TextView
-                        android:id="@+id/tvTrackOrders"
-                        style="@style/textInterWhite"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="1"
-                        android:text="Track Orders" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_arrow"
-                        app:tint="@color/grey_edit_text_background" />
-                </LinearLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clAdderesses"
+                app:layout_constraintTop_toBottomOf="@id/clBilling"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                android:layout_width="0dp"
+                android:layout_marginTop="13dp"
+                android:layout_height="@dimen/profile_field_height"
+                android:background="@drawable/white_field_background"
+                android:elevation="1dp">
 
-                <LinearLayout
-                    android:id="@+id/linearBilling"
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/addressesIc"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:src="@drawable/ic_home"
+                    app:tint="@color/neutral_90"
+                    android:layout_marginStart="12dp"
+                    android:padding="4dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/addressesIc"
+                    style="@style/profileTitleText"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/manrope_regular"
+                    android:layout_marginStart="12dp"
+                    android:text="Saved Addresses" />
 
-                    <ImageView
-                        android:layout_width="@dimen/icon_profile_radius"
-                        android:layout_height="@dimen/icon_profile_radius"
-                        android:layout_gravity="center_vertical"
-                        android:background="@drawable/settings_items_background"
-                        android:backgroundTint="@color/orange"
-                        android:src="@drawable/ic_billing"
-                        app:tint="@color/white" />
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_arrow"
+                    app:tint="@color/neutral_70" />
 
-                    <TextView
-                        android:id="@+id/tvBilling"
-                        style="@style/textInterWhite"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="1"
-                        android:text="Billing" />
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_arrow"
-                        app:tint="@color/grey_edit_text_background" />
-                </LinearLayout>
-            </LinearLayout>
-
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/tvNotifications"
-                style="@style/subtitleInterWhite"
+                android:id="@+id/tvHelp"
+                style="@style/profileTitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="Notifications"
+                android:layout_marginTop="15dp"
+                android:text="Help"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintTop_toBottomOf="@id/linearOrders" />
+                app:layout_constraintTop_toBottomOf="@id/clAdderesses" />
 
-            <LinearLayout
-                android:id="@+id/linearNotifications"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clChangePass"
+                app:layout_constraintTop_toBottomOf="@id/tvHelp"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintEnd_toEndOf="@id/guideline2"
-                app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintTop_toBottomOf="@id/tvNotifications">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="@dimen/icon_profile_radius"
-                        android:layout_height="@dimen/icon_profile_radius"
-                        android:layout_gravity="center_vertical"
-                        android:background="@drawable/settings_items_background"
-                        android:backgroundTint="@color/green"
-                        android:src="@drawable/ic_notification"
-                        app:tint="@color/white" />
-
-                    <TextView
-                        style="@style/textInterWhite"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="14dp"
-                        android:layout_weight="1"
-                        android:text="Notifications" />
-
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:id="@+id/switchNotification"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:checked="true"
-                        app:thumbTint="@color/white"
-
-                        app:trackTint="@color/green" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-
-            <TextView
-                android:id="@+id/tvRegional"
-                style="@style/subtitleInterWhite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Regional"
-                app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintTop_toBottomOf="@id/linearNotifications" />
-
-            <LinearLayout
-                android:id="@+id/linear_regional"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="@id/guideline2"
-                app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintTop_toBottomOf="@id/tvRegional">
+                android:layout_marginTop="13dp"
+                android:layout_height="@dimen/profile_field_height"
+                android:background="@drawable/white_field_background"
+                android:elevation="1dp">
 
-                <LinearLayout
-                    android:id="@+id/linearLogOut"
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/passIc"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:src="@drawable/ic_lock"
+                    app:tint="@color/neutral_90"
+                    android:layout_marginStart="12dp"
+                    android:padding="4dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/passIc"
+                    style="@style/profileTitleText"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/manrope_regular"
+                    android:layout_marginStart="12dp"
+                    android:text="Change password" />
 
-                    <ImageView
-                        android:layout_width="@dimen/icon_profile_radius"
-                        android:layout_height="@dimen/icon_profile_radius"
-                        android:layout_gravity="center_vertical"
-                        android:background="@drawable/settings_items_background"
-                        android:backgroundTint="@color/red"
-                        android:paddingStart="8dp"
-                        android:src="@drawable/ic_logout"
-                        app:tint="@color/white" />
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_arrow"
+                    app:tint="@color/neutral_70" />
 
-                    <TextView
-                        android:id="@+id/logout"
-                        style="@style/textInterWhite"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="1"
-                        android:text="Logout" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_arrow"
-                        app:tint="@color/grey_edit_text_background" />
-                </LinearLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clLogout"
+                app:layout_constraintTop_toBottomOf="@id/clChangePass"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                android:layout_width="0dp"
+                android:layout_marginTop="13dp"
+                android:layout_height="@dimen/profile_field_height"
+                android:background="@drawable/white_field_background"
+                android:elevation="1dp">
+
+                <ImageView
+                    android:id="@+id/logoutIc"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:src="@drawable/ic_logout"
+                    app:tint="@color/neutral_90"
+                    android:layout_marginStart="14dp"
+                    android:padding="5dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/logoutIc"
+                    style="@style/profileTitleText"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/manrope_regular"
+                    android:layout_marginStart="10dp"
+                    android:text="Logout" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_arrow"
+                    app:tint="@color/neutral_70" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            </LinearLayout>
+
+
 
 
             <TextView
@@ -357,9 +377,9 @@
                 android:layout_marginBottom="15dp"
                 android:text="Version 1.0"
                 android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guideline2"
-                app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintStart_toStartOf="@id/guideline1" />
 
 
             <androidx.constraintlayout.widget.Guideline
@@ -380,6 +400,5 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.core.widget.NestedScrollView>

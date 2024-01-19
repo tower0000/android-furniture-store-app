@@ -45,4 +45,5 @@
     <dimen name="searchBarHeight">44dp</dimen>
     <dimen name="homeSideMargin">16dp</dimen>
     <dimen name="homeImageHeight">200dp</dimen>
+    <dimen name="profile_field_height">56dp</dimen>
 </resources>

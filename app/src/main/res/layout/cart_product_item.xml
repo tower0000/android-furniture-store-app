@@ -4,7 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="16dp"
-    app:cardElevation="0dp">
+    android:elevation="0.5dp"
+    android:layout_marginTop="2.5dp"
+    android:layout_marginStart="2.5dp"
+    android:layout_marginEnd="2.5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,7 +20,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="16dp"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             android:src="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

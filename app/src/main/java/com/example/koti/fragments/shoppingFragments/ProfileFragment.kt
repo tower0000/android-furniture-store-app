@@ -43,25 +43,24 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.constraintProfile.setOnClickListener {
+        binding.buttonEditInfo.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_userAccountFragment)
         }
 
-        binding.linearAllOrders.setOnClickListener {
+        binding.clAllOrders.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_allOrdersFragment)
         }
 
-        binding.linearBilling.setOnClickListener {
+        binding.clBilling.setOnClickListener {
             val action = ProfileFragmentDirections.actionProfileFragmentToBillingFragment(
                 0f,
                 emptyArray()
             )
             findNavController().navigate(action)
         }
-        binding.tvEditPersonalDetails.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
 
-        binding.linearLogOut.setOnClickListener {
+        binding.clLogout.setOnClickListener {
             viewModel.logout()
             val intent = Intent(requireActivity(), AuthActivity::class.java)
             startActivity(intent)
@@ -86,6 +85,7 @@ class ProfileFragment : Fragment() {
                                 )
                             ).into(binding.imageUser)
                             binding.tvUserName.text = "${it.data.firstName} ${it.data.lastName}"
+                            binding.tvEmail.text = "${it.data.email}"
                         }
 
                         is Resource.Error -> {

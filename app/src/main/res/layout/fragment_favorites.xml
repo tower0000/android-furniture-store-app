@@ -44,7 +44,7 @@
             android:id="@+id/rvFavorites"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             app:layout_constraintEnd_toEndOf="@id/rightGuideLine"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@id/leftGuideLine"
@@ -64,14 +64,14 @@
 
         <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/buttonRedirectToHome"
+            style="@style/greenButtonStyle"
             android:layout_width="0dp"
             android:layout_height="@dimen/smallButtonHeight"
-            app:layout_constraintTop_toBottomOf="@id/rvFavorites"
-            app:layout_constraintStart_toStartOf="@id/rvFavorites"
-            app:layout_constraintEnd_toEndOf="@id/rvFavorites"
-            style="@style/greenButtonStyle"
+            android:layout_marginTop="11dp"
             android:text="Search for more"
-            android:layout_marginTop="5dp"/>
+            app:layout_constraintEnd_toEndOf="@id/rvFavorites"
+            app:layout_constraintStart_toStartOf="@id/rvFavorites"
+            app:layout_constraintTop_toBottomOf="@id/rvFavorites" />
 
         <View
             android:layout_width="match_parent"
@@ -89,9 +89,9 @@
                 android:id="@+id/imageEmptyBox"
                 android:layout_width="320dp"
                 android:layout_height="320dp"
-                android:src="@drawable/ic_empty_favorites"
-                android:layout_marginBottom="50dp"
                 android:layout_marginEnd="15dp"
+                android:layout_marginBottom="50dp"
+                android:src="@drawable/ic_empty_favorites"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

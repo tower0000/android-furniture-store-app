@@ -20,7 +20,7 @@ class FavoriteProductAdapter: RecyclerView.Adapter<FavoriteProductAdapter.Favori
 
         fun bind(favProduct: CartProduct) {
             binding.apply {
-                Glide.with(itemView).load(favProduct.product.images[0]).into(imageFavoriteProduct)
+                Glide.with(itemView).load(favProduct.product.images[0]).into(imgFavoriteProduct)
                 tvProductFavoriteName.text = favProduct.product.name.uppercase()
                 tvAddToCart.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 

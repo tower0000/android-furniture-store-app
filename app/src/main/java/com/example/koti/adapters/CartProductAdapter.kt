@@ -1,6 +1,7 @@
 package com.example.koti.adapters
 
 import android.graphics.Color
+import android.graphics.Paint
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import com.example.koti.data.CartProduct
 import com.example.koti.data.Product
 import com.example.koti.databinding.CartProductItemBinding
 import com.example.koti.helper.getProductPrice
+import kotlin.math.roundToInt
 
 class CartProductAdapter :
     RecyclerView.Adapter<CartProductAdapter.CartProductsViewHolder>() {
@@ -21,22 +23,19 @@ class CartProductAdapter :
 
         fun bind(cartProduct: CartProduct) {
             binding.apply {
-                Glide.with(itemView).load(cartProduct.product.images[0]).into(imageCartProduct)
-                tvProductCartName.text = cartProduct.product.name.uppercase()
+                Glide.with(itemView).load(cartProduct.product.images[0]).into(imgCartProduct)
+                tvCartProductName.text = cartProduct.product.name.uppercase()
                 tvCartProductQuantity.text = cartProduct.quantity.toString()
 
-                val priceAfterPercentage =
-                    cartProduct.product.offerPercentage.getProductPrice(cartProduct.product.price)
-                tvProductCartPrice.text = "$ ${String.format("%.2f", priceAfterPercentage)}"
-
-                imageCartProductColor.setImageDrawable(
-                    ColorDrawable(
-                        cartProduct.selectedColor ?: Color.TRANSPARENT
-                    )
-                )
-                tvCartProductSize.text = cartProduct.selectedSize ?: "".also {
-                    imageCartProductSize.setImageDrawable(ColorDrawable(Color.TRANSPARENT))
+                cartProduct.product.offerPercentage?.let {
+                    val remainingPricePercentage = 1f - it
+                    val priceAfterOffer = remainingPricePercentage * cartProduct.product.price
+                    tvCartProductPrice.text = "$${String.format("%.2f", priceAfterOffer)}"
+                    val discountInPercent = (it * 100).roundToInt()
+                    tvDiscountPercentProduct.text = "${discountInPercent}% OFF"
                 }
+                tvCartProductOldPrice.text = "$${String.format("%.2f", cartProduct.product.price)}"
+                tvCartProductOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             }
         }
     }
@@ -69,11 +68,11 @@ class CartProductAdapter :
             onProductClick?.invoke(cartProduct)
         }
 
-        holder.binding.imagePlus.setOnClickListener {
+        holder.binding.buttonPlus.setOnClickListener {
             onPlusClick?.invoke(cartProduct)
         }
 
-        holder.binding.imageMinus.setOnClickListener {
+        holder.binding.buttonMinus.setOnClickListener {
             onMinusClick?.invoke(cartProduct)
         }
     }

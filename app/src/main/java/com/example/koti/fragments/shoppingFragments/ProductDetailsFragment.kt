@@ -25,6 +25,7 @@ import com.example.koti.data.CartProduct
 import com.example.koti.databinding.FragmentProductsDetailsBinding
 import com.example.koti.util.Resource
 import com.example.koti.util.hideBottomNavigationView
+import com.example.koti.util.showBottomNavigationView
 import com.example.koti.viewmodel.DetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -63,6 +64,7 @@ class ProductDetailsFragment : Fragment() {
 
         binding.imageClose.setOnClickListener {
             findNavController().navigateUp()
+            showBottomNavigationView()
         }
 
 //        colorsAdapter.onItemClick = {

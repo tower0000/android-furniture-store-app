@@ -38,7 +38,7 @@
     <string name="size">Size</string>
     <string name="add_to_cart_button">ADD</string>
     <string name="size_demo">L</string>
-    <string name="your_shopping_cart_is_empty">Your shopping cart is empty</string>
+    <string name="your_shopping_cart_is_empty">Cart empty</string>
     <string name="support_virtual_payments">Koti dose not support virtual payments. You can pay when you receive your order.</string>
     <string name="prodduct_name_sample">CHAIR</string>
     <string name="product_rating_sample">0.0 (0)</string>
@@ -77,4 +77,7 @@
     <string name="button_shop_now">Shop Now</string>
     <string name="discount_sample">45% OFF</string>
     <string name="home_favorites">Favorites</string>
+    <string name="empty_cart_text">Your cart is empty.\nStart adding items to enjoy shopping!</string>
+    <string name="no_favorites">No favorites</string>
+    <string name="empty_favs_text">You have nothing on your list yet.\nIt\'s never too late to change it!</string>
 </resources>

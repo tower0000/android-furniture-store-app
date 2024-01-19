@@ -14,7 +14,7 @@
 
 
         <ImageView
-            android:id="@+id/imageCartProduct"
+            android:id="@+id/imgCartProduct"
             android:layout_width="110dp"
             android:layout_height="80dp"
             android:layout_marginStart="16dp"
@@ -33,8 +33,8 @@
             android:lines="1"
             android:text="@string/prodduct_name_sample"
             style="@style/textInterBlack"
-            app:layout_constraintStart_toEndOf="@id/imageCartProduct"
-            app:layout_constraintTop_toTopOf="@id/imageCartProduct" />
+            app:layout_constraintStart_toEndOf="@id/imgCartProduct"
+            app:layout_constraintTop_toTopOf="@id/imgCartProduct" />
 
 
         <TextView

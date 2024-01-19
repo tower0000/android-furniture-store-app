@@ -46,8 +46,8 @@ class FavoritesFragment : Fragment() {
 
         setupFavRv()
 
-        binding.imageCloseFavorites.setOnClickListener {
-            findNavController().navigateUp()
+        binding.buttonRedirectToHome.setOnClickListener{
+            findNavController().navigate(R.id.action_favoritesFragment_to_homeFragment)
         }
 
         favAdapter.onProductClick = {
@@ -146,24 +146,26 @@ class FavoritesFragment : Fragment() {
     private fun showOtherViews() {
         binding.apply {
             rvFavorites.visibility = View.VISIBLE
+            buttonRedirectToHome.visibility = View.VISIBLE
         }
     }
 
     private fun hideOtherViews() {
         binding.apply {
             rvFavorites.visibility = View.GONE
+            buttonRedirectToHome.visibility = View.GONE
         }
     }
 
     private fun hideEmptyCart() {
         binding.apply {
-            layoutFavsEmpty.visibility = View.GONE
+            layoutCartEmpty.visibility = View.GONE
         }
     }
 
     private fun showEmptyCart() {
         binding.apply {
-            layoutFavsEmpty.visibility = View.VISIBLE
+            layoutCartEmpty.visibility = View.VISIBLE
         }
     }
 

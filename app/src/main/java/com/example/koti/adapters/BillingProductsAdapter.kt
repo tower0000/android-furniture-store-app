@@ -19,7 +19,7 @@ class BillingProductsAdapter : Adapter<BillingProductsAdapter.BillingProductsVie
         ViewHolder(binding.root) {
         fun bind(billingProduct: CartProduct) {
             binding.apply {
-                Glide.with(itemView).load(billingProduct.product.images[0]).into(imageCartProduct)
+                Glide.with(itemView).load(billingProduct.product.images[0]).into(imgCartProduct)
                 tvProductCartName.text = billingProduct.product.name.uppercase()
                 tvBillingProductQuantity.text = billingProduct.quantity.toString()
 

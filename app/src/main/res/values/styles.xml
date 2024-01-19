@@ -234,7 +234,7 @@
         <item name="android:textSize">@dimen/h2TextSize</item>
     </style>
 
-    <dimen name="h1TextSize">30sp</dimen>
+    <dimen name="h1TextSize">28sp</dimen>
     <dimen name="h2TextSize">24sp</dimen>
     <dimen name="h3TextSize">18sp</dimen>
     <dimen name="h4TextSize">15sp</dimen>

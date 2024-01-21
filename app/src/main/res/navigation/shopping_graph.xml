@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.koti.fragments.shoppingFragments.HomeFragment"
+        android:name="com.example.koti.ui.view.fragments.shopping.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.example.koti.fragments.shoppingFragments.CartFragment"
+        android:name="com.example.koti.ui.view.fragments.shopping.CartFragment"
         android:label="CartFragment"
         tools:layout="@layout/fragment_cart">
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.koti.fragments.shoppingFragments.ProfileFragment"
+        android:name="com.example.koti.ui.view.fragments.shopping.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile">
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.example.koti.fragments.shoppingFragments.FavoritesFragment"
+        android:name="com.example.koti.ui.view.fragments.shopping.FavoritesFragment"
         android:label="FavoritesFragment"
         tools:layout="@layout/fragment_favorites">
         <action
@@ -59,21 +59,21 @@
     </fragment>
     <fragment
         android:id="@+id/productDetailsFragment"
-        android:name="com.example.koti.fragments.shoppingFragments.ProductDetailsFragment"
+        android:name="com.example.koti.ui.view.fragments.shopping.ProductDetailsFragment"
         android:label="ProductDetailsFragment"
         tools:layout="@layout/fragment_products_details">
         <argument
             android:name="product"
-            app:argType="com.example.koti.data.Product" />
+            app:argType="com.example.koti.model.Product" />
     </fragment>
     <fragment
         android:id="@+id/addressFragment"
-        android:name="com.example.koti.fragments.shoppingFragments.AddressFragment"
+        android:name="com.example.koti.ui.view.fragments.shopping.AddressFragment"
         android:label="AddressFragment"
         tools:layout="@layout/fragment_address"/>
     <fragment
         android:id="@+id/billingFragment"
-        android:name="com.example.koti.fragments.shoppingFragments.BillingFragment"
+        android:name="com.example.koti.ui.view.fragments.shopping.BillingFragment"
         android:label="BillingFragment"
         tools:layout="@layout/fragment_billing">
         <action
@@ -84,16 +84,16 @@
             app:argType="float" />
         <argument
             android:name="product"
-            app:argType="com.example.koti.data.CartProduct[]" />
+            app:argType="com.example.koti.model.CartProduct[]" />
     </fragment>
     <fragment
         android:id="@+id/userAccountFragment"
-        android:name="com.example.koti.fragments.settings.UserAccountFragment"
+        android:name="com.example.koti.ui.view.fragments.settings.UserAccountFragment"
         android:label="UserAccountFragment"
         tools:layout="@layout/fragment_user_account"/>
     <fragment
         android:id="@+id/allOrdersFragment"
-        android:name="com.example.koti.fragments.settings.AllOrdersFragment"
+        android:name="com.example.koti.ui.view.fragments.settings.AllOrdersFragment"
         android:label="AllOrdersFragment"
         tools:layout="@layout/fragment_orders">
         <action
@@ -102,11 +102,11 @@
     </fragment>
     <fragment
         android:id="@+id/orderDetailFragment"
-        android:name="com.example.koti.fragments.settings.OrderDetailFragment"
+        android:name="com.example.koti.ui.view.fragments.settings.OrderDetailFragment"
         android:label="OrderDetailFragment"
         tools:layout="@layout/fragment_order_detail">
         <argument
             android:name="order"
-            app:argType="com.example.koti.data.order.Order" />
+            app:argType="com.example.koti.model.Order" />
     </fragment>
 </navigation>

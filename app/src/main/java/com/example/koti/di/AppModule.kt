@@ -2,12 +2,12 @@ package com.example.koti.di
 
 import android.app.Application
 import android.content.Context.MODE_PRIVATE
-import com.example.koti.firebase.FirebaseCommon
-import com.example.koti.util.Constants.INTRODUCTION_SP
+import com.example.koti.data.FirebaseRepositoryImpl
+import com.example.koti.domain.repository.FirebaseRepository
+import com.example.koti.ui.util.FirebaseCommon
+import com.example.koti.ui.util.Constants.INTRODUCTION_SP
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthCredential
-import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
 import com.google.firebase.storage.FirebaseStorage
@@ -45,4 +45,10 @@ object AppModule {
     @Provides
     @Singleton
     fun provideStorage() = FirebaseStorage.getInstance().reference
+
+    @Provides
+    fun provideMyRepository(auth: FirebaseAuth, store: FirebaseFirestore): FirebaseRepository {
+        return FirebaseRepositoryImpl(auth, store)
+    }
+
 }

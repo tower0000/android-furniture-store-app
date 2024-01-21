@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/introductionFragment"
-        android:name="com.example.koti.fragments.authFragments.IntroductionFragment"
+        android:name="com.example.koti.ui.view.fragments.auth.IntroductionFragment"
         android:label="IntroductionFragment"
         tools:layout="@layout/fragment_introduction">
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.koti.fragments.authFragments.RegisterFragment"
+        android:name="com.example.koti.ui.view.fragments.auth.RegisterFragment"
         android:label="RegisterFragment"
         tools:layout="@layout/fragment_register">
         <action
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.koti.fragments.authFragments.LoginFragment"
+        android:name="com.example.koti.ui.view.fragments.auth.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action

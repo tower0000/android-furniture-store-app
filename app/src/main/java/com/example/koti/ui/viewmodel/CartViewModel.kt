@@ -2,6 +2,7 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.koti.domain.GetUserCartProductsUseCase
 import com.example.koti.model.CartProduct
 import com.example.koti.ui.util.FirebaseCommon
 import com.example.koti.ui.util.getProductPrice
@@ -22,7 +23,8 @@ import javax.inject.Inject
 class CartViewModel @Inject constructor(
     private val firestore: FirebaseFirestore,
     private val auth: FirebaseAuth,
-    private val firebaseCommon: FirebaseCommon
+    private val firebaseCommon: FirebaseCommon,
+    private val getUserCartProductsUseCase: GetUserCartProductsUseCase
 ) : ViewModel() {
 
     private val _cartProducts =
@@ -63,16 +65,12 @@ class CartViewModel @Inject constructor(
 
     private fun getCartProducts() {
         viewModelScope.launch {
-            firestore.collection("user").document(auth.uid!!).collection("cart")
-                .addSnapshotListener { value, error ->
-                    if (error != null || value == null) {
-                        viewModelScope.launch { _cartProducts.emit(Resource.Error(error?.message.toString())) }
-                    } else {
-                        cartProductDocuments = value.documents
-                        val cartProducts = value.toObjects(CartProduct::class.java)
-                        viewModelScope.launch { _cartProducts.emit(Resource.Success(cartProducts)) }
-                    }
-                }
+            _cartProducts.emit(Resource.Loading())
+            val result = getUserCartProductsUseCase.execute()
+            if (result is String)
+                _cartProducts.emit(Resource.Error(result))
+            else
+                _cartProducts.emit(Resource.Success(result as List<CartProduct>))
         }
     }
 

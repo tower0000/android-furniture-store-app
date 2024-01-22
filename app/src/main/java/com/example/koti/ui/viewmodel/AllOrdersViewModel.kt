@@ -2,7 +2,7 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.koti.domain.GetOrdersUseCase
+import com.example.koti.domain.GetUserOrdersUseCase
 import com.example.koti.model.Order
 import com.example.koti.ui.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AllOrdersViewModel @Inject constructor(
-    private val getOrdersUseCase: GetOrdersUseCase
+    private val getUserOrdersUseCase: GetUserOrdersUseCase
 ) : ViewModel() {
 
     private val _allOrders = MutableStateFlow<Resource<List<Order>>>(Resource.Unspecified())
@@ -26,7 +26,7 @@ class AllOrdersViewModel @Inject constructor(
     private fun getAllOrders() {
         viewModelScope.launch {
             _allOrders.emit(Resource.Loading())
-            val result = getOrdersUseCase.execute()
+            val result = getUserOrdersUseCase.execute()
             if (result is String)
                 _allOrders.emit(Resource.Error(result))
             else

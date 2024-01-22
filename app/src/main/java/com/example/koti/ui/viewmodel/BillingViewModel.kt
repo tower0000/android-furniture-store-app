@@ -2,8 +2,11 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.koti.domain.GetUserAddressesUseCase
+import com.example.koti.domain.PlaceOrderUseCase
 import com.example.koti.model.Address
 import com.example.koti.model.Order
+import com.example.koti.ui.util.Constants.SUCCESS
 import com.example.koti.ui.util.Resource
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -15,8 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BillingViewModel @Inject constructor(
-    private val firestore: FirebaseFirestore,
-    private val auth: FirebaseAuth
+    private val placerOrderUseCase: PlaceOrderUseCase,
+    private val getUserAddressesUseCase: GetUserAddressesUseCase
 ) : ViewModel() {
 
     private val _address = MutableStateFlow<Resource<List<Address>>>(Resource.Unspecified())
@@ -30,45 +33,24 @@ class BillingViewModel @Inject constructor(
     }
 
     fun getUserAddresses() {
-        viewModelScope.launch { _address.emit(Resource.Loading()) }
-        firestore.collection("user").document(auth.uid!!).collection("address")
-            .addSnapshotListener { value, error ->
-                if (error != null) {
-                    viewModelScope.launch { _address.emit(Resource.Error(error.message.toString())) }
-                    return@addSnapshotListener
-                }
-                val addresses = value?.toObjects(Address::class.java)
-                viewModelScope.launch { _address.emit(Resource.Success(addresses!!)) }
-            }
+        viewModelScope.launch {
+            _address.emit(Resource.Loading())
+            val result = getUserAddressesUseCase.execute()
+            if (result is String)
+                _address.emit(Resource.Error(result))
+            else
+                _address.emit(Resource.Success(result as List<Address>))
+        }
     }
 
     fun placeOrder(order: Order) {
         viewModelScope.launch {
             _order.emit(Resource.Loading())
-        }
-        firestore.runBatch { batch ->
-            firestore.collection("user")
-                .document(auth.uid!!)
-                .collection("orders")
-                .document()
-                .set(order)
-
-            firestore.collection("orders").document().set(order)
-
-            firestore.collection("user").document(auth.uid!!).collection("cart").get()
-                .addOnSuccessListener {
-                    it.documents.forEach {
-                        it.reference.delete()
-                    }
-                }
-        }.addOnSuccessListener {
-            viewModelScope.launch {
+            val result = placerOrderUseCase.execute(order)
+            if (result == SUCCESS)
                 _order.emit(Resource.Success(order))
-            }
-        }.addOnFailureListener {
-            viewModelScope.launch {
-                _order.emit(Resource.Error(it.message.toString()))
-            }
+            else
+                _order.emit(Resource.Error(result))
         }
     }
 }

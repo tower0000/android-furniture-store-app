@@ -36,7 +36,7 @@ class BillingFragment : Fragment() {
     private lateinit var binding: FragmentBillingBinding
     private val addressAdapter by lazy { AddressAdapter() }
     private val billingProductsAdapter by lazy { BillingProductsAdapter() }
-    private val billingViewModel by viewModels<BillingViewModel>()
+    private val viewModel by viewModels<BillingViewModel>()
     private val args by navArgs<BillingFragmentArgs>()
     private var products = emptyList<CartProduct>()
     private var totalPrice = 0f
@@ -74,7 +74,7 @@ class BillingFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                billingViewModel.address.collectLatest {
+                viewModel.address.collectLatest {
                     when (it) {
                         is Resource.Loading -> {
                             binding.progressbarAddress.visibility = View.VISIBLE
@@ -102,7 +102,7 @@ class BillingFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                billingViewModel.order.collectLatest {
+                viewModel.order.collectLatest {
                     when (it) {
                         is Resource.Loading -> {
                             binding.buttonPlaceOrder.startAnimation()
@@ -165,7 +165,7 @@ class BillingFragment : Fragment() {
                     products,
                     selectedAddress!!
                 )
-                billingViewModel.placeOrder(order)
+                viewModel.placeOrder(order)
                 dialog.dismiss()
             }
         }
@@ -187,5 +187,10 @@ class BillingFragment : Fragment() {
             adapter = billingProductsAdapter
             addItemDecoration(HorisontalItemDecoration())
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getUserAddresses()
     }
 }

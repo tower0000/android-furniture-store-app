@@ -5,7 +5,7 @@ import com.google.firebase.auth.FirebaseUser
 import javax.inject.Inject
 
 class SignInWithEmailPasswordUseCase @Inject constructor (val repository: FirebaseRepository) {
-    suspend fun signInWithEmailPassword(email: String , password: String): FirebaseUser? {
+    suspend fun execute(email: String , password: String): String {
         return repository.signInWithEmailPassword(email, password)
     }
 }

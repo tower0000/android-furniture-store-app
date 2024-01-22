@@ -1,19 +1,14 @@
 package com.example.koti.domain.repository
 
 import com.example.koti.model.User
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.DocumentReference
 
 interface FirebaseRepository {
+    suspend fun signUpWithEmailPassword(user: User, password: String): String
 
-    suspend fun signUpWithEmailPassword(email: String, password: String): FirebaseUser?
-
-    fun signInWithEmailPassword(email: String, password: String): FirebaseUser?
-
-    fun signOut()
-
-    suspend fun getCollection(collectionName: String): Any?
-
+    suspend fun signInWithEmailPassword(email: String, password: String): String
     suspend fun sendPasswordReset(email: String): String
-
+    suspend fun getCollection(collectionName: String): Any?
+    suspend fun getUserInformation(): Any?
+    fun saveUserInformation(userUid: String, user: User): String
+    fun signOut()
 }

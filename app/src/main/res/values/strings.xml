@@ -81,4 +81,6 @@
     <string name="no_favorites">No favorites</string>
     <string name="empty_favs_text">You have nothing on your list yet.\nIt\'s never too late to change it!</string>
     <string name="order_help_text">If you have any problems with your order, call us at 1-xxx-xxx-xxxx</string>
+    <string name="collection_user">user</string>
+    <string name="toast_reset_link">Reset link was sent to your email</string>
 </resources>

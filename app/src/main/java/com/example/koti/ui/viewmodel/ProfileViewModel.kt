@@ -2,7 +2,7 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.koti.domain.GetCollectionUseCase
+import com.example.koti.domain.GetUserInformationUseCase
 import com.example.koti.domain.SendResetPasswordUseCase
 import com.example.koti.domain.SignOutUseCase
 import com.example.koti.model.User
@@ -20,7 +20,7 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(
     private val sendResetPasswordUseCase: SendResetPasswordUseCase,
     private val signOutUseCase: SignOutUseCase,
-    private val getCollectionUseCase: GetCollectionUseCase
+    private val getUserInformationUseCase: GetUserInformationUseCase
 ) : ViewModel() {
 
     private val _user = MutableStateFlow<Resource<User>>(Resource.Unspecified())
@@ -36,20 +36,22 @@ class ProfileViewModel @Inject constructor(
     private fun getUser() {
         viewModelScope.launch {
             _user.emit(Resource.Loading())
-            val user = getCollectionUseCase.execute("user") as User
-            _user.emit(Resource.Success(user))
+            val requestResult = getUserInformationUseCase.execute()
+            if (requestResult is String)
+                _user.emit(Resource.Error(requestResult))
+            else
+                _user.emit(Resource.Success(requestResult as User))
         }
     }
-
 
     fun resetPassword(email: String) {
         viewModelScope.launch {
             _resetPassword.emit(Resource.Loading())
-            val state = sendResetPasswordUseCase.execute(email)
-            if (state == SUCCESS)
+            val requestState = sendResetPasswordUseCase.execute(email)
+            if (requestState == SUCCESS)
                 _resetPassword.emit(Resource.Success(email))
             else
-                _resetPassword.emit(Resource.Error(state))
+                _resetPassword.emit(Resource.Error(requestState))
         }
     }
 

@@ -5,5 +5,4 @@ object Constants {
     const val INTRODUCTION_SP = "IntroductionSharedPrefs"
     const val INTRODUCTION_KEY = "IntroductionKey"
     const val SUCCESS = "Success"
-    const val UNSPECIFIED = "Unspecified"
 }

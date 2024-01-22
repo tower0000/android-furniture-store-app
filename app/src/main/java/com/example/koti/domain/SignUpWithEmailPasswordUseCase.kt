@@ -1,12 +1,12 @@
 package com.example.koti.domain
 
 import com.example.koti.domain.repository.FirebaseRepository
-import com.google.firebase.auth.FirebaseUser
+import com.example.koti.model.User
 import javax.inject.Inject
 
 
-class SignUpWithEmailPasswordUseCase (private val repo: FirebaseRepository) {
-    suspend fun signUpWithEmailPassword(email: String , password: String): FirebaseUser? {
-        return repo.signUpWithEmailPassword(email, password)
+class SignUpWithEmailPasswordUseCase @Inject constructor (val repository: FirebaseRepository) {
+    suspend fun execute(user: User, password: String): String {
+        return repository.signUpWithEmailPassword(user, password)
     }
 }

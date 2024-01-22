@@ -76,6 +76,34 @@ class ProfileFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.resetPassword.collectLatest {
+                    when (it) {
+                        is Resource.Loading -> {
+                            binding.progressbarSettings.visibility = View.VISIBLE
+                        }
+
+                        is Resource.Success -> {
+                            binding.progressbarSettings.visibility = View.GONE
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.toast_reset_link),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+
+                        is Resource.Error -> {
+                            binding.progressbarSettings.visibility = View.GONE
+                            Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                        }
+
+                        else -> Unit
+                    }
+                }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.user.collectLatest {
                     when (it) {
                         is Resource.Loading -> {

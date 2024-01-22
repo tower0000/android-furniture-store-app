@@ -2,14 +2,20 @@ package com.example.koti.data
 
 
 import android.util.Log
+import androidx.lifecycle.viewModelScope
 import com.example.koti.domain.repository.FirebaseRepository
+import com.example.koti.model.Address
+import com.example.koti.model.Order
 import com.example.koti.model.User
+import com.example.koti.ui.util.Constants.ADDRESS_COLLECTION
+import com.example.koti.ui.util.Constants.ORDERS_COLLECTION
 import com.example.koti.ui.util.Constants.SUCCESS
 import com.example.koti.ui.util.Constants.USER_COLLECTION
 import com.example.koti.ui.util.Resource
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
@@ -102,5 +108,29 @@ class FirebaseRepositoryImpl @Inject constructor(
 
     override fun signOut() {
         auth.signOut()
+    }
+
+    override suspend fun addNewAddress(address: Address): String {
+        return try {
+            store.collection(USER_COLLECTION).document(auth.uid!!).collection(ADDRESS_COLLECTION).document().set(address)
+            SUCCESS
+        } catch (e: Exception) {
+            val addNewAddressExceptionMessage = "${e.message}"
+            e.message?.let { Log.e(TAG, it) }
+            addNewAddressExceptionMessage
+        }
+    }
+
+    override suspend fun getOrders(): Any {
+        return try {
+            val query = store.collection(USER_COLLECTION).document(auth.uid!!).collection(
+                ORDERS_COLLECTION).get().await()
+            val orders = query.toObjects(Order::class.java)
+            orders
+        } catch (e: Exception) {
+            val getOrdersExceptionMessage = "${e.message}"
+            e.message?.let { Log.e(TAG, it) }
+            getOrdersExceptionMessage
+        }
     }
 }

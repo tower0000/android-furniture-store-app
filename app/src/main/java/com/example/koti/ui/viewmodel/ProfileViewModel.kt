@@ -36,11 +36,11 @@ class ProfileViewModel @Inject constructor(
     private fun getUser() {
         viewModelScope.launch {
             _user.emit(Resource.Loading())
-            val requestResult = getUserInformationUseCase.execute()
-            if (requestResult is String)
-                _user.emit(Resource.Error(requestResult))
+            val result = getUserInformationUseCase.execute()
+            if (result is String)
+                _user.emit(Resource.Error(result))
             else
-                _user.emit(Resource.Success(requestResult as User))
+                _user.emit(Resource.Success(result as User))
         }
     }
 

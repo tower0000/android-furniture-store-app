@@ -26,7 +26,6 @@ import com.example.koti.model.CartProduct
 import com.example.koti.ui.util.HorisontalItemDecoration
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.viewmodel.BillingViewModel
-import com.example.koti.ui.viewmodel.OrderViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -41,9 +40,7 @@ class BillingFragment : Fragment() {
     private val args by navArgs<BillingFragmentArgs>()
     private var products = emptyList<CartProduct>()
     private var totalPrice = 0f
-
     private var selectedAddress: Address? = null
-    private val orderViewModel by viewModels<OrderViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -105,7 +102,7 @@ class BillingFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                orderViewModel.order.collectLatest {
+                billingViewModel.order.collectLatest {
                     when (it) {
                         is Resource.Loading -> {
                             binding.buttonPlaceOrder.startAnimation()
@@ -168,7 +165,7 @@ class BillingFragment : Fragment() {
                     products,
                     selectedAddress!!
                 )
-                orderViewModel.placeOrder(order)
+                billingViewModel.placeOrder(order)
                 dialog.dismiss()
             }
         }

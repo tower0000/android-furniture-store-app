@@ -2,7 +2,9 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.koti.domain.AddNewAddressUseCase
 import com.example.koti.model.Address
+import com.example.koti.ui.util.Constants.SUCCESS
 import com.example.koti.ui.util.Resource
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -16,8 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddressViewModel @Inject constructor(
-    private val firestore: FirebaseFirestore,
-    private val auth: FirebaseAuth
+    private val addNewAddressUseCase: AddNewAddressUseCase
 ) : ViewModel() {
 
     private val _addNewAddress = MutableStateFlow<Resource<Address>>(Resource.Unspecified())
@@ -26,17 +27,16 @@ class AddressViewModel @Inject constructor(
     private val _error = MutableSharedFlow<String>()
     val error = _error.asSharedFlow()
     fun addAddress(address: Address) {
-        val validateInputs = validateInputs(address)
-        if (validateInputs) {
-            viewModelScope.launch { _addNewAddress.emit(Resource.Loading()) }
-            firestore.collection("user").document(auth.uid!!).collection("address").document()
-                .set(address).addOnSuccessListener {
-                    viewModelScope.launch { _addNewAddress.emit(Resource.Success(address)) }
-                }.addOnFailureListener {
-                    viewModelScope.launch { _addNewAddress.emit(Resource.Error(it.message.toString())) }
-                }
-        } else {
-            viewModelScope.launch {
+        viewModelScope.launch {
+            val validateInputs = validateInputs(address)
+            if (validateInputs) {
+                _addNewAddress.emit(Resource.Loading())
+                val state = addNewAddressUseCase.execute(address)
+                if (state == SUCCESS)
+                    _addNewAddress.emit(Resource.Success(address))
+                else
+                    _addNewAddress.emit(Resource.Error(state))
+            } else {
                 _error.emit("All fields are required")
             }
         }

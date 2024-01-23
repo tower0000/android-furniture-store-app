@@ -32,7 +32,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 android:src="@drawable/home_image"/>
             
             <ImageView
@@ -54,9 +54,11 @@
                 android:textColor="@color/white"
                 android:layout_marginTop="25dp"
                 android:layout_marginStart="@dimen/homeSideMargin"
+                android:layout_marginEnd="160dp"
                 android:text="@string/tv_home_image_title"
                 app:layout_constraintStart_toStartOf="@id/homeImageOverlay"
                 app:layout_constraintTop_toTopOf="@id/homeImageOverlay"
+                app:layout_constraintEnd_toEndOf="@id/homeImageOverlay"
                 />
 
             <TextView
@@ -68,7 +70,9 @@
                 android:layout_marginTop="3dp"
                 android:textColor="@color/white"
                 android:layout_marginStart="@dimen/homeSideMargin"
+                android:layout_marginEnd="200dp"
                 android:text="@string/tv_home_image_subtitle"
+                app:layout_constraintEnd_toEndOf="@id/homeImageOverlay"
                 app:layout_constraintStart_toStartOf="@id/homeImageOverlay"
                 app:layout_constraintTop_toBottomOf="@+id/imageTitle"
                 />
@@ -77,7 +81,7 @@
                 android:layout_width="100dp"
                 android:layout_height="33dp"
                 style="@style/whiteButtonStyle"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 app:layout_constraintTop_toBottomOf="@+id/imageSubTitle"
                 app:layout_constraintStart_toStartOf="@id/homeImageOverlay"
                 android:layout_marginStart="@dimen/homeSideMargin"

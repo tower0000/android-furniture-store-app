@@ -53,17 +53,27 @@
                             android:scrollIndicators="bottom"
                             android:background="@color/neutral_20"/>
 
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/imageCloseBackground"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@color/neutral_40"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintStart_toStartOf="@id/viewPagerProductImages"
+                            app:layout_constraintTop_toTopOf="@id/viewPagerProductImages" />
+
                         <ImageView
                             android:id="@+id/imageClose"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
                             android:padding="3dp"
-                            android:paddingStart="3dp"
-                            android:layout_marginTop="3dp"
-                            app:layout_constraintStart_toStartOf="@id/viewPagerProductImages"
-                            app:layout_constraintTop_toTopOf="@id/viewPagerProductImages"
                             android:src="@drawable/ic_close"
-                            app:tint="@color/neutral_70" />
+                            app:tint="@color/neutral_60"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintStart_toStartOf="@id/viewPagerProductImages"
+                            app:layout_constraintTop_toTopOf="@id/viewPagerProductImages"/>
 
 
                     </androidx.cardview.widget.CardView>
@@ -78,8 +88,7 @@
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageViewProduct"
-                        app:srcCompat="@drawable/ic_close" />
+                        app:layout_constraintBottom_toBottomOf="@+id/imageViewProduct" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

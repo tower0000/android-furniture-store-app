@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koti.ui.adapters.AllOrdersAdapter
 import com.example.koti.databinding.FragmentOrdersBinding
+import com.example.koti.model.Order
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.util.VerticalItemDecoration
 import com.example.koti.ui.viewmodel.AllOrdersViewModel
@@ -57,7 +58,7 @@ class AllOrdersFragment : Fragment() {
                             binding.progressbarAllOrders.visibility = View.GONE
                             binding.rvAllOrders.visibility = View.VISIBLE
                             ordersAdapter.differ.submitList(it.data)
-                            if(it.data == null){
+                            if(it.data == null || it.data == emptyList<Order>()){
                                 binding.layoutOrdersEmpty.visibility = View.VISIBLE
                                 binding.rvAllOrders.visibility = View.GONE
                             }

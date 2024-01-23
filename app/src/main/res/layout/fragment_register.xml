@@ -256,6 +256,7 @@
             app:layout_constraintTop_toBottomOf="@id/buttonGoogleLogin" />
 
         <LinearLayout
+            android:id="@+id/linearRedirect"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/auth_ed_top_margin"
@@ -283,9 +284,14 @@
                 android:text="@string/log_in_redirect"
                 android:textColor="@color/green" />
 
-
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            app:layout_constraintTop_toBottomOf="@id/linearRedirect"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.core.widget.NestedScrollView>

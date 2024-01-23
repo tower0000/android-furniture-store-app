@@ -6,6 +6,7 @@ import com.example.koti.model.Category
 import com.example.koti.model.Product
 import com.example.koti.ui.util.Constants.CATEGORY_COLLECTION
 import com.example.koti.ui.util.Constants.PRODUCTS_COLLECTION
+import com.example.koti.ui.util.Constants.SHOP_PRODUCTS_COLLECTION
 import com.example.koti.ui.util.Resource
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
@@ -30,7 +31,7 @@ class CategoryViewModel(
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 _offerProducts.emit(Resource.Loading())
-                store.collection(PRODUCTS_COLLECTION)
+                store.collection(SHOP_PRODUCTS_COLLECTION)
                     .whereEqualTo(CATEGORY_COLLECTION, category.category)
                     .whereNotEqualTo("offerPercentage", null).get()
                     .addOnSuccessListener {

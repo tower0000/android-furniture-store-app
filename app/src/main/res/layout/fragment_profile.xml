@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ProgressBar
             android:id="@+id/progressbarSettings"
@@ -152,7 +152,7 @@
                     android:textSize="17sp"
                     android:fontFamily="@font/manrope_regular"
                     android:layout_marginStart="12dp"
-                    android:text="All orders" />
+                    android:text="All Orders" />
 
                 <ImageView
                     android:layout_width="15dp"
@@ -362,25 +362,9 @@
                     android:src="@drawable/ic_arrow"
                     app:tint="@color/neutral_70" />
 
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-
-            <TextView
-                android:id="@+id/tvVersion"
-                style="@style/smallTextInterGrey"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:text="Version 1.0"
-                android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/guideline2"
-                app:layout_constraintStart_toStartOf="@id/guideline1" />
-
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline1"
@@ -395,6 +379,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.96" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                app:layout_constraintTop_toBottomOf="@id/clLogout"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

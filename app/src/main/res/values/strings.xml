@@ -72,8 +72,8 @@
     <string name="pass_null">Password field can\'t be empty</string>
     <string name="cancel_reset_pass">Cancel</string>
     <string name="send_pass_reset">SEND</string>
-    <string name="tv_home_image_title">Build The Kitchen\nOf Your Dreams!</string>
-    <string name="tv_home_image_subtitle">Get discounts up to 75% for\nkitchen sets and cupboards</string>
+    <string name="tv_home_image_title">Build The Kitchen Of Your Dreams!</string>
+    <string name="tv_home_image_subtitle">Get discounts up to 75% for kitchen sets and cupboards</string>
     <string name="button_shop_now">Shop Now</string>
     <string name="discount_sample">45% OFF</string>
     <string name="home_favorites">Favorites</string>
@@ -83,4 +83,6 @@
     <string name="order_help_text">If you have any problems with your order, call us at 1-xxx-xxx-xxxx</string>
     <string name="collection_user">user</string>
     <string name="toast_reset_link">Reset link was sent to your email</string>
+    <string name="no_orders">No orders</string>
+    <string name="empty_orders_text">You have not placed an order yet.\nAdd items to your cart and checkout\nwhen you are ready!</string>
 </resources>

@@ -7,7 +7,7 @@
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="170dp"
+        android:layout_width="match_parent"
         android:layout_height="250dp"
         android:background="@color/white"
         android:paddingBottom="14dp">
@@ -19,7 +19,7 @@
             android:layout_marginStart="14dp"
             android:layout_marginTop="14dp"
             android:layout_marginEnd="14dp"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             android:src="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

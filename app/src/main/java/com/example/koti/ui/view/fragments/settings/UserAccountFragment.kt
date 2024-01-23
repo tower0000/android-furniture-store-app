@@ -112,8 +112,7 @@ class UserAccountFragment : Fragment() {
             binding.apply {
                 val firstName = edFirstName.text.toString().trim()
                 val lastName = edLastName.text.toString().trim()
-                val email = edEmail.text.toString().trim()
-                val user = User(firstName, lastName, email)
+                val user = User(firstName, lastName, "")
                 viewModel.updateUser(user, imageUri)
             }
         }
@@ -135,7 +134,6 @@ class UserAccountFragment : Fragment() {
                 Glide.with(this@UserAccountFragment).load(data.imagePath).into(imageUser)
             edFirstName.setText(data.firstName)
             edLastName.setText(data.lastName)
-            edEmail.setText(data.email)
         }
     }
 
@@ -146,7 +144,6 @@ class UserAccountFragment : Fragment() {
             imageEdit.visibility = View.VISIBLE
             edFirstName.visibility = View.VISIBLE
             edLastName.visibility = View.VISIBLE
-            edEmail.visibility = View.VISIBLE
             buttonSave.visibility = View.VISIBLE
         }
     }
@@ -158,7 +155,6 @@ class UserAccountFragment : Fragment() {
             imageEdit.visibility = View.INVISIBLE
             edFirstName.visibility = View.INVISIBLE
             edLastName.visibility = View.INVISIBLE
-            edEmail.visibility = View.INVISIBLE
             buttonSave.visibility = View.INVISIBLE
         }
     }

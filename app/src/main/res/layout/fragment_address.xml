@@ -1,135 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/neutral_20">
 
-    <ImageView
-        android:id="@+id/buttonCloseAddress"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:src="@drawable/ic_close"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="45dp"
-        app:tint="@color/neutral_70" />
 
-    <TextView
-        android:id="@+id/tvAddAddress"
-        style="@style/titleBlackNeutral"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Add address"
-        android:layout_marginStart="7dp"
-        android:layout_marginBottom="-1dp"
-        android:textSize="23sp"
-        android:fontFamily="@font/manrope_medium"
-        app:layout_constraintStart_toEndOf="@id/buttonCloseAddress"
-        app:layout_constraintBottom_toBottomOf="@id/buttonCloseAddress" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageCloseBackground"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@color/neutral_40"
+            android:layout_marginTop="45dp"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/buttonCloseAddress"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:padding="3dp"
+            android:src="@drawable/ic_close"
+            app:tint="@color/neutral_60"
+            android:layout_marginTop="45dp"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvAddAddress"
+            style="@style/titleBlackNeutral"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Add Address"
+            android:layout_marginStart="13dp"
+            android:layout_marginBottom="2dp"
+            android:textSize="23sp"
+            android:fontFamily="@font/manrope_medium"
+            app:layout_constraintStart_toEndOf="@id/buttonCloseAddress"
+            app:layout_constraintBottom_toBottomOf="@id/buttonCloseAddress" />
 
 
-    <EditText
-        android:id="@+id/edAddressTitle"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="15dp"
-        style="@style/editTextField"
-        android:gravity="start|center_vertical"
-        android:hint="Address location Ex: Home"
-        android:paddingStart="15dp"
-        android:paddingEnd="20dp"
-        android:singleLine="true"
-        app:layout_constraintEnd_toEndOf="@id/guideline2"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@+id/tvAddAddress" />
 
-    <EditText
-        android:id="@+id/edFullName"
-        style="@style/editTextField"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:gravity="start|center_vertical"
-        android:hint="Full Name"
-        android:paddingStart="15dp"
-        android:paddingEnd="20dp"
-        android:singleLine="true"
-        app:layout_constraintEnd_toEndOf="@id/guideline2"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@+id/edAddressTitle" />
-
-    <EditText
-        android:id="@+id/edStreet"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        style="@style/editTextField"
-        android:gravity="start|center_vertical"
-        android:hint="Street"
-        android:paddingStart="15dp"
-        android:paddingEnd="20dp"
-        android:singleLine="true"
-        app:layout_constraintEnd_toEndOf="@id/guideline2"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@id/edFullName" />
-
-    <LinearLayout
-        android:id="@+id/linear"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@id/guideline2"
-        app:layout_constraintHorizontal_bias="0.484"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@+id/edPhone">
 
         <EditText
-            android:id="@+id/edCity"
-            android:layout_width="378dp"
+            android:id="@+id/edAddressTitle"
+            android:layout_width="0dp"
             android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="5dp"
-            android:layout_weight="1"
+            android:layout_marginTop="15dp"
             style="@style/editTextField"
             android:gravity="start|center_vertical"
-            android:hint="City"
+            android:hint="Address location Ex: Home"
             android:paddingStart="15dp"
             android:paddingEnd="20dp"
-            android:singleLine="true" />
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddAddress" />
 
         <EditText
-            android:id="@+id/edState"
-            android:layout_width="378dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
+            android:id="@+id/edFullName"
             style="@style/editTextField"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
             android:gravity="start|center_vertical"
-            android:hint="State"
+            android:hint="Full Name"
             android:paddingStart="15dp"
             android:paddingEnd="20dp"
-            android:singleLine="true" />
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@+id/edAddressTitle" />
 
-    </LinearLayout>
+        <EditText
+            android:id="@+id/edStreet"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            style="@style/editTextField"
+            android:gravity="start|center_vertical"
+            android:hint="Street"
+            android:paddingStart="15dp"
+            android:paddingEnd="20dp"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/edFullName" />
 
-    <EditText
-        android:id="@+id/edPhone"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        style="@style/editTextField"
-        android:gravity="start|center_vertical"
-        android:hint="Phone"
-        android:paddingStart="15dp"
-        android:paddingEnd="20dp"
-        android:singleLine="true"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/guideline1"
-        app:layout_constraintTop_toBottomOf="@+id/edStreet" />
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@+id/edPhone">
 
+            <EditText
+                android:id="@+id/edCity"
+                android:layout_width="378dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                style="@style/editTextField"
+                android:gravity="start|center_vertical"
+                android:hint="City"
+                android:paddingStart="15dp"
+                android:paddingEnd="20dp"
+                android:singleLine="true" />
 
+            <EditText
+                android:id="@+id/edState"
+                android:layout_width="378dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                style="@style/editTextField"
+                android:gravity="start|center_vertical"
+                android:hint="State"
+                android:paddingStart="15dp"
+                android:paddingEnd="20dp"
+                android:singleLine="true" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edPhone"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            style="@style/editTextField"
+            android:gravity="start|center_vertical"
+            android:hint="Phone"
+            android:paddingStart="15dp"
+            android:paddingEnd="20dp"
+            android:singleLine="true"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
+            app:layout_constraintTop_toBottomOf="@+id/edStreet" />
 
         <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/buttonSave"
@@ -145,30 +160,35 @@
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintEnd_toEndOf="@id/guideline2"/>
 
+        <ProgressBar
+            android:id="@+id/progressbarAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="45dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04" />
 
-    <ProgressBar
-        android:id="@+id/progressbarAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="45dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.04136253" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            app:layout_constraintTop_toBottomOf="@id/buttonSave"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.96" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

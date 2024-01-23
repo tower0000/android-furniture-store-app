@@ -3,82 +3,75 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="@color/neutral_20">
+    android:background="@color/neutral_20"
+    android:fillViewport="true">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarUserAccount"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageCloseBackground"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="45dp"
+            android:src="@color/neutral_40"
+            app:layout_constraintStart_toStartOf="@id/leftGuideline"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/buttonCloseAccount"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="45dp"
+            android:padding="3dp"
+            android:src="@drawable/ic_close"
+            app:layout_constraintStart_toStartOf="@id/leftGuideline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/neutral_60" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tvAddAddress"
+            style="@style/titleBlackNeutral"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginBottom="2dp"
+            android:fontFamily="@font/manrope_medium"
+            android:text="Profile Information"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="@id/buttonCloseAccount"
+            app:layout_constraintStart_toEndOf="@id/buttonCloseAccount" />
 
-
-                <ImageView
-                    android:id="@+id/buttonCloseAccount"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="45dp"
-                    android:src="@drawable/ic_close"
-                    app:tint="@color/neutral_70"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <TextView
-                    android:id="@+id/tvAddAddress"
-                    style="@style/titleBlackNeutral"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Profile information"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginBottom="-1dp"
-                    android:textSize="23sp"
-                    android:fontFamily="@font/manrope_medium"
-                    app:layout_constraintStart_toEndOf="@id/buttonCloseAccount"
-                    app:layout_constraintBottom_toBottomOf="@id/buttonCloseAccount" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.appcompat.widget.Toolbar>
 
         <ProgressBar
             android:id="@+id/progressbarAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:visibility="gone"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageUser"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="40dp"
-            android:src="@color/green"
+            android:layout_marginTop="20dp"
+            android:src="@color/black"
             app:layout_constraintEnd_toEndOf="@id/rightGuideline"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="@id/leftGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarUserAccount" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonCloseAccount" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageEdit"
+            style="@style/roundButtonStyle"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginTop="50dp"
-            style="@style/roundButtonStyle"
             android:backgroundTint="@color/white"
             android:src="@drawable/ic_edit"
             app:layout_constraintBottom_toBottomOf="@id/imageUser"
@@ -87,10 +80,10 @@
 
         <EditText
             android:id="@+id/edFirstName"
+            style="@style/editTextField"
             android:layout_width="0dp"
             android:layout_height="45dp"
-            android:layout_marginTop="30dp"
-            style="@style/editTextField"
+            android:layout_marginTop="25dp"
             android:gravity="center"
             android:hint="First Name"
             app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
@@ -99,38 +92,27 @@
 
         <EditText
             android:id="@+id/edLastName"
+            style="@style/editTextField"
             android:layout_width="0dp"
             android:layout_height="45dp"
-            android:layout_marginTop="15dp"
-            style="@style/editTextField"
+            android:layout_marginTop="12dp"
             android:gravity="center"
             android:hint="Last Name"
             app:layout_constraintEnd_toEndOf="@id/rightGuideline"
             app:layout_constraintStart_toStartOf="@id/leftGuideline"
             app:layout_constraintTop_toBottomOf="@id/edFirstName" />
 
-        <EditText
-            android:id="@+id/edEmail"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="15dp"
-            style="@style/editTextField"
-            android:gravity="center"
-            android:hint="Email"
-            app:layout_constraintEnd_toEndOf="@id/rightGuideline"
-            app:layout_constraintStart_toStartOf="@id/leftGuideline"
-            app:layout_constraintTop_toBottomOf="@id/edLastName" />
 
         <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/buttonSave"
+            style="@style/greenButtonStyle"
             android:layout_width="0dp"
             android:layout_height="45dp"
-            style="@style/greenButtonStyle"
+            android:layout_marginTop="20dp"
             android:text="Save"
             app:layout_constraintEnd_toEndOf="@id/rightGuideline"
             app:layout_constraintStart_toStartOf="@id/leftGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/edEmail"
-            android:layout_marginTop="20dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/edLastName" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/leftGuideline"
@@ -145,6 +127,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.96" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            app:layout_constraintTop_toBottomOf="@id/buttonSave"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

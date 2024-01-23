@@ -1,5 +1,6 @@
 package com.example.koti.ui.view.fragments.shopping
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -18,6 +19,8 @@ import com.bumptech.glide.Glide
 import com.example.koti.R
 import com.example.koti.ui.view.activities.AuthActivity
 import com.example.koti.databinding.FragmentProfileBinding
+import com.example.koti.model.Order
+import com.example.koti.model.OrderStatus
 import com.example.koti.ui.util.setupBottomSheetDialog
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.util.showBottomNavigationView
@@ -66,13 +69,8 @@ class ProfileFragment : Fragment() {
         }
 
         binding.clLogout.setOnClickListener {
-            viewModel.logout()
-            val intent = Intent(requireActivity(), AuthActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
+            showLogOutConfirmationDialog()
         }
-
-        binding.tvVersion.text = "Version 1.0"
 
         viewLifecycleOwner.lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -136,6 +134,25 @@ class ProfileFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         showBottomNavigationView()
+    }
+
+    private fun showLogOutConfirmationDialog() {
+        val alertDialog = AlertDialog.Builder(requireContext()).apply {
+            setTitle("Exit")
+            setMessage("Do you want to logout?")
+            setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            setPositiveButton("Yes") { dialog, _ ->
+                viewModel.logout()
+                val intent = Intent(requireActivity(), AuthActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+                dialog.dismiss()
+            }
+        }
+        alertDialog.create()
+        alertDialog.show()
     }
 }
 

@@ -79,7 +79,7 @@ class DetailsViewModel @Inject constructor(
                         } else {
                             viewModelScope.launch {
                                 val product = it.first().toObject(CartProduct::class.java)
-                                if (product == cartProduct) {
+                                if (product!!.product == cartProduct.product) {
                                     val documentId = it.first().id
                                     changeCartProductQuantityUseCase.execute(
                                         QuantityChanging.INCREASE,
@@ -90,8 +90,7 @@ class DetailsViewModel @Inject constructor(
                                                 _addToCart.emit(Resource.Error(exception.message.toString()))
                                         }
                                     }
-                                } else {
-                                    addNewProductToCart(cartProduct)
+                                    _addToCart.emit(Resource.Success(cartProduct))
                                 }
                             }
                         }

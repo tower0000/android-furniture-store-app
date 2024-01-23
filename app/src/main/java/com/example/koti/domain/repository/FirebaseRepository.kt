@@ -4,7 +4,6 @@ import com.example.koti.model.Address
 import com.example.koti.model.CartProduct
 import com.example.koti.model.Order
 import com.example.koti.model.Product
-import com.example.koti.model.QuantityChanging
 import com.example.koti.model.User
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot

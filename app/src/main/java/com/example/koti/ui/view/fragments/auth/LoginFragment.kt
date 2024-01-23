@@ -13,11 +13,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.koti.R
-import com.example.koti.ui.view.activities.ShoppingActivity
 import com.example.koti.databinding.FragmentLoginBinding
-import com.example.koti.ui.util.setupBottomSheetDialog
 import com.example.koti.ui.util.RegisterValidation
 import com.example.koti.ui.util.Resource
+import com.example.koti.ui.util.setupBottomSheetDialog
+import com.example.koti.ui.view.activities.ShoppingActivity
 import com.example.koti.ui.viewmodel.LoginViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint

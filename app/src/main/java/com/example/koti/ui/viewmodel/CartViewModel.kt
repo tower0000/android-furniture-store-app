@@ -7,8 +7,8 @@ import com.example.koti.domain.DeleteCartProductUseCase
 import com.example.koti.domain.GetUserCartProductsUseCase
 import com.example.koti.model.CartProduct
 import com.example.koti.model.QuantityChanging
-import com.example.koti.ui.util.getProductPrice
 import com.example.koti.ui.util.Resource
+import com.example.koti.ui.util.getProductPrice
 import com.google.firebase.firestore.DocumentSnapshot
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow

@@ -1,7 +1,7 @@
 package com.example.koti.ui.view.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.koti.R
 import dagger.hilt.android.AndroidEntryPoint
 

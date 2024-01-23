@@ -17,11 +17,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.example.koti.R
+import com.example.koti.databinding.FragmentProductsDetailsBinding
+import com.example.koti.model.CartProduct
 import com.example.koti.ui.adapters.ColorsAdapter
 import com.example.koti.ui.adapters.SizesAdapter
 import com.example.koti.ui.adapters.ViewPager2Images
-import com.example.koti.model.CartProduct
-import com.example.koti.databinding.FragmentProductsDetailsBinding
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.util.hideBottomNavigationView
 import com.example.koti.ui.util.showBottomNavigationView

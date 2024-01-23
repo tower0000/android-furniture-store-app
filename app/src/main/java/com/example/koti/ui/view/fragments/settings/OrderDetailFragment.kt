@@ -9,10 +9,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.koti.ui.adapters.BillingProductsAdapter
+import com.example.koti.databinding.FragmentOrderDetailBinding
 import com.example.koti.model.OrderStatus
 import com.example.koti.model.getOrderStatus
-import com.example.koti.databinding.FragmentOrderDetailBinding
+import com.example.koti.ui.adapters.BillingProductsAdapter
 import com.example.koti.ui.util.hideBottomNavigationView
 
 class OrderDetailFragment : Fragment() {

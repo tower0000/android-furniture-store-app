@@ -1,13 +1,11 @@
 package com.example.koti.ui.adapters
 
-import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.koti.databinding.ColorRvItemBinding
 import com.example.koti.databinding.SizeRvItemBinding
 
 class SizesAdapter: RecyclerView.Adapter<SizesAdapter.SizesViewHolder>() {

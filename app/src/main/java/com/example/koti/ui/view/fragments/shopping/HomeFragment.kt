@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.koti.R
-import com.example.koti.ui.adapters.HomeViewpagerAdapter
 import com.example.koti.databinding.FragmentHomeBinding
+import com.example.koti.ui.adapters.HomeViewpagerAdapter
 import com.example.koti.ui.view.fragments.categories.AccessoryFragment
 import com.example.koti.ui.view.fragments.categories.ChairFragment
 import com.example.koti.ui.view.fragments.categories.CupboardFragment

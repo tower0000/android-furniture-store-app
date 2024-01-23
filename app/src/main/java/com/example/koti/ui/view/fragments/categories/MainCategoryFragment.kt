@@ -17,10 +17,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koti.R
+import com.example.koti.databinding.FragmentMainCategoryBinding
 import com.example.koti.ui.adapters.BestDealsAdapter
 import com.example.koti.ui.adapters.BestProductsAdapter
 import com.example.koti.ui.adapters.SpecialProductsAdapter
-import com.example.koti.databinding.FragmentMainCategoryBinding
 import com.example.koti.ui.util.BestProductsItemDecoration
 import com.example.koti.ui.util.HorisontalItemDecoration
 import com.example.koti.ui.util.Resource

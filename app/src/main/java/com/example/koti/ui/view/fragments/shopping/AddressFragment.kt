@@ -11,8 +11,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.example.koti.model.Address
 import com.example.koti.databinding.FragmentAddressBinding
+import com.example.koti.model.Address
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.viewmodel.AddressViewModel
 import dagger.hilt.android.AndroidEntryPoint

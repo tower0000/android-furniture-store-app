@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.koti.R
 import com.example.koti.domain.GetCurrentUserUseCase
 import com.example.koti.ui.util.Constants.INTRODUCTION_KEY
-import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

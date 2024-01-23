@@ -9,8 +9,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koti.R
-import com.example.koti.ui.adapters.BestProductsAdapter
 import com.example.koti.databinding.FragmentBaseCategoryBinding
+import com.example.koti.ui.adapters.BestProductsAdapter
 import com.example.koti.ui.util.BestProductsItemDecoration
 import com.example.koti.ui.util.showBottomNavigationView
 

@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.koti.R
+import com.example.koti.databinding.OrderItemBinding
 import com.example.koti.model.Order
 import com.example.koti.model.OrderStatus
 import com.example.koti.model.getOrderStatus
-import com.example.koti.databinding.OrderItemBinding
 
 class AllOrdersAdapter : Adapter<AllOrdersAdapter.OrdersViewHolder>() {
 

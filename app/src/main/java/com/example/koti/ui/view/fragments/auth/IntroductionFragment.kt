@@ -12,8 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.koti.R
-import com.example.koti.ui.view.activities.ShoppingActivity
 import com.example.koti.databinding.FragmentIntroductionBinding
+import com.example.koti.ui.view.activities.ShoppingActivity
 import com.example.koti.ui.viewmodel.IntroductionViewModel
 import com.example.koti.ui.viewmodel.IntroductionViewModel.Companion.ACCOUNT_LOGIN
 import com.example.koti.ui.viewmodel.IntroductionViewModel.Companion.SHOPPING_ACTIVITY

@@ -17,13 +17,11 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.koti.R
-import com.example.koti.ui.view.activities.AuthActivity
 import com.example.koti.databinding.FragmentProfileBinding
-import com.example.koti.model.Order
-import com.example.koti.model.OrderStatus
-import com.example.koti.ui.util.setupBottomSheetDialog
 import com.example.koti.ui.util.Resource
+import com.example.koti.ui.util.setupBottomSheetDialog
 import com.example.koti.ui.util.showBottomNavigationView
+import com.example.koti.ui.view.activities.AuthActivity
 import com.example.koti.ui.viewmodel.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest

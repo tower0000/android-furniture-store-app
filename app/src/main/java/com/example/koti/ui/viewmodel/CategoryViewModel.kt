@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.koti.model.Category
 import com.example.koti.model.Product
 import com.example.koti.ui.util.Constants.CATEGORY_COLLECTION
-import com.example.koti.ui.util.Constants.PRODUCTS_COLLECTION
 import com.example.koti.ui.util.Constants.SHOP_PRODUCTS_COLLECTION
 import com.example.koti.ui.util.Resource
 import com.google.firebase.firestore.FirebaseFirestore

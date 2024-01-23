@@ -32,11 +32,14 @@ class RegisterViewModel @Inject constructor(
         viewModelScope.launch {
             if (checkValidation(user, password)) {
                 _register.emit(Resource.Loading())
-                val state = signUpWithEmailPasswordUseCase.execute(user, password)
-                if (state == Constants.SUCCESS)
-                    _register.emit(Resource.Success(user))
-                else
-                    _register.emit(Resource.Error(state))
+                signUpWithEmailPasswordUseCase.execute(user, password) { exception ->
+                    viewModelScope.launch {
+                        if (exception != null)
+                            _register.emit(Resource.Error(exception.message.toString()))
+                        else
+                            _register.emit(Resource.Success(user))
+                    }
+                }
             } else {
                 val registerFieldsState = RegisterFieldsState(
                     validateEmail(user.email),

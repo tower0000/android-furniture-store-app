@@ -2,7 +2,9 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.koti.domain.ChangeCartProductQuantityUseCase
 import com.example.koti.model.CartProduct
+import com.example.koti.model.QuantityChanging
 import com.example.koti.ui.util.FirebaseCommon
 import com.example.koti.ui.util.Resource
 import com.google.firebase.auth.FirebaseAuth
@@ -17,7 +19,9 @@ import javax.inject.Inject
 class DetailsViewModel @Inject constructor(
     private val firestore: FirebaseFirestore,
     private val auth: FirebaseAuth,
-    private val firebaseCommon: FirebaseCommon
+    private val firebaseCommon: FirebaseCommon,
+    private val changeCartProductQuantityUseCase: ChangeCartProductQuantityUseCase
+
 ) : ViewModel() {
     private val _addToCart = MutableStateFlow<Resource<CartProduct>>(Resource.Unspecified())
     val addToCart = _addToCart.asStateFlow()

@@ -4,18 +4,20 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.koti.domain.SendResetPasswordUseCase
 import com.example.koti.domain.SignInWithEmailPasswordUseCase
-import com.example.koti.ui.util.Constants.SUCCESS
 import com.example.koti.ui.util.RegisterFieldsState
 import com.example.koti.ui.util.RegisterValidation
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.util.validateEmail
 import com.example.koti.ui.util.validatePassword
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers.Default
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -38,11 +40,14 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             if (checkValidation(email, password)) {
                 _login.emit(Resource.Loading())
-                val state = singInWithEmailPasswordUseCase.execute(email, password)
-                if (state == SUCCESS)
-                    _login.emit(Resource.Success(email))
-                else
-                    _login.emit(Resource.Error(state))
+                singInWithEmailPasswordUseCase.execute(email, password) { exception ->
+                    viewModelScope.launch(Default) {
+                        if (exception != null)
+                            _login.emit(Resource.Error(exception.message.toString()))
+                        else
+                            _login.emit(Resource.Success(email))
+                    }
+                }
             } else {
                 val registerFieldsState = RegisterFieldsState(
                     validateEmail(email),
@@ -56,11 +61,14 @@ class LoginViewModel @Inject constructor(
     fun resetPassword(email: String) {
         viewModelScope.launch {
             _resetPassword.emit(Resource.Loading())
-            val requestState = sendResetPasswordUseCase.execute(email)
-            if (requestState == SUCCESS)
-                _resetPassword.emit(Resource.Success(email))
-            else
-                _resetPassword.emit(Resource.Error(requestState))
+            sendResetPasswordUseCase.execute(email) { exception ->
+                viewModelScope.launch {
+                    if (exception != null)
+                        _resetPassword.emit(Resource.Error(exception.message.toString()))
+                    else
+                        _resetPassword.emit(Resource.Success(email))
+                }
+            }
         }
     }
 
@@ -70,4 +78,5 @@ class LoginViewModel @Inject constructor(
         return emailValidation is RegisterValidation.Success &&
                 passwordValidation is RegisterValidation.Success
     }
+
 }

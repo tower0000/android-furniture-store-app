@@ -16,9 +16,12 @@ import com.example.koti.ui.util.Constants.USER_COLLECTION
 import com.example.koti.ui.util.Resource
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class FirebaseRepositoryImpl @Inject constructor(
@@ -27,49 +30,45 @@ class FirebaseRepositoryImpl @Inject constructor(
 ) : FirebaseRepository {
 
     private val TAG = this.javaClass.simpleName
-    override suspend fun signUpWithEmailPassword(user: User, password: String): String {
-        return try {
-            auth.createUserWithEmailAndPassword(user.email, password).addOnSuccessListener { it ->
-                it.user?.let {
-                    saveUserInformation(it.uid, user)
+
+    override suspend fun signUpWithEmailPassword(
+        user: User,
+        password: String,
+        onResult: (Exception?) -> Unit
+    ) {
+        withContext(Dispatchers.IO) {
+            auth.createUserWithEmailAndPassword(user.email, password)
+                .addOnSuccessListener { it ->
+                    it.user?.let {
+                        saveUserInformation(it.uid, user)
+                    }
+                    onResult(null)
+                }.addOnFailureListener {
+                    onResult(it)
                 }
-            }
-            SUCCESS
-        } catch (e: Exception) {
-            e.message?.let { Log.e(TAG, it) }
-            val signUpExceptionMessage = "${e.message}"
-            signUpExceptionMessage
         }
     }
 
-    override suspend fun signInWithEmailPassword(email: String, password: String): String {
-        return try {
-            auth.signInWithEmailAndPassword(email, password).await()
-            SUCCESS
-        } catch (e: Exception) {
-            when (e) {
-                is FirebaseAuthInvalidCredentialsException -> {
-                    val signInWrongPassExceptionMessage = "Wrong password"
-                    signInWrongPassExceptionMessage
+    override suspend fun signInWithEmailPassword(
+        email: String,
+        password: String,
+        onResult: (Exception?) -> Unit
+    ) {
+        withContext(Dispatchers.IO) {
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnSuccessListener {
+                    onResult(null)
+                }.addOnFailureListener {
+                    onResult(it)
                 }
-
-                else -> {
-                    e.message?.let { Log.e(TAG, it) }
-                    val signInExceptionMessage = "${e.message}"
-                    signInExceptionMessage
-                }
-            }
         }
     }
 
-    override fun saveUserInformation(userUid: String, user: User): String {
-        return try {
+    override fun saveUserInformation(userUid: String, user: User) {
+        try {
             store.collection(USER_COLLECTION).document(userUid).set(user)
-            SUCCESS
         } catch (e: Exception) {
-            val saveUserInformationExceptionMessage = "${e.message}"
             e.message?.let { Log.e(TAG, it) }
-            saveUserInformationExceptionMessage
         }
     }
 
@@ -97,14 +96,14 @@ class FirebaseRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun sendPasswordReset(email: String): String {
-        return try {
+    override suspend fun sendPasswordReset(email: String, onResult: (Exception?) -> Unit) {
+        withContext(Dispatchers.IO) {
             auth.sendPasswordResetEmail(email)
-            SUCCESS
-        } catch (e: Exception) {
-            val sendPasswordResetExceptionMessage = "${e.message}"
-            e.message?.let { Log.e(TAG, it) }
-            sendPasswordResetExceptionMessage
+                .addOnSuccessListener {
+                    onResult(null)
+                }.addOnFailureListener {
+                    onResult(it)
+                }
         }
     }
 
@@ -114,7 +113,8 @@ class FirebaseRepositoryImpl @Inject constructor(
 
     override suspend fun addNewAddress(address: Address): String {
         return try {
-            store.collection(USER_COLLECTION).document(auth.uid!!).collection(ADDRESS_COLLECTION).document().set(address)
+            store.collection(USER_COLLECTION).document(auth.uid!!).collection(ADDRESS_COLLECTION)
+                .document().set(address)
             SUCCESS
         } catch (e: Exception) {
             val addNewAddressExceptionMessage = "${e.message}"
@@ -126,7 +126,8 @@ class FirebaseRepositoryImpl @Inject constructor(
     override suspend fun getOrders(): Any {
         return try {
             val query = store.collection(USER_COLLECTION).document(auth.uid!!).collection(
-                ORDERS_COLLECTION).get().await()
+                ORDERS_COLLECTION
+            ).get().await()
             val orders = query.toObjects(Order::class.java)
             orders
         } catch (e: Exception) {
@@ -147,7 +148,8 @@ class FirebaseRepositoryImpl @Inject constructor(
 
                 store.collection(ORDERS_COLLECTION).document().set(order)
 
-                store.collection(USER_COLLECTION).document(auth.uid!!).collection(CART_COLLECTION).get()
+                store.collection(USER_COLLECTION).document(auth.uid!!).collection(CART_COLLECTION)
+                    .get()
                     .addOnSuccessListener {
                         it.documents.forEach {
                             it.reference.delete()
@@ -164,7 +166,8 @@ class FirebaseRepositoryImpl @Inject constructor(
 
     override suspend fun getUserAddresses(): Any {
         return try {
-            val query = store.collection(USER_COLLECTION).document(auth.uid!!).collection(ADDRESS_COLLECTION).get().await()
+            val query = store.collection(USER_COLLECTION).document(auth.uid!!)
+                .collection(ADDRESS_COLLECTION).get().await()
             val addresses = query?.toObjects(Address::class.java)
             addresses!!
         } catch (e: Exception) {
@@ -174,15 +177,70 @@ class FirebaseRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getUserCartProducts(): Any {
-        return try {
-            val query = store.collection(USER_COLLECTION).document(auth.uid!!).collection(CART_COLLECTION).get().await()
-            val cartProducts = query?.toObjects(CartProduct::class.java)
-            cartProducts!!
-        } catch (e: Exception) {
-            val getUserCartProductsExceptionMessage = "${e.message}"
-            e.message?.let { Log.e(TAG, it) }
-            getUserCartProductsExceptionMessage
+    override suspend fun getUserCartProducts(
+        onResult: (List<DocumentSnapshot>?, List<CartProduct>?, Exception?) -> Unit
+    ) {
+        withContext(Dispatchers.IO) {
+            store.collection(USER_COLLECTION).document(auth.uid!!).collection(CART_COLLECTION)
+                .addSnapshotListener { value, error ->
+                    if (error != null || value == null) {
+                        onResult(null, null, error)
+                    } else {
+                        val cartProductDocuments = value.documents
+                        val cartProducts = value.toObjects(CartProduct::class.java)
+                        onResult(cartProductDocuments, cartProducts, null)
+                    }
+                }
         }
     }
+
+    override suspend fun increaseQuantity(
+        documentId: String,
+        onResult: (Exception?) -> Unit
+    ) {
+        withContext(Dispatchers.IO) {
+            store.runTransaction { transition ->
+                val documentRef =
+                    store.collection(USER_COLLECTION).document(auth.uid!!).collection(
+                        CART_COLLECTION
+                    ).document(documentId)
+                val document = transition.get(documentRef)
+                val productObject = document.toObject(CartProduct::class.java)
+                productObject?.let { cartProduct ->
+                    val newQuantity = cartProduct.quantity + 1
+                    val newProductObject = cartProduct.copy(quantity = newQuantity)
+                    transition.set(documentRef, newProductObject)
+                }
+            }.addOnSuccessListener {
+                onResult(null)
+            }.addOnFailureListener {
+                onResult(it)
+            }
+        }
+    }
+
+    override suspend fun decreaseQuantity(
+        documentId: String,
+        onResult: (Exception?) -> Unit
+    ) {
+        withContext(Dispatchers.IO) {
+            store.runTransaction { transition ->
+                val documentRef = store.collection(USER_COLLECTION).document(auth.uid!!).collection(
+                    CART_COLLECTION
+                ).document(documentId)
+                val document = transition.get(documentRef)
+                val productObject = document.toObject(CartProduct::class.java)
+                productObject?.let { cartProduct ->
+                    val newQuantity = cartProduct.quantity - 1
+                    val newProductObject = cartProduct.copy(quantity = newQuantity)
+                    transition.set(documentRef, newProductObject)
+                }
+            }.addOnSuccessListener {
+                onResult(null)
+            }.addOnFailureListener {
+                onResult(it)
+            }
+        }
+    }
+
 }

@@ -2,8 +2,10 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.koti.domain.ChangeCartProductQuantityUseCase
 import com.example.koti.domain.GetUserCartProductsUseCase
 import com.example.koti.model.CartProduct
+import com.example.koti.model.QuantityChanging
 import com.example.koti.ui.util.FirebaseCommon
 import com.example.koti.ui.util.getProductPrice
 import com.example.koti.ui.util.Resource
@@ -23,8 +25,8 @@ import javax.inject.Inject
 class CartViewModel @Inject constructor(
     private val firestore: FirebaseFirestore,
     private val auth: FirebaseAuth,
-    private val firebaseCommon: FirebaseCommon,
-    private val getUserCartProductsUseCase: GetUserCartProductsUseCase
+    private val getUserCartProductsUseCase: GetUserCartProductsUseCase,
+    private val changeCartProductQuantityUseCase: ChangeCartProductQuantityUseCase
 ) : ViewModel() {
 
     private val _cartProducts =
@@ -66,52 +68,61 @@ class CartViewModel @Inject constructor(
     private fun getCartProducts() {
         viewModelScope.launch {
             _cartProducts.emit(Resource.Loading())
-            val result = getUserCartProductsUseCase.execute()
-            if (result is String)
-                _cartProducts.emit(Resource.Error(result))
-            else
-                _cartProducts.emit(Resource.Success(result as List<CartProduct>))
+            getUserCartProductsUseCase.execute { docs, products, exception ->
+                viewModelScope.launch {
+                    if (exception != null) {
+                        _cartProducts.emit(Resource.Error(exception.message.toString()))
+                    } else {
+                        cartProductDocuments = docs!!
+                        _cartProducts.emit(Resource.Success(products!!))
+                    }
+                }
+            }
         }
     }
 
     fun changeQuantity(
         cartProduct: CartProduct,
-        quantityChanging: FirebaseCommon.QuantityChanging
+        quantityChanging: QuantityChanging
     ) {
-        val index = cartProducts.value.data?.indexOf(cartProduct)
+        viewModelScope.launch {
+            val index = cartProducts.value.data?.indexOf(cartProduct)
+            if (index != null && index != -1) {
+                val documentId = cartProductDocuments[index].id
+                when (quantityChanging) {
 
-        if (index != null && index != -1) {
-            val documentId = cartProductDocuments[index].id
-            when (quantityChanging) {
-                FirebaseCommon.QuantityChanging.INCREASE -> {
-                    viewModelScope.launch { _cartProducts.emit(Resource.Loading()) }
-                    increaseQuantity(documentId)
-                }
-
-                FirebaseCommon.QuantityChanging.DECREASE -> {
-                    if (cartProduct.quantity == 1) {
-                        viewModelScope.launch { _deleteDialog.emit(cartProduct) }
-                        return
+                    QuantityChanging.INCREASE -> {
+                        _cartProducts.emit(Resource.Loading())
+                        changeCartProductQuantityUseCase.execute(
+                            QuantityChanging.INCREASE,
+                            documentId
+                        ) { exception ->
+                            viewModelScope.launch {
+                                if (exception != null)
+                                    _cartProducts.emit(Resource.Error(exception.message.toString()))
+                            }
+                        }
                     }
-                    viewModelScope.launch { _cartProducts.emit(Resource.Loading()) }
-                    decreaseQuantity(documentId)
+
+                    QuantityChanging.DECREASE -> {
+                        if (cartProduct.quantity == 1) {
+                            _deleteDialog.emit(cartProduct)
+                        } else {
+                            _cartProducts.emit(Resource.Loading())
+                            changeCartProductQuantityUseCase.execute(
+                                QuantityChanging.DECREASE,
+                                documentId
+                            ) { exception ->
+                                viewModelScope.launch {
+                                    if (exception != null)
+                                        _cartProducts.emit(Resource.Error(exception.message.toString()))
+                                }
+                            }
+                        }
+                    }
+
                 }
-
             }
-        }
-    }
-
-    private fun decreaseQuantity(documentId: String) {
-        firebaseCommon.decreaseQuantity(documentId) { result, exception ->
-            if (exception != null)
-                viewModelScope.launch { _cartProducts.emit(Resource.Error(exception.message.toString())) }
-        }
-    }
-
-    private fun increaseQuantity(documentId: String) {
-        firebaseCommon.increaseQuantity(documentId) { result, exception ->
-            if (exception != null)
-                viewModelScope.launch { _cartProducts.emit(Resource.Error(exception.message.toString())) }
         }
     }
 

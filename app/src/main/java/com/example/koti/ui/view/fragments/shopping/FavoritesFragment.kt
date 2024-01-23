@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.koti.R
 import com.example.koti.ui.adapters.FavoriteProductAdapter
 import com.example.koti.databinding.FragmentFavoritesBinding
+import com.example.koti.model.QuantityChanging
 import com.example.koti.ui.util.FirebaseCommon
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.util.VerticalItemDecoration
@@ -56,11 +57,11 @@ class FavoritesFragment : Fragment() {
         }
 
         favAdapter.onPlusClick = {
-            viewModel.changeQuantity(it, FirebaseCommon.QuantityChanging.INCREASE)
+            viewModel.changeQuantity(it, QuantityChanging.INCREASE)
         }
 
         favAdapter.onMinusClick = {
-            viewModel.changeQuantity(it, FirebaseCommon.QuantityChanging.DECREASE)
+            viewModel.changeQuantity(it, QuantityChanging.DECREASE)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

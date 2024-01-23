@@ -6,7 +6,6 @@ import javax.inject.Inject
 
 
 class SignUpWithEmailPasswordUseCase @Inject constructor (val repository: FirebaseRepository) {
-    suspend fun execute(user: User, password: String): String {
-        return repository.signUpWithEmailPassword(user, password)
-    }
+    suspend fun execute(user: User, password: String, onResult: (Exception?) -> Unit) =
+        repository.signUpWithEmailPassword(user, password, onResult)
 }

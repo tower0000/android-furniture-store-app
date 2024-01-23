@@ -3,6 +3,7 @@ package com.example.koti.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.koti.model.CartProduct
+import com.example.koti.model.QuantityChanging
 import com.example.koti.ui.util.FirebaseCommon
 import com.example.koti.ui.util.getProductPrice
 import com.example.koti.ui.util.Resource
@@ -121,14 +122,14 @@ class FavoritesViewModel @Inject constructor(
 
     fun changeQuantity(
         favsProduct: CartProduct,
-        quantityChanging: FirebaseCommon.QuantityChanging
+        quantityChanging: QuantityChanging
     ) {
         val index = favoriteProducts.value.data?.indexOf(favsProduct)
 
         if (index != null && index != -1) {
             val documentId = favProductDocuments[index].id
             when (quantityChanging) {
-                FirebaseCommon.QuantityChanging.INCREASE -> {
+                QuantityChanging.INCREASE -> {
                     if (favsProduct.quantity == 1) {
                         viewModelScope.launch { _addDialog.emit(favsProduct) }
                         return
@@ -137,7 +138,7 @@ class FavoritesViewModel @Inject constructor(
                     decreaseQuantity(documentId)
                 }
 
-                FirebaseCommon.QuantityChanging.DECREASE -> {
+                QuantityChanging.DECREASE -> {
                     if (favsProduct.quantity == 1) {
                         viewModelScope.launch { _deleteDialog.emit(favsProduct) }
                         return

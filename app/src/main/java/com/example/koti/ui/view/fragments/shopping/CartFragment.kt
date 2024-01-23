@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.koti.R
 import com.example.koti.ui.adapters.CartProductAdapter
 import com.example.koti.databinding.FragmentCartBinding
+import com.example.koti.model.QuantityChanging
 import com.example.koti.ui.util.FirebaseCommon
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.util.VerticalItemDecoration
@@ -64,11 +65,11 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         }
 
         cartAdapter.onPlusClick = {
-            viewModel.changeQuantity(it, FirebaseCommon.QuantityChanging.INCREASE)
+            viewModel.changeQuantity(it, QuantityChanging.INCREASE)
         }
 
         cartAdapter.onMinusClick = {
-            viewModel.changeQuantity(it, FirebaseCommon.QuantityChanging.DECREASE)
+            viewModel.changeQuantity(it, QuantityChanging.DECREASE)
         }
 
         binding.buttonCheckout.setOnClickListener {

@@ -12,3 +12,4 @@ data class CartProduct(
 ): Parcelable {
     constructor() : this(Product(), 1, null, null)
 }
+

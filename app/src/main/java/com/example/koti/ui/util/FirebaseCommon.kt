@@ -49,7 +49,6 @@ class FirebaseCommon(
         }
     }
 
-
     fun increaseQuantity(documentId: String, onResult: (String?, Exception?) -> Unit) {
         firestore.runTransaction { transition ->
             val documentRef = cartCollection.document(documentId)
@@ -84,7 +83,4 @@ class FirebaseCommon(
         }
     }
 
-    enum class QuantityChanging {
-        INCREASE, DECREASE
-    }
 }

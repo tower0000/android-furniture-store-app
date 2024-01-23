@@ -47,11 +47,14 @@ class ProfileViewModel @Inject constructor(
     fun resetPassword(email: String) {
         viewModelScope.launch {
             _resetPassword.emit(Resource.Loading())
-            val requestState = sendResetPasswordUseCase.execute(email)
-            if (requestState == SUCCESS)
-                _resetPassword.emit(Resource.Success(email))
-            else
-                _resetPassword.emit(Resource.Error(requestState))
+            sendResetPasswordUseCase.execute(email) { exception ->
+                launch {
+                    if (exception != null)
+                        _resetPassword.emit(Resource.Error(exception.message.toString()))
+                    else
+                        _resetPassword.emit(Resource.Success(email))
+                }
+            }
         }
     }
 

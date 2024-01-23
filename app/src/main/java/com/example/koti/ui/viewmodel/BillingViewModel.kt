@@ -6,10 +6,7 @@ import com.example.koti.domain.GetUserAddressesUseCase
 import com.example.koti.domain.PlaceOrderUseCase
 import com.example.koti.model.Address
 import com.example.koti.model.Order
-import com.example.koti.ui.util.Constants.SUCCESS
 import com.example.koti.ui.util.Resource
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -35,22 +32,28 @@ class BillingViewModel @Inject constructor(
     fun getUserAddresses() {
         viewModelScope.launch {
             _address.emit(Resource.Loading())
-            val result = getUserAddressesUseCase.execute()
-            if (result is String)
-                _address.emit(Resource.Error(result))
-            else
-                _address.emit(Resource.Success(result as List<Address>))
+            getUserAddressesUseCase.execute { addresses, exception ->
+                viewModelScope.launch {
+                    if (exception != null)
+                        _address.emit(Resource.Error(exception.message.toString()))
+                    else
+                        _address.emit(Resource.Success(addresses!!))
+                }
+            }
         }
     }
 
     fun placeOrder(order: Order) {
         viewModelScope.launch {
             _order.emit(Resource.Loading())
-            val result = placerOrderUseCase.execute(order)
-            if (result == SUCCESS)
-                _order.emit(Resource.Success(order))
-            else
-                _order.emit(Resource.Error(result))
+            placerOrderUseCase.execute(order) { exception ->
+                viewModelScope.launch {
+                    if (exception != null)
+                        _order.emit(Resource.Error(exception.message.toString()))
+                    else
+                        _order.emit(Resource.Success(order))
+                }
+            }
         }
     }
 }

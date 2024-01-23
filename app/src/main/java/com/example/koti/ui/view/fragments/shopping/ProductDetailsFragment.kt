@@ -57,8 +57,8 @@ class ProductDetailsFragment : Fragment() {
 
         val product = args.product
 
+        viewModel.checkIfProductInFavorites(product)
         setupImageIndicators()
-        setupColorsRs()
         setupViewpager()
 
         binding.imageClose.setOnClickListener {
@@ -66,16 +66,24 @@ class ProductDetailsFragment : Fragment() {
             showBottomNavigationView()
         }
 
-//        colorsAdapter.onItemClick = {
-//            selectedColor = it
-//        }
 
         binding.buttonAddToCartFixed.setOnClickListener {
             viewModel.addUpdateProductsInCart(CartProduct(product, 1, selectedColor, selectedSize))
         }
 
         binding.buttonAddToFav.setOnClickListener {
-            viewModel.addProductsToFavorites(CartProduct(product, 1, selectedColor, selectedSize))
+            viewModel.addDeleteFavoriteProduct(product)
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.isFavorite.collectLatest {
+                    if (it)
+                        binding.buttonAddToFav.setImageResource(R.drawable.ic_favorite_clicked)
+                    else
+                        binding.buttonAddToFav.setImageResource(R.drawable.ic_favorite)
+                }
+            }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -110,20 +118,9 @@ class ProductDetailsFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.addToFavorites.collectLatest {
+                viewModel.addDeleteProductFavorites.collectLatest {
                     when (it) {
-                        is Resource.Loading -> {
-                            binding.buttonAddToFav.setImageResource(R.drawable.ic_favorite_clicked)
-                        }
-
-                        is Resource.Success -> {
-                            binding.buttonAddToFav.setImageResource(R.drawable.ic_favorite_clicked)
-                            Toast.makeText(requireContext(), "Product added!", Toast.LENGTH_SHORT)
-                                .show()
-                        }
-
                         is Resource.Error -> {
-                            binding.buttonAddToFav.setImageResource(R.drawable.ic_favorite)
                             Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                         }
 
@@ -147,9 +144,6 @@ class ProductDetailsFragment : Fragment() {
 
             tvBestProductName.text = product.name.uppercase()
 
-//            if (product.colors.isNullOrEmpty())
-//                tvProductColors.visibility = View.INVISIBLE
-
         }
 
         viewPagerAdapter.differ.submitList(product.images)
@@ -157,11 +151,6 @@ class ProductDetailsFragment : Fragment() {
         product.sizes?.let { sizesAdapter.differ.submitList(it) }
     }
 
-
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        binding.viewPagerProductImages.unregisterOnPageChangeCallback(pageChangeListener)
-//    }
 
     private fun setupImageIndicators() {
         val params = LinearLayout.LayoutParams(
@@ -204,14 +193,4 @@ class ProductDetailsFragment : Fragment() {
             viewPagerProductImages.adapter = viewPagerAdapter
         }
     }
-
-    private fun setupColorsRs() {
-//        binding.rvColors.apply {
-//            adapter = colorsAdapter
-//            layoutManager =
-//                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-//        }
-    }
-
-
 }

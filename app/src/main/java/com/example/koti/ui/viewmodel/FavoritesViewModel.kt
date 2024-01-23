@@ -2,7 +2,9 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.koti.domain.GetUserFavoritesUseCase
 import com.example.koti.model.CartProduct
+import com.example.koti.model.Product
 import com.example.koti.model.QuantityChanging
 import com.example.koti.ui.util.FirebaseCommon
 import com.example.koti.ui.util.getProductPrice
@@ -22,7 +24,7 @@ import javax.inject.Inject
 class FavoritesViewModel @Inject constructor(
     private val firestore: FirebaseFirestore,
     private val auth: FirebaseAuth,
-    private val firebaseCommon: FirebaseCommon
+    private val firebaseCommon: FirebaseCommon,
 ) : ViewModel() {
 
     private val _favoriteProducts =
@@ -95,11 +97,6 @@ class FavoritesViewModel @Inject constructor(
         }
     }
 
-    private fun calculatePrice(data: List<CartProduct>): Float {
-        return data.sumByDouble { cartProduct ->
-            (cartProduct.product.offerPercentage.getProductPrice(cartProduct.product.price) * cartProduct.quantity).toDouble()
-        }.toFloat()
-    }
 
     init {
         getCartProducts()

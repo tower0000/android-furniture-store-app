@@ -5,5 +5,5 @@ import com.example.koti.model.Address
 import javax.inject.Inject
 
 class AddNewAddressUseCase @Inject constructor (private val repo: FirebaseRepository) {
-    suspend fun execute(address: Address): String = repo.addNewAddress(address)
+    suspend fun execute(address: Address, onResult: (Exception?) -> Unit) = repo.addNewAddress(address, onResult)
 }

@@ -6,7 +6,6 @@ import com.example.koti.domain.GetUserInformationUseCase
 import com.example.koti.domain.SendResetPasswordUseCase
 import com.example.koti.domain.SignOutUseCase
 import com.example.koti.model.User
-import com.example.koti.ui.util.Constants.SUCCESS
 import com.example.koti.ui.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow

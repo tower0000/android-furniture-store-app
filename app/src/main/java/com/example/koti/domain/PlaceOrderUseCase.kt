@@ -5,5 +5,5 @@ import com.example.koti.model.Order
 import javax.inject.Inject
 
 class PlaceOrderUseCase @Inject constructor (private val repo: FirebaseRepository) {
-    suspend fun execute(order: Order): String = repo.placeOrder(order)
+    suspend fun execute(order: Order, onResult: (Exception?) -> Unit) = repo.placeOrder(order, onResult)
 }

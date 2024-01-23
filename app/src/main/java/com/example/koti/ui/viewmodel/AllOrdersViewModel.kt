@@ -26,11 +26,14 @@ class AllOrdersViewModel @Inject constructor(
     private fun getAllOrders() {
         viewModelScope.launch {
             _allOrders.emit(Resource.Loading())
-            val result = getUserOrdersUseCase.execute()
-            if (result is String)
-                _allOrders.emit(Resource.Error(result))
-            else
-                _allOrders.emit(Resource.Success(result as List<Order>))
+            getUserOrdersUseCase.execute { orders, exception ->
+                viewModelScope.launch {
+                    if (exception != null)
+                        _allOrders.emit(Resource.Error(exception.message.toString()))
+                    else
+                        _allOrders.emit(Resource.Success(orders!!))
+                }
+            }
         }
     }
 }

@@ -4,10 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.koti.domain.AddNewAddressUseCase
 import com.example.koti.model.Address
-import com.example.koti.ui.util.Constants.SUCCESS
 import com.example.koti.ui.util.Resource
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -31,11 +28,14 @@ class AddressViewModel @Inject constructor(
             val validateInputs = validateInputs(address)
             if (validateInputs) {
                 _addNewAddress.emit(Resource.Loading())
-                val state = addNewAddressUseCase.execute(address)
-                if (state == SUCCESS)
-                    _addNewAddress.emit(Resource.Success(address))
-                else
-                    _addNewAddress.emit(Resource.Error(state))
+                addNewAddressUseCase.execute(address) { exception ->
+                    viewModelScope.launch {
+                        if (exception != null)
+                            _addNewAddress.emit(Resource.Error(exception.message.toString()))
+                        else
+                            _addNewAddress.emit(Resource.Success(address))
+                    }
+                }
             } else {
                 _error.emit("All fields are required")
             }

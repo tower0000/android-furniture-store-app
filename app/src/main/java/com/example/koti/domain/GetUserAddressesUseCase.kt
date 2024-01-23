@@ -6,5 +6,5 @@ import com.example.koti.model.Order
 import javax.inject.Inject
 
 class GetUserAddressesUseCase @Inject constructor (private val repo: FirebaseRepository) {
-    suspend fun execute(): Any = repo.getUserAddresses()
+    suspend fun execute(onResult: (List<Address>?, Exception?) -> Unit) = repo.getUserAddresses(onResult)
 }

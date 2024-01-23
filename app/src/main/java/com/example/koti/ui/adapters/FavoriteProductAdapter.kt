@@ -6,32 +6,32 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.koti.model.CartProduct
 import com.example.koti.databinding.FavoriteProductItemBinding
+import com.example.koti.model.Product
 import com.example.koti.ui.util.getProductPrice
 
 class FavoriteProductAdapter: RecyclerView.Adapter<FavoriteProductAdapter.FavoriteProductsViewHolder>() {
     inner class FavoriteProductsViewHolder(val binding: FavoriteProductItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(favProduct: CartProduct) {
+        fun bind(favProduct: Product) {
             binding.apply {
-                Glide.with(itemView).load(favProduct.product.images[0]).into(imgFavoriteProduct)
-                tvProductFavoriteName.text = favProduct.product.name.uppercase()
+                Glide.with(itemView).load(favProduct.images[0]).into(imgFavoriteProduct)
+                tvProductFavoriteName.text = favProduct.name.uppercase()
 
                 val priceAfterPercentage =
-                    favProduct.product.offerPercentage.getProductPrice(favProduct.product.price)
+                    favProduct.offerPercentage.getProductPrice(favProduct.price)
                 tvProductFavoritePrice.text = "$ ${String.format("%.2f", priceAfterPercentage)}"
             }
         }
     }
 
-    private val diffCallback = object : DiffUtil.ItemCallback<CartProduct>() {
-        override fun areItemsTheSame(oldItem: CartProduct, newItem: CartProduct): Boolean {
-            return oldItem.product.id == newItem.product.id
+    private val diffCallback = object : DiffUtil.ItemCallback<Product>() {
+        override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
+            return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: CartProduct, newItem: CartProduct): Boolean {
+        override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
             return oldItem == newItem
         }
     }
@@ -67,7 +67,7 @@ class FavoriteProductAdapter: RecyclerView.Adapter<FavoriteProductAdapter.Favori
         return differ.currentList.size
     }
 
-    var onProductClick: ((CartProduct) -> Unit)? = null
-    var onPlusClick: ((CartProduct) -> Unit)? = null
-    var onMinusClick: ((CartProduct) -> Unit)? = null
+    var onProductClick: ((Product) -> Unit)? = null
+    var onPlusClick: ((Product) -> Unit)? = null
+    var onMinusClick: ((Product) -> Unit)? = null
 }

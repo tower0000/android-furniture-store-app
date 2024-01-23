@@ -106,7 +106,7 @@ class DetailsViewModel @Inject constructor(
         viewModelScope.launch { _addDeleteProductFavorites.emit(Resource.Loading()) }
         store.collection(USER_COLLECTION).document(auth.uid!!).collection(FAVORITES_COLLECTION)
             .whereEqualTo("id", favProduct.id).get()
-            .addOnSuccessListener {
+            .addOnSuccessListener { it ->
                 it.documents.let {
                     if (it.isEmpty()) {
                         addNewProductToFavorites(favProduct)

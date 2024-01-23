@@ -14,6 +14,7 @@ import com.example.koti.ui.util.Constants.FAVORITES_COLLECTION
 import com.example.koti.ui.util.Constants.ORDERS_COLLECTION
 import com.example.koti.ui.util.Constants.USER_COLLECTION
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
@@ -71,29 +72,22 @@ class FirebaseRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getUserInformation(): Any {
-        val userCollectionName = USER_COLLECTION
-        return getCollection(userCollectionName)
-    }
-
-    override suspend fun getCollection(collectionName: String): Any {
-        return try {
-            val documentReference = store.collection(collectionName).document(auth.uid!!)
-            val snapshot = documentReference.get().await()
-            if (snapshot.exists()) {
-                val user = snapshot.toObject(User::class.java)
-                user!!
-            } else {
-                val getCollectionError = "Collection doesn't exist"
-                Log.e(TAG, getCollectionError)
-                getCollectionError
-            }
-        } catch (e: Exception) {
-            val getCollectionExceptionMessage = "${e.message}"
-            e.message?.let { Log.e(TAG, it) }
-            getCollectionExceptionMessage
+    override suspend fun getUserInformation(onResult: (User?, Exception?) -> Unit) {
+        withContext(Dispatchers.IO) {
+            store.collection(USER_COLLECTION).document(auth.uid!!)
+                .addSnapshotListener { value, error ->
+                    if (error != null) {
+                        onResult(null, error)
+                    } else {
+                        val userObj = value?.toObject(User::class.java)
+                        userObj?.let {
+                            onResult(userObj, null)
+                        }
+                    }
+                }
         }
     }
+
 
     override suspend fun sendPasswordReset(email: String, onResult: (Exception?) -> Unit) {
         withContext(Dispatchers.IO) {
@@ -107,8 +101,10 @@ class FirebaseRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun signOut() {
-        auth.signOut()
+    override suspend fun signOut() {
+        withContext(Dispatchers.IO) {
+            auth.signOut()
+        }
     }
 
     override suspend fun addNewAddress(address: Address, onResult: (Exception?) -> Unit) {
@@ -137,6 +133,7 @@ class FirebaseRepositoryImpl @Inject constructor(
                     onResult(null)
                 }.addOnFailureListener {
                     onResult(it)
+                    Log.e(TAG, it.message.toString())
                 }
         }
     }
@@ -193,6 +190,7 @@ class FirebaseRepositoryImpl @Inject constructor(
                     onResult(null)
                 }.addOnFailureListener {
                     onResult(it)
+                    Log.e(TAG, it.message.toString())
                 }
         }
     }
@@ -316,6 +314,10 @@ class FirebaseRepositoryImpl @Inject constructor(
                     Log.e(TAG, it.message.toString())
                 }
         }
+    }
+
+    override suspend fun getCurrentUser(): FirebaseUser? {
+        return auth.currentUser
     }
 
 }

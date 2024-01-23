@@ -35,11 +35,14 @@ class ProfileViewModel @Inject constructor(
     private fun getUser() {
         viewModelScope.launch {
             _user.emit(Resource.Loading())
-            val result = getUserInformationUseCase.execute()
-            if (result is String)
-                _user.emit(Resource.Error(result))
-            else
-                _user.emit(Resource.Success(result as User))
+            getUserInformationUseCase.execute() { user, exception ->
+                viewModelScope.launch {
+                    if(exception != null)
+                        _user.emit(Resource.Error(exception.message.toString()))
+                    else
+                        _user.emit(Resource.Success(user!!))
+                }
+            }
         }
     }
 
@@ -58,6 +61,8 @@ class ProfileViewModel @Inject constructor(
     }
 
     fun logout() {
-        signOutUseCase.execute()
+        viewModelScope.launch {
+            signOutUseCase.execute()
+        }
     }
 }

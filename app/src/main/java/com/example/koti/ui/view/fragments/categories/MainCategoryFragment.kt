@@ -15,6 +15,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.koti.R
 import com.example.koti.ui.adapters.BestDealsAdapter
 import com.example.koti.ui.adapters.BestProductsAdapter
@@ -153,6 +154,34 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
             }
 
         })
+
+        binding.rvSpecialProducts.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
+                val totalItemCount = layoutManager.itemCount
+
+                if (totalItemCount <= (lastVisibleItemPosition + VISIBLE_THRESHOLD)) {
+                    viewModel.fetchSpecialProducts()
+                }
+            }
+        })
+
+        binding.rvBestDealsProducts.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
+                val totalItemCount = layoutManager.itemCount
+
+                if (totalItemCount <= (lastVisibleItemPosition + VISIBLE_THRESHOLD)) {
+                    viewModel.fetchBestDeals()
+                }
+            }
+        })
     }
 
     private fun setupBestProductsRv() {
@@ -207,5 +236,8 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
         super.onResume()
 
         showBottomNavigationView()
+    }
+    companion object {
+        private const val VISIBLE_THRESHOLD = 2
     }
 }

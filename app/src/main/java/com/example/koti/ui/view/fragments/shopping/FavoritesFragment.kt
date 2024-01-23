@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.koti.R
 import com.example.koti.ui.adapters.FavoriteProductAdapter
 import com.example.koti.databinding.FragmentFavoritesBinding
+import com.example.koti.model.CartProduct
 import com.example.koti.model.QuantityChanging
-import com.example.koti.ui.util.FirebaseCommon
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.util.VerticalItemDecoration
 import com.example.koti.ui.viewmodel.FavoritesViewModel
@@ -52,16 +52,16 @@ class FavoritesFragment : Fragment() {
         }
 
         favAdapter.onProductClick = {
-            val b = Bundle().apply { putParcelable("product", it.product) }
+            val b = Bundle().apply { putParcelable("product", it) }
             findNavController().navigate(R.id.action_favoritesFragment_to_productDetailsFragment, b)
         }
 
         favAdapter.onPlusClick = {
-            viewModel.changeQuantity(it, QuantityChanging.INCREASE)
+            viewModel.changeFavoriteProductState(it, QuantityChanging.INCREASE)
         }
 
         favAdapter.onMinusClick = {
-            viewModel.changeQuantity(it, QuantityChanging.DECREASE)
+            viewModel.changeFavoriteProductState(it, QuantityChanging.DECREASE)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -105,6 +105,24 @@ class FavoritesFragment : Fragment() {
             }
         }
 
+        viewLifecycleOwner.lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.addToCart.collectLatest {
+                    when (it) {
+                        is Resource.Error -> {
+                            binding.progressbarFav.visibility = View.INVISIBLE
+                            Toast.makeText(
+                                requireContext(),
+                                it.message.toString(),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        else -> Unit
+                    }
+                }
+            }
+        }
+
 
         viewLifecycleOwner.lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -117,11 +135,9 @@ class FavoritesFragment : Fragment() {
                         is Resource.Success -> {
                             binding.progressbarFav.visibility = View.INVISIBLE
                             if (it.data!!.isEmpty()) {
-                                showEmptyCart()
-                                hideOtherViews()
+                                hideFavorites()
                             } else {
-                                hideEmptyCart()
-                                showOtherViews()
+                                showFavorites()
                                 favAdapter.differ.submitList(it.data)
                             }
 
@@ -143,29 +159,20 @@ class FavoritesFragment : Fragment() {
         }
     }
 
-    private fun showOtherViews() {
+
+    private fun showFavorites() {
         binding.apply {
+            layoutCartEmpty.visibility = View.GONE
             rvFavorites.visibility = View.VISIBLE
             buttonRedirectToHome.visibility = View.VISIBLE
         }
     }
 
-    private fun hideOtherViews() {
-        binding.apply {
-            rvFavorites.visibility = View.GONE
-            buttonRedirectToHome.visibility = View.GONE
-        }
-    }
-
-    private fun hideEmptyCart() {
-        binding.apply {
-            layoutCartEmpty.visibility = View.GONE
-        }
-    }
-
-    private fun showEmptyCart() {
+    private fun hideFavorites() {
         binding.apply {
             layoutCartEmpty.visibility = View.VISIBLE
+            rvFavorites.visibility = View.GONE
+            buttonRedirectToHome.visibility = View.GONE
         }
     }
 

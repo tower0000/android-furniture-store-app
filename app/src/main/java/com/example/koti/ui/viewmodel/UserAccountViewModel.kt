@@ -7,7 +7,9 @@ import android.provider.MediaStore
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.koti.KotiApplication
+import com.example.koti.domain.GetUserInformationUseCase
 import com.example.koti.model.User
+import com.example.koti.ui.util.Constants.USER_COLLECTION
 import com.example.koti.ui.util.RegisterValidation
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.util.validateEmail
@@ -30,6 +32,7 @@ class UserAccountViewModel @Inject constructor(
     private val firestore: FirebaseFirestore,
     private val auth: FirebaseAuth,
     private val storage: StorageReference,
+    private val getUserInformationUseCase: GetUserInformationUseCase,
     app: Application
 
 ) : AndroidViewModel(app) {
@@ -49,20 +52,15 @@ class UserAccountViewModel @Inject constructor(
     fun getUser() {
         viewModelScope.launch {
             _user.emit(Resource.Loading())
-        }
-        firestore.collection("user").document(auth.uid!!).get()
-            .addOnSuccessListener {
-                val user = it.toObject(User::class.java)
-                user?.let {
-                    viewModelScope.launch {
-                        _user.emit(Resource.Success(it))
-                    }
-                }
-            }.addOnFailureListener {
+            getUserInformationUseCase.execute() { user, exception ->
                 viewModelScope.launch {
-                    _user.emit(Resource.Error(it.message.toString()))
+                    if(exception != null)
+                        _user.emit(Resource.Error(exception.message.toString()))
+                    else
+                        _user.emit(Resource.Success(user!!))
                 }
             }
+        }
     }
 
     fun updateUser(user: User, imageUri: Uri?) {
@@ -112,7 +110,7 @@ class UserAccountViewModel @Inject constructor(
 
     private fun saveUserInformation(user: User, shouldRetrievedOldImage: Boolean) {
         firestore.runTransaction { transaction ->
-            val documentRef = firestore.collection("user").document(auth.uid!!)
+            val documentRef = firestore.collection(USER_COLLECTION).document(auth.uid!!)
             if (shouldRetrievedOldImage) {
                 val currentUser = transaction.get(documentRef).toObject(User::class.java)
                 val newUser = user.copy(imagePath = currentUser?.imagePath ?: "")

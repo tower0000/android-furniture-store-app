@@ -127,7 +127,7 @@
                 app:layout_constraintTop_toBottomOf="@id/sale_title" />
 
             <TextView
-                android:id="@+id/base_products_title"
+                android:id="@+id/tvBaseProductsTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="@style/homeFragmentTitles"
@@ -146,7 +146,7 @@
                 android:layout_marginEnd="-8dp"
                 app:layout_constraintEnd_toEndOf="@id/tvSpecialProductsTitle"
                 app:layout_constraintStart_toStartOf="@id/tvSpecialProductsTitle"
-                app:layout_constraintTop_toBottomOf="@id/base_products_title" />
+                app:layout_constraintTop_toBottomOf="@id/tvBaseProductsTitle" />
 
 
             <ProgressBar

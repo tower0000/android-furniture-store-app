@@ -52,6 +52,10 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_profileFragment_to_allOrdersFragment)
         }
 
+        binding.clAdderesses.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_savedAddressesFragment)
+        }
+
         binding.clBilling.setOnClickListener {
             val action = ProfileFragmentDirections.actionProfileFragmentToBillingFragment(
                 0f,

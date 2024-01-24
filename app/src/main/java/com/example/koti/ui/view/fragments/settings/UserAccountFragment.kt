@@ -31,6 +31,8 @@ class UserAccountFragment : Fragment() {
     private lateinit var imageActivityResultLauncher: ActivityResultLauncher<Intent>
     private var imageUri: Uri? = null
 
+    private var userEmail = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         imageActivityResultLauncher =
@@ -63,6 +65,7 @@ class UserAccountFragment : Fragment() {
                         is Resource.Success -> {
                             hideUserLoading()
                             showUserInformation(it.data!!)
+                            userEmail = it.data.email
                         }
 
                         is Resource.Error -> {
@@ -112,7 +115,8 @@ class UserAccountFragment : Fragment() {
             binding.apply {
                 val firstName = edFirstName.text.toString().trim()
                 val lastName = edLastName.text.toString().trim()
-                val user = User(firstName, lastName, "")
+                val email = userEmail
+                val user = User(firstName, lastName, email)
                 viewModel.updateUser(user, imageUri)
             }
         }
@@ -126,6 +130,11 @@ class UserAccountFragment : Fragment() {
         binding.buttonCloseAccount.setOnClickListener {
             findNavController().navigateUp()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getUser()
     }
 
     private fun showUserInformation(data: User) {

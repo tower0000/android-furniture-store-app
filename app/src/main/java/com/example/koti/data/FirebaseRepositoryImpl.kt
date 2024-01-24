@@ -194,16 +194,18 @@ class FirebaseRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getUserAddresses(onResult: (List<Address>?, Exception?) -> Unit) {
+    override suspend fun getUserAddresses(onResult: (List<DocumentSnapshot>?, List<Address>?, Exception?) -> Unit) {
         withContext(Dispatchers.IO) {
             store.collection(USER_COLLECTION).document(auth.uid!!).collection(ADDRESS_COLLECTION)
-                .get()
-                .addOnSuccessListener {
-                    val addresses = it.toObjects(Address::class.java)
-                    onResult(addresses, null)
-                }.addOnFailureListener {
-                    onResult(null, it)
-                    Log.e(TAG, it.message.toString())
+                .addSnapshotListener { value, error ->
+                    if (error != null || value == null) {
+                        onResult(null, null, error)
+                        Log.e(TAG, error!!.message.toString())
+                    } else {
+                        val addressesDocuments = value.documents
+                        val addresses = value.toObjects(Address::class.java)
+                        onResult(addressesDocuments, addresses, null)
+                    }
                 }
         }
     }
@@ -319,4 +321,14 @@ class FirebaseRepositoryImpl @Inject constructor(
         return auth.currentUser
     }
 
+
+    override suspend fun deleteUserAddress(documentId: String) {
+        withContext(Dispatchers.IO) {
+            store.collection(USER_COLLECTION).document(auth.uid!!).collection(ADDRESS_COLLECTION)
+                .document(documentId).delete()
+                .addOnFailureListener {
+                    Log.e(TAG, it.message.toString())
+                }
+        }
+    }
 }

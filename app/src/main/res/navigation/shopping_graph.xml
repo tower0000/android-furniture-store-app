@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_profileFragment_to_userAccountFragment"
             app:destination="@id/userAccountFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_savedAddressesFragment"
+            app:destination="@id/savedAddressesFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
@@ -108,5 +111,14 @@
         <argument
             android:name="order"
             app:argType="com.example.koti.model.Order" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedAddressesFragment"
+        android:name="com.example.koti.ui.view.fragments.settings.SavedAddressesFragment"
+        android:label="SavedAddressesFragment"
+        tools:layout="@layout/fragment_saved_addresses">
+        <action
+            android:id="@+id/action_savedAddressesFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
     </fragment>
 </navigation>

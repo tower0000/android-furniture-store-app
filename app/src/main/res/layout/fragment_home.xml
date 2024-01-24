@@ -87,7 +87,8 @@
         app:tabRippleColor="@color/white"
         app:tabSelectedTextColor="@color/neutral_90"
         app:tabTextAppearance="@style/tabLayoutCategoriesText"
-        app:tabTextColor="@color/neutral_60" />
+        app:tabTextColor="@color/neutral_60"
+        android:background="@color/neutral_20"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpagerHome"

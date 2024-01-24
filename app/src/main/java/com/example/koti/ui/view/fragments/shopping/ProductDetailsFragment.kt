@@ -19,8 +19,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.koti.R
 import com.example.koti.databinding.FragmentProductsDetailsBinding
 import com.example.koti.model.CartProduct
-import com.example.koti.ui.adapters.ColorsAdapter
-import com.example.koti.ui.adapters.SizesAdapter
 import com.example.koti.ui.adapters.ViewPager2Images
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.util.hideBottomNavigationView
@@ -36,8 +34,6 @@ class ProductDetailsFragment : Fragment() {
     private val args by navArgs<ProductDetailsFragmentArgs>()
     private lateinit var binding: FragmentProductsDetailsBinding
     private val viewPagerAdapter by lazy { ViewPager2Images() }
-    private val sizesAdapter by lazy { SizesAdapter() }
-    private val colorsAdapter by lazy { ColorsAdapter() }
     private var selectedColor: Int? = null
     private var selectedSize: String? = null
     private val viewModel by viewModels<DetailsViewModel>()
@@ -147,8 +143,6 @@ class ProductDetailsFragment : Fragment() {
         }
 
         viewPagerAdapter.differ.submitList(product.images)
-        product.colors?.let { colorsAdapter.differ.submitList(it) }
-        product.sizes?.let { sizesAdapter.differ.submitList(it) }
     }
 
 

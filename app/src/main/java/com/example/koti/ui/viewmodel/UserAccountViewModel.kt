@@ -43,7 +43,6 @@ class UserAccountViewModel @Inject constructor(
     val updateInfo = _updateInfo.asStateFlow()
 
 
-
     init {
         getUser()
     }
@@ -53,7 +52,7 @@ class UserAccountViewModel @Inject constructor(
             _user.emit(Resource.Loading())
             getUserInformationUseCase.execute() { user, exception ->
                 viewModelScope.launch {
-                    if(exception != null)
+                    if (exception != null)
                         _user.emit(Resource.Error(exception.message.toString()))
                     else
                         _user.emit(Resource.Success(user!!))
@@ -63,8 +62,7 @@ class UserAccountViewModel @Inject constructor(
     }
 
     fun updateUser(user: User, imageUri: Uri?) {
-        val areInputsValid = validateEmail(user.email) is RegisterValidation.Success
-                && user.firstName.trim().isNotEmpty()
+        val areInputsValid = user.firstName.trim().isNotEmpty()
                 && user.lastName.trim().isNotEmpty()
 
         if (!areInputsValid) {
@@ -93,7 +91,7 @@ class UserAccountViewModel @Inject constructor(
                     imageUri
                 )
                 val byteArrayOutputStream = ByteArrayOutputStream()
-                imageBitmap.compress(Bitmap.CompressFormat.JPEG,96,byteArrayOutputStream)
+                imageBitmap.compress(Bitmap.CompressFormat.JPEG, 96, byteArrayOutputStream)
                 val imageByteArray = byteArrayOutputStream.toByteArray()
                 val imageDirectory = storage.child("profileImages/${auth.uid}/${UUID.randomUUID()}")
                 val result = imageDirectory.putBytes(imageByteArray).await()

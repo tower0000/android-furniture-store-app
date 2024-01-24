@@ -181,7 +181,7 @@
         <item name="backgroundTint">@color/white</item>
         <item name="singleLine">true</item>
         <item name="android:textColor">@color/neutral_90</item>
-        <item name="android:textSize">@dimen/h5TextSize</item>
+        <item name="android:textSize">@dimen/h4TextSize</item>
         <item name="android:fontFamily">@font/manrope_regular</item>
     </style>
 
@@ -193,6 +193,16 @@
         <item name="android:textSize">@dimen/h4TextSize</item>
         <item name="android:fontFamily">@font/manrope_regular</item>
 
+    </style>
+
+    <style name="CustomHintTextAppearance" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">9sp</item>
+        <item name="android:textColor">@color/neutral_90</item>
+    </style>
+
+    <style name="CustomHintTextAppearance_Large" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">@dimen/h4TextSize</item>
+        <item name="android:textColor">@color/neutral_90</item>
     </style>
 
     <style name="searchBar">

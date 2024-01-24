@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -16,10 +18,14 @@ import com.example.koti.R
 import com.example.koti.databinding.FragmentLoginBinding
 import com.example.koti.ui.util.RegisterValidation
 import com.example.koti.ui.util.Resource
+import com.example.koti.ui.util.changeButtonBackgroundDrawable
+import com.example.koti.ui.util.changeEdBackgroundDrawable
+import com.example.koti.ui.util.changeHintSizeWhenTextExists
 import com.example.koti.ui.util.setupBottomSheetDialog
 import com.example.koti.ui.view.activities.ShoppingActivity
 import com.example.koti.ui.viewmodel.LoginViewModel
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -41,6 +47,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        changeHintSizeWhenTextExists(binding.edEmail)
+        changeHintSizeWhenTextExists(binding.edPass)
 
         binding.buttonRedirectToRegister.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
@@ -99,7 +108,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
                         is Resource.Success -> {
                             binding.buttonLogin.revertAnimation()
-                            binding.buttonLogin.setBackgroundDrawable(resources.getDrawable(R.drawable.green_button_background))
+                            changeButtonBackgroundDrawable(
+                                binding.buttonLogin,
+                                R.drawable.green_button_background,
+                                requireContext()
+                            )
                             Intent(requireActivity(), ShoppingActivity::class.java).also { intent ->
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                                 startActivity(intent)
@@ -109,7 +122,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                         is Resource.Error -> {
                             Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                             binding.buttonLogin.revertAnimation()
-                            binding.buttonLogin.setBackgroundDrawable(resources.getDrawable(R.drawable.green_button_background))
+                            changeButtonBackgroundDrawable(
+                                binding.buttonLogin,
+                                R.drawable.green_button_background,
+                                requireContext()
+                            )
                         }
 
                         else -> Unit
@@ -131,9 +148,17 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                                 ).show()
                             }
                         }
-                        setEmailFieldOnError()
+                        changeEdBackgroundDrawable(
+                            binding.textFieldEmail,
+                            R.drawable.error_edit_text_background,
+                            requireContext()
+                        )
                     } else {
-                        setEmailFieldOnNormal()
+                        changeEdBackgroundDrawable(
+                            binding.textFieldEmail,
+                            R.drawable.white_edit_text_background,
+                            requireContext()
+                        )
                     }
                     if (validation.password is RegisterValidation.Failed) {
                         withContext(Dispatchers.Main) {
@@ -145,28 +170,20 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                                 ).show()
                             }
                         }
-                        setPassFieldOnError()
+                        changeEdBackgroundDrawable(
+                            binding.textFieldPass,
+                            R.drawable.error_edit_text_background,
+                            requireContext()
+                        )
                     } else {
-                        setPassFieldOnNormal()
+                        changeEdBackgroundDrawable(
+                            binding.textFieldPass,
+                            R.drawable.white_edit_text_background,
+                            requireContext()
+                        )
                     }
                 }
             }
         }
-    }
-
-    private fun setEmailFieldOnError(){
-        binding.textFieldEmail.setBackgroundDrawable(resources.getDrawable(R.drawable.error_edit_text_background))
-    }
-
-    private fun setEmailFieldOnNormal(){
-        binding.textFieldEmail.setBackgroundDrawable(resources.getDrawable(R.drawable.white_edit_text_background))
-    }
-
-    private fun setPassFieldOnError(){
-        binding.textFieldPass.setBackgroundDrawable(resources.getDrawable(R.drawable.error_edit_text_background))
-    }
-
-    private fun setPassFieldOnNormal(){
-        binding.textFieldPass.setBackgroundDrawable(resources.getDrawable(R.drawable.white_edit_text_background))
     }
 }

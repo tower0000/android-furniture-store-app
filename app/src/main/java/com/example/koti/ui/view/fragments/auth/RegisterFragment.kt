@@ -1,10 +1,13 @@
 package com.example.koti.ui.view.fragments.auth
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -16,7 +19,11 @@ import com.example.koti.databinding.FragmentRegisterBinding
 import com.example.koti.model.User
 import com.example.koti.ui.util.RegisterValidation
 import com.example.koti.ui.util.Resource
+import com.example.koti.ui.util.changeButtonBackgroundDrawable
+import com.example.koti.ui.util.changeEdBackgroundDrawable
+import com.example.koti.ui.util.changeHintSizeWhenTextExists
 import com.example.koti.ui.viewmodel.RegisterViewModel
+import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,6 +46,11 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        changeHintSizeWhenTextExists(binding.edRegisterFirstName)
+        changeHintSizeWhenTextExists(binding.edRegisterLastName)
+        changeHintSizeWhenTextExists(binding.edRegisterEmail)
+        changeHintSizeWhenTextExists(binding.edRegisterPass)
 
         binding.buttonRedirectToAuth.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
@@ -67,6 +79,11 @@ class RegisterFragment : Fragment() {
 
                         is Resource.Success -> {
                             binding.buttonRegister.revertAnimation()
+                            changeButtonBackgroundDrawable(
+                                binding.buttonRegister,
+                                R.drawable.green_button_background,
+                                requireContext()
+                            )
                             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
                             Toast.makeText(
                                 requireContext(),
@@ -76,7 +93,11 @@ class RegisterFragment : Fragment() {
 
                         is Resource.Error -> {
                             binding.buttonRegister.revertAnimation()
-                            binding.buttonRegister.setBackgroundDrawable(resources.getDrawable(R.drawable.green_button_background))
+                            changeButtonBackgroundDrawable(
+                                binding.buttonRegister,
+                                R.drawable.green_button_background,
+                                requireContext()
+                            )
                         }
 
                         else -> Unit
@@ -98,9 +119,17 @@ class RegisterFragment : Fragment() {
                                 ).show()
                             }
                         }
-                        setEmailFieldOnError()
+                        changeEdBackgroundDrawable(
+                            binding.textFieldEmail,
+                            R.drawable.error_edit_text_background,
+                            requireContext()
+                        )
                     } else {
-                        setEmailFieldOnNormal()
+                        changeEdBackgroundDrawable(
+                            binding.textFieldEmail,
+                            R.drawable.white_edit_text_background,
+                            requireContext()
+                        )
                     }
                     if (validation.password is RegisterValidation.Failed) {
                         withContext(Dispatchers.Main) {
@@ -112,28 +141,20 @@ class RegisterFragment : Fragment() {
                                 ).show()
                             }
                         }
-                        setPassFieldOnError()
+                        changeEdBackgroundDrawable(
+                            binding.textFieldPass,
+                            R.drawable.error_edit_text_background,
+                            requireContext()
+                        )
                     } else {
-                        setPassFieldOnNormal()
+                        changeEdBackgroundDrawable(
+                            binding.textFieldPass,
+                            R.drawable.white_edit_text_background,
+                            requireContext()
+                        )
                     }
                 }
             }
         }
-    }
-
-    private fun setEmailFieldOnError(){
-        binding.textFieldEmail.setBackgroundDrawable(resources.getDrawable(R.drawable.error_edit_text_background))
-    }
-
-    private fun setEmailFieldOnNormal(){
-        binding.textFieldEmail.setBackgroundDrawable(resources.getDrawable(R.drawable.white_edit_text_background))
-    }
-
-    private fun setPassFieldOnError(){
-        binding.textFieldPass.setBackgroundDrawable(resources.getDrawable(R.drawable.error_edit_text_background))
-    }
-
-    private fun setPassFieldOnNormal(){
-        binding.textFieldPass.setBackgroundDrawable(resources.getDrawable(R.drawable.white_edit_text_background))
     }
 }

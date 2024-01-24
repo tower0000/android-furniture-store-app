@@ -2,13 +2,18 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.koti.data.FirebaseRepositoryImpl
+import com.example.koti.domain.GetCurrentUserUseCase
+import com.example.koti.domain.SaveUserInfoUseCase
 import com.example.koti.domain.SendResetPasswordUseCase
 import com.example.koti.domain.SignInWithEmailPasswordUseCase
+import com.example.koti.model.User
 import com.example.koti.ui.util.RegisterFieldsState
 import com.example.koti.ui.util.RegisterValidation
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.util.validateEmail
 import com.example.koti.ui.util.validatePassword
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.channels.Channel
@@ -21,7 +26,9 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val singInWithEmailPasswordUseCase: SignInWithEmailPasswordUseCase,
-    private val sendResetPasswordUseCase: SendResetPasswordUseCase
+    private val sendResetPasswordUseCase: SendResetPasswordUseCase,
+    private val getCurrentUserUseCase: GetCurrentUserUseCase,
+    private val saveUserInfoUseCase: SaveUserInfoUseCase
 
 ) : ViewModel() {
 
@@ -77,4 +84,12 @@ class LoginViewModel @Inject constructor(
                 passwordValidation is RegisterValidation.Success
     }
 
+    fun saveUserData(name: String, email: String, imgUrl: String) {
+        viewModelScope.launch {
+            val loggedUser = getCurrentUserUseCase.execute()
+            val userUid = loggedUser?.uid
+            val user = User(name, "", email, imgUrl)
+            saveUserInfoUseCase.execute(userUid!!,user)
+        }
+    }
 }

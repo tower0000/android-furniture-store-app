@@ -8,6 +8,7 @@ import com.example.koti.ui.util.Constants.INTRODUCTION_SP
 import com.example.koti.ui.util.FirebaseCommon
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
 import com.google.firebase.storage.FirebaseStorage

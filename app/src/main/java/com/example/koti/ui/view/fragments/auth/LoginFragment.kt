@@ -1,13 +1,13 @@
 package com.example.koti.ui.view.fragments.auth
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
-import androidx.core.content.ContextCompat
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -23,9 +23,17 @@ import com.example.koti.ui.util.changeEdBackgroundDrawable
 import com.example.koti.ui.util.changeHintSizeWhenTextExists
 import com.example.koti.ui.util.setupBottomSheetDialog
 import com.example.koti.ui.view.activities.ShoppingActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.example.koti.ui.viewmodel.LoginViewModel
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -45,8 +53,29 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         return binding.root
     }
 
+
+    lateinit var mGoogleSignInClient: GoogleSignInClient
+    private lateinit var firebaseAuth: FirebaseAuth
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        FirebaseApp.initializeApp(requireContext())
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
+        firebaseAuth = FirebaseAuth.getInstance()
+
+        binding.buttonGoogleLogin.setOnClickListener { _: View? ->
+            Toast.makeText(requireContext(), "Logging In", Toast.LENGTH_SHORT).show()
+            signInGoogle()
+        }
 
         changeHintSizeWhenTextExists(binding.edEmail)
         changeHintSizeWhenTextExists(binding.edPass)
@@ -182,6 +211,51 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                             requireContext()
                         )
                     }
+                }
+            }
+        }
+    }
+
+
+    private val googleSignInResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                handleResult(task)
+            } else {
+                Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
+    private fun signInGoogle() {
+        val signInIntent: Intent = mGoogleSignInClient.signInIntent
+        googleSignInResult.launch(signInIntent)
+    }
+
+    private fun handleResult(completedTask: Task<GoogleSignInAccount>) {
+        try {
+            val account: GoogleSignInAccount? = completedTask.getResult(ApiException::class.java)
+            if (account != null) {
+                updateUI(account)
+            }
+        } catch (e: ApiException) {
+            Toast.makeText(requireContext(), e.toString(), Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun updateUI(account: GoogleSignInAccount) {
+        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+        firebaseAuth.signInWithCredential(credential).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val name = account.displayName.toString()
+                val email = account.email.toString()
+                val img = account.photoUrl.toString()
+                viewModel.saveUserData(name, email, img)
+
+                Intent(requireActivity(), ShoppingActivity::class.java).also { intent ->
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
                 }
             }
         }

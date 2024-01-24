@@ -196,22 +196,6 @@
             app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
             app:layout_constraintTop_toBottomOf="@id/linearLogin" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonFacebookLogin"
-            style="@style/outlinedButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="4dp"
-            android:contentDescription="@string/facebook_authentication_button_img_desc"
-            android:text="@string/log_in_with_facebook"
-            app:icon="@drawable/ic_facebook"
-            app:iconGravity="textStart"
-            app:iconPadding="10dp"
-            app:iconSize="19dp"
-            app:layout_constraintEnd_toEndOf="@id/guidelineLoginEnd"
-            app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
-            app:layout_constraintTop_toBottomOf="@id/buttonGoogleLogin" />
-
         <LinearLayout
             android:id="@+id/linearRedirectLogin"
             android:layout_width="0dp"
@@ -221,7 +205,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@id/guidelineLoginEnd"
             app:layout_constraintStart_toStartOf="@id/guidelineLoginStart"
-            app:layout_constraintTop_toBottomOf="@id/buttonFacebookLogin">
+            app:layout_constraintTop_toBottomOf="@id/buttonGoogleLogin">
 
             <TextView
                 android:id="@+id/tvDontHaveAccount"

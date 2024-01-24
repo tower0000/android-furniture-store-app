@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">koti</string>
+    <string name="default_web_client_id">759374855220-d2p49vcltrgcq27ol0bdut8ohv7oo8j5.apps.googleusercontent.com</string>
+
     <string name="welcome_text_prime">Online Home Store\nand Furniture</string>
     <string name="welcome_text_secondary">Discover all style and budgets of\nfurniture, appliances, kitchen, and more\nfrom 500+ brands in your hand.</string>
     <string name="start_button_text">Get Started</string>

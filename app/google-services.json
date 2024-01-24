@@ -12,7 +12,20 @@
           "package_name": "com.example.koti"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "759374855220-dimeb28m6msd3h0o3r096hv7o61vroto.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.koti",
+            "certificate_hash": "2da42ecac0f505433400973e4d1f96f5f811afbb"
+          }
+        },
+        {
+          "client_id": "759374855220-d2p49vcltrgcq27ol0bdut8ohv7oo8j5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyChxGlelj-2ENqpGY0QqmsZm3D9_KODWfY"
@@ -20,7 +33,41 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "759374855220-d2p49vcltrgcq27ol0bdut8ohv7oo8j5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:759374855220:android:cd125c0915393a64591e61",
+        "android_client_info": {
+          "package_name": "com.example.kotiproductadder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "759374855220-d2p49vcltrgcq27ol0bdut8ohv7oo8j5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChxGlelj-2ENqpGY0QqmsZm3D9_KODWfY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "759374855220-d2p49vcltrgcq27ol0bdut8ohv7oo8j5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

@@ -2,6 +2,8 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.koti.domain.GetCurrentUserUseCase
+import com.example.koti.domain.SaveUserInfoUseCase
 import com.example.koti.domain.SignUpWithEmailPasswordUseCase
 import com.example.koti.model.User
 import com.example.koti.ui.util.RegisterFieldsState
@@ -19,7 +21,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
-    private val signUpWithEmailPasswordUseCase: SignUpWithEmailPasswordUseCase
+    private val signUpWithEmailPasswordUseCase: SignUpWithEmailPasswordUseCase,
+    private val saveUserInfoUseCase: SaveUserInfoUseCase,
+    private val getCurrentUserUseCase: GetCurrentUserUseCase
 ) : ViewModel() {
 
     private val _register = MutableStateFlow<Resource<User>>(Resource.Unspecified())
@@ -54,5 +58,14 @@ class RegisterViewModel @Inject constructor(
         val passwordValidation = validatePassword(password)
         return emailValidation is RegisterValidation.Success &&
                 passwordValidation is RegisterValidation.Success
+    }
+
+    fun saveUserData(name: String, email: String, imgUrl: String) {
+        viewModelScope.launch {
+            val loggedUser = getCurrentUserUseCase.execute()
+            val userUid = loggedUser?.uid
+            val user = User(name, "", email, imgUrl)
+            saveUserInfoUseCase.execute(userUid!!,user)
+        }
     }
 }

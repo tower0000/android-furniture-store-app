@@ -42,6 +42,8 @@ import kotlinx.coroutines.withContext
 @AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
     private lateinit var binding: FragmentLoginBinding
+    private lateinit var mGoogleSignInClient: GoogleSignInClient
+    private lateinit var firebaseAuth: FirebaseAuth
     private val viewModel by viewModels<LoginViewModel>()
 
     override fun onCreateView(
@@ -53,27 +55,17 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         return binding.root
     }
 
-
-    lateinit var mGoogleSignInClient: GoogleSignInClient
-    private lateinit var firebaseAuth: FirebaseAuth
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         FirebaseApp.initializeApp(requireContext())
-
+        firebaseAuth = FirebaseAuth.getInstance()
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
-
         mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
-        firebaseAuth = FirebaseAuth.getInstance()
 
-        binding.buttonGoogleLogin.setOnClickListener { _: View? ->
-            Toast.makeText(requireContext(), "Logging In", Toast.LENGTH_SHORT).show()
+        binding.buttonGoogleLogin.setOnClickListener {
             signInGoogle()
         }
 
@@ -216,7 +208,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
     }
 
-
     private val googleSignInResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
@@ -243,7 +234,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             Toast.makeText(requireContext(), e.toString(), Toast.LENGTH_SHORT).show()
         }
     }
-
     private fun updateUI(account: GoogleSignInAccount) {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener { task ->

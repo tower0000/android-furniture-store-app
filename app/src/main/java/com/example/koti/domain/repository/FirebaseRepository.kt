@@ -39,6 +39,7 @@ interface FirebaseRepository {
     suspend fun signOut()
     suspend fun increaseQuantity(documentId: String, onResult: (Exception?) -> Unit)
     suspend fun decreaseQuantity(documentId: String, onResult: (Exception?) -> Unit)
+    suspend fun getAllProducts(limit: Long,onResult: (List<Product>?, Exception?) -> Unit)
     fun saveUserInformation(userUid: String, user: User)
 
 }

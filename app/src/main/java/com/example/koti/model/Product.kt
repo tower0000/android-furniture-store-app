@@ -1,19 +1,41 @@
 package com.example.koti.model
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
+@Entity(tableName = "products_table")
 @Parcelize
 data class Product(
-    val id: String,
-    val name: String,
-    val category: String,
-    val price: Float,
+
+    @PrimaryKey(autoGenerate = false)
+    val id: String = "",
+
+    @ColumnInfo(name = "name")
+    val name: String = "",
+
+    @ColumnInfo(name = "category")
+    val category: String = "",
+
+    @ColumnInfo(name = "price")
+    val price: Float = 0f,
+
+    @ColumnInfo(name = "offer_percentage")
     val offerPercentage: Float? = null,
-    val description: String? = null,
+
+    @ColumnInfo(name = "description")
+    val description: String? = "",
+
+    @ColumnInfo(name = "colors")
     val colors: List<Int>? = null,
+
+    @ColumnInfo(name = "sizes")
     val sizes: List<String>? = null,
-    val images: List<String>
+
+    @ColumnInfo(name = "images")
+    val images: List<String> = emptyList()
 ): Parcelable {
     constructor(): this("0", "", "", 0f, images = emptyList())
 }

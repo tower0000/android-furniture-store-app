@@ -89,4 +89,5 @@
     <string name="no_addresses">No saved addresses</string>
     <string name="empty_orders_text">You have not placed an order yet.\nAdd items to your cart and checkout\nwhen you are ready!</string>
     <string name="empty_addresses_text">You have not added any addresses yet.\nYou can do it by clicking button\nat the top of this page!</string>
+    <string name="toast_clear_cache">All app cache was successfully removed from your device!</string>
 </resources>

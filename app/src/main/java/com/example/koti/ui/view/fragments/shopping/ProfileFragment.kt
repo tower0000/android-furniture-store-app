@@ -1,6 +1,7 @@
 package com.example.koti.ui.view.fragments.shopping
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -26,6 +27,7 @@ import com.example.koti.ui.viewmodel.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.io.File
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
@@ -56,12 +58,25 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_profileFragment_to_savedAddressesFragment)
         }
 
-        binding.clBilling.setOnClickListener {
-            val action = ProfileFragmentDirections.actionProfileFragmentToBillingFragment(
-                0f,
-                emptyArray()
-            )
-            findNavController().navigate(action)
+        binding.clClearCache.setOnClickListener {
+            val alertDialog = AlertDialog.Builder(requireContext()).apply {
+                setTitle("Clear Cache")
+                setMessage("Do you want to clear the entire app cache?")
+                setNegativeButton("Cancel") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                setPositiveButton("Yes") { dialog, _ ->
+                    viewModel.clearCache()
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.toast_clear_cache),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    dialog.dismiss()
+                }
+            }
+            alertDialog.create()
+            alertDialog.show()
         }
 
         binding.clChangePass.setOnClickListener {
@@ -156,6 +171,7 @@ class ProfileFragment : Fragment() {
         alertDialog.create()
         alertDialog.show()
     }
+
 }
 
 

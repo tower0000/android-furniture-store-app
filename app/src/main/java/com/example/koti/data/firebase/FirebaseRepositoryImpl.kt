@@ -333,4 +333,19 @@ class FirebaseRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getAllProducts(limit: Long,onResult: (List<Product>?, Exception?) -> Unit) {
+        withContext(Dispatchers.IO) {
+            store.collection(SHOP_PRODUCTS_COLLECTION)
+                .limit(limit).get()
+                .addOnSuccessListener { result ->
+                    val products = result.toObjects(Product::class.java)
+                    onResult(products, null)
+
+                }.addOnFailureListener {
+                    onResult(null, it)
+                    Log.e("Room", it.message.toString())
+                }
+        }
+    }
+
 }

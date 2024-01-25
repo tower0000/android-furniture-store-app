@@ -6,11 +6,11 @@ object Constants {
     const val ADDRESS_COLLECTION = "address"
     const val ORDERS_COLLECTION = "orders"
     const val CART_COLLECTION = "cart"
-    const val PRODUCTS_COLLECTION = "products"
     const val CATEGORY_COLLECTION = "category"
 
     const val INTRODUCTION_SP = "IntroductionSharedPrefs"
     const val INTRODUCTION_KEY = "IntroductionKey"
+    const val BEST_PRODUCTS_KEY = "best_products_key"
 
     const val BEST_DEALS_CATEGORY = "Best Deals"
     const val SPECIAL_PRODUCTS_CATEGORY = "Special Products"

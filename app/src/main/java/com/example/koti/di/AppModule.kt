@@ -74,8 +74,7 @@ object AppModule {
     @Singleton
     fun provideRoomRepository(
         dao: ProductDao,
-        store: FirebaseFirestore
     ): ProductsDatabaseRepository {
-        return ProductsDatabaseRepositoryImpl(dao, store)
+        return ProductsDatabaseRepositoryImpl(dao)
     }
 }

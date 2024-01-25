@@ -1,11 +1,15 @@
 package com.example.koti.ui.viewmodel
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.koti.domain.firebaseUseCases.GetUserInformationUseCase
 import com.example.koti.domain.firebaseUseCases.SendResetPasswordUseCase
 import com.example.koti.domain.firebaseUseCases.SignOutUseCase
+import com.example.koti.domain.productsDatabaseUseCases.DeleteDatabaseProductsUseCase
 import com.example.koti.model.User
+import com.example.koti.ui.util.Constants
 import com.example.koti.ui.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -13,13 +17,16 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
+    private val sharedPreferences: SharedPreferences,
     private val sendResetPasswordUseCase: SendResetPasswordUseCase,
     private val signOutUseCase: SignOutUseCase,
-    private val getUserInformationUseCase: GetUserInformationUseCase
+    private val getUserInformationUseCase: GetUserInformationUseCase,
+    private val deleteDatabaseProductsUseCase: DeleteDatabaseProductsUseCase
 ) : ViewModel() {
 
     private val _user = MutableStateFlow<Resource<User>>(Resource.Unspecified())
@@ -65,4 +72,12 @@ class ProfileViewModel @Inject constructor(
             signOutUseCase.execute()
         }
     }
+
+    fun clearCache() {
+        viewModelScope.launch {
+            deleteDatabaseProductsUseCase.execute()
+            sharedPreferences.edit().putBoolean(Constants.BEST_PRODUCTS_KEY, false).apply()
+        }
+    }
+
 }

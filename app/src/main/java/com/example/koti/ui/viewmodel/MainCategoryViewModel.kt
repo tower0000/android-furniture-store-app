@@ -1,29 +1,35 @@
 package com.example.koti.ui.viewmodel
 
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.koti.domain.firebaseUseCases.GetAllProductsUseCase
+import com.example.koti.domain.productsDatabaseUseCases.GetDatabaseElementsCount
 import com.example.koti.domain.productsDatabaseUseCases.GetDatabaseProductsUseCase
-import com.example.koti.domain.productsDatabaseUseCases.RefreshProductsUseCase
+import com.example.koti.domain.productsDatabaseUseCases.InsertProductsUseCase
 import com.example.koti.model.Product
+import com.example.koti.ui.util.Constants
 import com.example.koti.ui.util.Constants.BEST_DEALS_CATEGORY
+import com.example.koti.ui.util.Constants.BEST_PRODUCTS_KEY
 import com.example.koti.ui.util.Constants.FIELD_CATEGORY
 import com.example.koti.ui.util.Constants.SHOP_PRODUCTS_COLLECTION
 import com.example.koti.ui.util.Constants.SPECIAL_PRODUCTS_CATEGORY
 import com.example.koti.ui.util.Resource
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.concurrent.thread
 
 @HiltViewModel
 class MainCategoryViewModel @Inject constructor(
+    private val sharedPreferences: SharedPreferences,
     private val firestore: FirebaseFirestore,
-    private val refreshProductsUseCase: RefreshProductsUseCase,
-    private val getDatabaseProductsUseCase: GetDatabaseProductsUseCase
+    private val getAllProductsUseCase: GetAllProductsUseCase,
+    private val getDatabaseProductsUseCase: GetDatabaseProductsUseCase,
+    private val insertProductsUseCase: InsertProductsUseCase,
+    private val getDatabaseElementsCount: GetDatabaseElementsCount
 ) : ViewModel() {
 
     private val _specialProducts = MutableStateFlow<Resource<List<Product>>>(Resource.Unspecified())
@@ -41,9 +47,10 @@ class MainCategoryViewModel @Inject constructor(
     init {
         fetchSpecialProducts()
         fetchBestDeals()
-        fetchBestProducts()
-        downloadItems()
-
+        if (!sharedPreferences.getBoolean(BEST_PRODUCTS_KEY, false)) {
+            downloadBestProducts(pagingInfo.maxElementsOnPage.toLong()/2)
+        }
+        showNewBestProductsState()
     }
 
     fun fetchSpecialProducts() {
@@ -52,7 +59,7 @@ class MainCategoryViewModel @Inject constructor(
                 _specialProducts.emit(Resource.Loading())
                 firestore.collection(SHOP_PRODUCTS_COLLECTION)
                     .whereEqualTo(FIELD_CATEGORY, SPECIAL_PRODUCTS_CATEGORY)
-                    .limit(pagingInfo.bestProductsPage * 2).get()
+                    .limit(pagingInfo.bestProductsPage * 4).get()
                     .addOnSuccessListener { result ->
                         val specialOffers = result.toObjects(Product::class.java)
                         pagingInfo.isSpecialOffersPagingEnd =
@@ -97,35 +104,49 @@ class MainCategoryViewModel @Inject constructor(
 
 
     fun fetchBestProducts() {
-        if (!pagingInfo.isProductsPagingEnd) {
-            viewModelScope.launch {
-                _bestProducts.emit(Resource.Loading())
-                firestore.collection(SHOP_PRODUCTS_COLLECTION)
-                    .limit(pagingInfo.bestProductsPage * 6).get()
-                    .addOnSuccessListener { result ->
-                        val bestProducts = result.toObjects(Product::class.java)
-                        pagingInfo.isProductsPagingEnd = bestProducts == pagingInfo.oldBestProducts
-                        pagingInfo.oldBestProducts = bestProducts
-                        viewModelScope.launch {
-                            _bestProducts.emit(Resource.Success(bestProducts))
-                        }
-                        pagingInfo.bestProductsPage++
-                    }.addOnFailureListener {
-                        viewModelScope.launch {
-                            _bestProducts.emit(Resource.Error(it.message.toString()))
-                        }
-                    }
+        if (!sharedPreferences.getBoolean(BEST_PRODUCTS_KEY, false)) {
+            if (!pagingInfo.isProductsPagingEnd) {
+                viewModelScope.launch {
+                    _bestProducts.emit(Resource.Loading())
+
+                    if (pagingInfo.bestProductsPage * pagingInfo.maxElementsOnPage > getDatabaseElementsCount.execute())
+                        downloadBestProducts(pagingInfo.bestProductsPage * pagingInfo.maxElementsOnPage)
+
+                    val products = getDatabaseProductsUseCase.execute()
+                    _bestProducts.emit(Resource.Success(products))
+
+                    pagingInfo.isProductsPagingEnd =
+                        products.sortedBy { it.id } == pagingInfo.oldBestProducts.sortedBy { it.id }
+                    pagingInfo.oldBestProducts = products
+                    pagingInfo.bestProductsPage++
+                }
+            } else {
+                sharedPreferences.edit().putBoolean(BEST_PRODUCTS_KEY, true).apply()
             }
         }
     }
 
-    fun downloadItems() {
-        viewModelScope.launch { refreshProductsUseCase.execute() }
+    private fun downloadBestProducts(limit: Long) {
+        viewModelScope.launch {
+            getAllProductsUseCase.execute(limit) { res, e ->
+                viewModelScope.launch {
+                    if (e != null)
+                        _bestProducts.emit(Resource.Error(e.message.toString()))
+                    else {
+                        insertProductsUseCase.execute(res!!)
+                    }
+                }
+            }
+        }
     }
 
-    fun getDataBaseProducts() {
-        viewModelScope.launch { getDatabaseProductsUseCase.execute() }
+    private fun showNewBestProductsState() {
+        viewModelScope.launch {
+            val products = getDatabaseProductsUseCase.execute()
+            _bestProducts.emit(Resource.Success(products))
+        }
     }
+
 
 }
 
@@ -140,5 +161,7 @@ internal data class PagingInfo(
 
     var specialOffersPage: Long = 1,
     var oldSpecialOffers: List<Product> = emptyList(),
-    var isSpecialOffersPagingEnd: Boolean = false
+    var isSpecialOffersPagingEnd: Boolean = false,
+
+    val maxElementsOnPage: Int = 8
 )

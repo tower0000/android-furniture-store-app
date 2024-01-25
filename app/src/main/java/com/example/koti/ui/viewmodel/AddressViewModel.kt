@@ -2,7 +2,7 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.koti.domain.AddNewAddressUseCase
+import com.example.koti.domain.firebaseUseCases.AddNewAddressUseCase
 import com.example.koti.model.Address
 import com.example.koti.ui.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

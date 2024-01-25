@@ -37,7 +37,6 @@ interface FirebaseRepository {
     suspend fun deleteFavoritesProduct(documentId: String)
     suspend fun deleteUserAddress(documentId: String)
     suspend fun signOut()
-
     suspend fun increaseQuantity(documentId: String, onResult: (Exception?) -> Unit)
     suspend fun decreaseQuantity(documentId: String, onResult: (Exception?) -> Unit)
     fun saveUserInformation(userUid: String, user: User)

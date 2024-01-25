@@ -2,9 +2,9 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.koti.domain.GetUserInformationUseCase
-import com.example.koti.domain.SendResetPasswordUseCase
-import com.example.koti.domain.SignOutUseCase
+import com.example.koti.domain.firebaseUseCases.GetUserInformationUseCase
+import com.example.koti.domain.firebaseUseCases.SendResetPasswordUseCase
+import com.example.koti.domain.firebaseUseCases.SignOutUseCase
 import com.example.koti.model.User
 import com.example.koti.ui.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

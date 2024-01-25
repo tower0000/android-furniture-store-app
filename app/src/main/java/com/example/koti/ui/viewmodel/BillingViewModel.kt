@@ -2,9 +2,9 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.koti.domain.DeleteUserAddressUseCase
-import com.example.koti.domain.GetUserAddressesUseCase
-import com.example.koti.domain.PlaceOrderUseCase
+import com.example.koti.domain.firebaseUseCases.DeleteUserAddressUseCase
+import com.example.koti.domain.firebaseUseCases.GetUserAddressesUseCase
+import com.example.koti.domain.firebaseUseCases.PlaceOrderUseCase
 import com.example.koti.model.Address
 import com.example.koti.model.Order
 import com.example.koti.ui.util.Resource

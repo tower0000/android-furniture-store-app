@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.koti.R
-import com.example.koti.domain.GetCurrentUserUseCase
+import com.example.koti.domain.firebaseUseCases.GetCurrentUserUseCase
 import com.example.koti.ui.util.Constants.INTRODUCTION_KEY
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

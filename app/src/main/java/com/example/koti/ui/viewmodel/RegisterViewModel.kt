@@ -2,9 +2,9 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.koti.domain.GetCurrentUserUseCase
-import com.example.koti.domain.SaveUserInfoUseCase
-import com.example.koti.domain.SignUpWithEmailPasswordUseCase
+import com.example.koti.domain.firebaseUseCases.GetCurrentUserUseCase
+import com.example.koti.domain.firebaseUseCases.SaveUserInfoUseCase
+import com.example.koti.domain.firebaseUseCases.SignUpWithEmailPasswordUseCase
 import com.example.koti.model.User
 import com.example.koti.ui.util.RegisterFieldsState
 import com.example.koti.ui.util.RegisterValidation

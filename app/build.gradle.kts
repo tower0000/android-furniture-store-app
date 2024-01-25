@@ -79,7 +79,13 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:20.7.0")
 
     //Coroutines with firebase
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.1")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
+
+    //Room database
+    implementation ("androidx.room:room-runtime:2.6.1")
+    annotationProcessor ("androidx.room:room-compiler:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
 
     //Android Ktx
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
@@ -102,4 +108,5 @@ dependencies {
 
 kapt {
     correctErrorTypes = true
+    generateStubs = true
 }

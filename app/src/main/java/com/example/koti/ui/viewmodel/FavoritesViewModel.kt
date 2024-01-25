@@ -2,10 +2,10 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.koti.domain.AddProductToCartUseCase
-import com.example.koti.domain.ChangeCartProductQuantityUseCase
-import com.example.koti.domain.DeleteFavoritesProductUseCase
-import com.example.koti.domain.GetUserFavoritesUseCase
+import com.example.koti.domain.firebaseUseCases.AddProductToCartUseCase
+import com.example.koti.domain.firebaseUseCases.ChangeCartProductQuantityUseCase
+import com.example.koti.domain.firebaseUseCases.DeleteFavoritesProductUseCase
+import com.example.koti.domain.firebaseUseCases.GetUserFavoritesUseCase
 import com.example.koti.model.CartProduct
 import com.example.koti.model.Product
 import com.example.koti.model.QuantityChanging

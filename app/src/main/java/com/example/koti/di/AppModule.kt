@@ -1,20 +1,26 @@
 package com.example.koti.di
 
 import android.app.Application
+import android.content.Context
 import android.content.Context.MODE_PRIVATE
-import com.example.koti.data.FirebaseRepositoryImpl
+import androidx.room.Room
+import com.example.koti.data.firebase.FirebaseRepositoryImpl
+import com.example.koti.data.roomDatabase.ProductDao
+import com.example.koti.data.roomDatabase.ProductsDatabase
+import com.example.koti.data.roomDatabase.ProductsDatabaseRepositoryImpl
 import com.example.koti.domain.repository.FirebaseRepository
+import com.example.koti.domain.repository.ProductsDatabaseRepository
 import com.example.koti.ui.util.Constants.INTRODUCTION_SP
 import com.example.koti.ui.util.FirebaseCommon
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
 import com.google.firebase.storage.FirebaseStorage
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -52,4 +58,24 @@ object AppModule {
         return FirebaseRepositoryImpl(auth, store)
     }
 
+    @Provides
+    @Singleton
+    fun provide(@ApplicationContext context: Context) = Room.databaseBuilder(
+        context, ProductsDatabase::class.java, "products_database"
+    )
+        .fallbackToDestructiveMigration()
+        .build()
+
+    @Provides
+    @Singleton
+    fun provideDao(db: ProductsDatabase) = db.productDao()
+
+    @Provides
+    @Singleton
+    fun provideRoomRepository(
+        dao: ProductDao,
+        store: FirebaseFirestore
+    ): ProductsDatabaseRepository {
+        return ProductsDatabaseRepositoryImpl(dao, store)
+    }
 }

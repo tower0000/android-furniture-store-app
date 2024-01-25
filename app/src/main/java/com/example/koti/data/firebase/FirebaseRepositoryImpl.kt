@@ -1,4 +1,4 @@
-package com.example.koti.data
+package com.example.koti.data.firebase
 
 
 import android.util.Log
@@ -12,6 +12,7 @@ import com.example.koti.ui.util.Constants.ADDRESS_COLLECTION
 import com.example.koti.ui.util.Constants.CART_COLLECTION
 import com.example.koti.ui.util.Constants.FAVORITES_COLLECTION
 import com.example.koti.ui.util.Constants.ORDERS_COLLECTION
+import com.example.koti.ui.util.Constants.SHOP_PRODUCTS_COLLECTION
 import com.example.koti.ui.util.Constants.USER_COLLECTION
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -331,4 +332,5 @@ class FirebaseRepositoryImpl @Inject constructor(
                 }
         }
     }
+
 }

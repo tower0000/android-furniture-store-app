@@ -7,12 +7,10 @@ import android.provider.MediaStore
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.koti.KotiApplication
-import com.example.koti.domain.GetUserInformationUseCase
+import com.example.koti.domain.firebaseUseCases.GetUserInformationUseCase
 import com.example.koti.model.User
 import com.example.koti.ui.util.Constants.USER_COLLECTION
-import com.example.koti.ui.util.RegisterValidation
 import com.example.koti.ui.util.Resource
-import com.example.koti.ui.util.validateEmail
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.StorageReference

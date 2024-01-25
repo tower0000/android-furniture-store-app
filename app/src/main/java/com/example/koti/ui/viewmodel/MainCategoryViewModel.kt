@@ -2,6 +2,8 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.koti.domain.productsDatabaseUseCases.GetDatabaseProductsUseCase
+import com.example.koti.domain.productsDatabaseUseCases.RefreshProductsUseCase
 import com.example.koti.model.Product
 import com.example.koti.ui.util.Constants.BEST_DEALS_CATEGORY
 import com.example.koti.ui.util.Constants.FIELD_CATEGORY
@@ -10,14 +12,18 @@ import com.example.koti.ui.util.Constants.SPECIAL_PRODUCTS_CATEGORY
 import com.example.koti.ui.util.Resource
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.concurrent.thread
 
 @HiltViewModel
 class MainCategoryViewModel @Inject constructor(
-    private val firestore: FirebaseFirestore
+    private val firestore: FirebaseFirestore,
+    private val refreshProductsUseCase: RefreshProductsUseCase,
+    private val getDatabaseProductsUseCase: GetDatabaseProductsUseCase
 ) : ViewModel() {
 
     private val _specialProducts = MutableStateFlow<Resource<List<Product>>>(Resource.Unspecified())
@@ -36,6 +42,8 @@ class MainCategoryViewModel @Inject constructor(
         fetchSpecialProducts()
         fetchBestDeals()
         fetchBestProducts()
+        downloadItems()
+
     }
 
     fun fetchSpecialProducts() {
@@ -47,7 +55,8 @@ class MainCategoryViewModel @Inject constructor(
                     .limit(pagingInfo.bestProductsPage * 2).get()
                     .addOnSuccessListener { result ->
                         val specialOffers = result.toObjects(Product::class.java)
-                        pagingInfo.isSpecialOffersPagingEnd = specialOffers == pagingInfo.oldSpecialOffers
+                        pagingInfo.isSpecialOffersPagingEnd =
+                            specialOffers == pagingInfo.oldSpecialOffers
                         pagingInfo.oldSpecialOffers = specialOffers
                         viewModelScope.launch {
                             _specialProducts.emit(Resource.Success(specialOffers))
@@ -109,6 +118,15 @@ class MainCategoryViewModel @Inject constructor(
             }
         }
     }
+
+    fun downloadItems() {
+        viewModelScope.launch { refreshProductsUseCase.execute() }
+    }
+
+    fun getDataBaseProducts() {
+        viewModelScope.launch { getDatabaseProductsUseCase.execute() }
+    }
+
 }
 
 internal data class PagingInfo(

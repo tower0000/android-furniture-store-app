@@ -41,6 +41,7 @@
 
 
             <EditText
+                android:id="@+id/edSearchRequest"
                 style="@style/textSearchBar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -59,15 +60,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="2dp"
-            android:backgroundTint="@color/white"
-            android:contentDescription=""
-            android:padding="5dp"
-            android:src="@drawable/ic_three_dots"
-            app:tint="@color/neutral_90" />
+
 
     </LinearLayout>
 

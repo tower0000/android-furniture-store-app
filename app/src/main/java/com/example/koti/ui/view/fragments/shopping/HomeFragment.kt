@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.koti.R
 import com.example.koti.databinding.FragmentHomeBinding
 import com.example.koti.ui.adapters.HomeViewpagerAdapter
@@ -16,7 +17,7 @@ import com.example.koti.ui.view.fragments.categories.MainCategoryFragment
 import com.example.koti.ui.view.fragments.categories.TableFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
-class HomeFragment : Fragment(R.layout.fragment_home){
+class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
@@ -31,6 +32,12 @@ class HomeFragment : Fragment(R.layout.fragment_home){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.buttonSearch.setOnClickListener {
+            val action =
+                HomeFragmentDirections.actionHomeFragmentToSearchResultFragment(binding.edSearchRequest.text.toString())
+            findNavController().navigate(action)
+        }
+
         val categoriesFragments = arrayListOf<Fragment>(
             MainCategoryFragment(),
             ChairFragment(),
@@ -42,10 +49,11 @@ class HomeFragment : Fragment(R.layout.fragment_home){
 
         binding.viewpagerHome.isUserInputEnabled = false
 
-        val viewPager2Adapter = HomeViewpagerAdapter(categoriesFragments, childFragmentManager, lifecycle)
+        val viewPager2Adapter =
+            HomeViewpagerAdapter(categoriesFragments, childFragmentManager, lifecycle)
         binding.viewpagerHome.adapter = viewPager2Adapter
         TabLayoutMediator(binding.tabLayout, binding.viewpagerHome) { tab, position ->
-            when(position) {
+            when (position) {
                 0 -> tab.text = "Main"
                 1 -> tab.text = "Chair"
                 2 -> tab.text = "Cupboard"

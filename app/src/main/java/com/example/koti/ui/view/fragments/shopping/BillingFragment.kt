@@ -26,7 +26,6 @@ import com.example.koti.ui.adapters.BillingProductsAdapter
 import com.example.koti.ui.util.HorisontalItemDecoration
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.viewmodel.BillingViewModel
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

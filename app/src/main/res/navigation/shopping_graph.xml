@@ -12,10 +12,18 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_productDetailsFragment"
-            app:destination="@id/productDetailsFragment" />
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/slide_to_left"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/slide_to_right"
+            app:popExitAnim="@anim/exit_to_right" />
         <action
             android:id="@+id/action_homeFragment_to_searchResultFragment"
-            app:destination="@id/searchResultFragment" />
+            app:destination="@id/searchResultFragment"
+            app:enterAnim="@anim/slide_to_left"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/slide_to_right"
+            app:popExitAnim="@anim/exit_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
@@ -24,28 +32,46 @@
         tools:layout="@layout/fragment_cart">
         <action
             android:id="@+id/action_cartFragment_to_productDetailsFragment"
-            app:destination="@id/productDetailsFragment" />
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/slide_to_left"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/slide_to_right"
+            app:popExitAnim="@anim/exit_to_right"/>
         <action
             android:id="@+id/action_cartFragment_to_billingFragment"
-            app:destination="@id/billingFragment" />
+            app:destination="@id/billingFragment"
+            app:enterAnim="@anim/slide_to_left"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/slide_to_right"
+            app:popExitAnim="@anim/exit_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.koti.ui.view.fragments.shopping.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile">
-        <action
-            android:id="@+id/action_profileFragment_to_billingFragment"
-            app:destination="@id/billingFragment" />
+
         <action
             android:id="@+id/action_profileFragment_to_allOrdersFragment"
-            app:destination="@id/allOrdersFragment" />
+            app:destination="@id/allOrdersFragment"
+            app:enterAnim="@anim/slide_to_left"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/slide_to_right"
+            app:popExitAnim="@anim/exit_to_right"/>
         <action
             android:id="@+id/action_profileFragment_to_userAccountFragment"
-            app:destination="@id/userAccountFragment" />
+            app:destination="@id/userAccountFragment"
+            app:enterAnim="@anim/slide_to_left"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/slide_to_right"
+            app:popExitAnim="@anim/exit_to_right"/>
         <action
             android:id="@+id/action_profileFragment_to_savedAddressesFragment"
-            app:destination="@id/savedAddressesFragment" />
+            app:destination="@id/savedAddressesFragment"
+            app:enterAnim="@anim/slide_to_left"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/slide_to_right"
+            app:popExitAnim="@anim/exit_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
@@ -54,10 +80,11 @@
         tools:layout="@layout/fragment_favorites">
         <action
             android:id="@+id/action_favoritesFragment_to_productDetailsFragment"
-            app:destination="@id/productDetailsFragment" />
-        <action
-            android:id="@+id/action_favoritesFragment_to_cartFragment"
-            app:destination="@id/cartFragment" />
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/slide_to_left"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/slide_to_right"
+            app:popExitAnim="@anim/exit_to_right"/>
         <action
             android:id="@+id/action_favoritesFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -84,7 +111,11 @@
         tools:layout="@layout/fragment_billing">
         <action
             android:id="@+id/action_billingFragment_to_addressFragment"
-            app:destination="@id/addressFragment" />
+            app:destination="@id/addressFragment"
+            app:enterAnim="@anim/slide_to_left"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/slide_to_right"
+            app:popExitAnim="@anim/exit_to_right"/>
         <argument
             android:name="totalPrice"
             app:argType="float" />
@@ -104,7 +135,11 @@
         tools:layout="@layout/fragment_orders">
         <action
             android:id="@+id/action_allOrdersFragment_to_orderDetailFragment"
-            app:destination="@id/orderDetailFragment" />
+            app:destination="@id/orderDetailFragment"
+            app:enterAnim="@anim/slide_to_left"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/slide_to_right"
+            app:popExitAnim="@anim/exit_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/orderDetailFragment"
@@ -122,7 +157,11 @@
         tools:layout="@layout/fragment_saved_addresses">
         <action
             android:id="@+id/action_savedAddressesFragment_to_addressFragment"
-            app:destination="@id/addressFragment" />
+            app:destination="@id/addressFragment"
+            app:enterAnim="@anim/slide_to_left"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/slide_to_right"
+            app:popExitAnim="@anim/exit_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/searchResultFragment"
@@ -131,7 +170,11 @@
         tools:layout="@layout/fragment_search_results">
         <action
             android:id="@+id/action_searchResultFragment_to_productDetailsFragment"
-            app:destination="@id/productDetailsFragment" />
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/slide_to_left"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/slide_to_right"
+            app:popExitAnim="@anim/exit_to_right"/>
         <argument
             android:name="search"
             app:argType="string" />

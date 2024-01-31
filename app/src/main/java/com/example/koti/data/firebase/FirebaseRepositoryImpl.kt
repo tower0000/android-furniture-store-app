@@ -171,7 +171,8 @@ class FirebaseRepositoryImpl @Inject constructor(
                 .get()
                 .addOnSuccessListener {
                     val orders = it.toObjects(Order::class.java)
-                    onResult(orders, null)
+                    val sortedOrders = orders.sortedBy { it.date }
+                    onResult(sortedOrders, null)
                 }.addOnFailureListener {
                     onResult(null, it)
                     Log.e(TAG, it.message.toString())
@@ -348,7 +349,10 @@ class FirebaseRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getAllProducts(limit: Long,onResult: (List<Product>?, Exception?) -> Unit) {
+    override suspend fun getAllProducts(
+        limit: Long,
+        onResult: (List<Product>?, Exception?) -> Unit
+    ) {
         withContext(Dispatchers.IO) {
             store.collection(SHOP_PRODUCTS_COLLECTION)
                 .limit(limit).get()

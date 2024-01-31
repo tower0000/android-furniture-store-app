@@ -89,7 +89,7 @@
             android:id="@+id/imageAddAddress"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/ic_add"
+            android:src="@drawable/ic_plus"
             android:layout_marginEnd="15dp"
             app:layout_constraintBottom_toBottomOf="@id/tvShoppingAddress"
             app:layout_constraintEnd_toEndOf="@id/guideline2"

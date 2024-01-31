@@ -56,7 +56,7 @@ class SearchResultFragment: Fragment() {
 
         offerAdapter.onClick = {
             val b = Bundle().apply { putParcelable("product", it) }
-            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment, b)
+            findNavController().navigate(R.id.action_searchResultFragment_to_productDetailsFragment, b)
         }
 
         binding.rvOfferProducts.addOnScrollListener(object : RecyclerView.OnScrollListener() {

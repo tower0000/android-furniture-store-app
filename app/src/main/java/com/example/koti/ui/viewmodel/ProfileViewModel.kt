@@ -42,7 +42,7 @@ class ProfileViewModel @Inject constructor(
     private fun getUser() {
         viewModelScope.launch {
             _user.emit(Resource.Loading())
-            getUserInformationUseCase.execute() { user, exception ->
+            getUserInformationUseCase.execute { user, exception ->
                 viewModelScope.launch {
                     if(exception != null)
                         _user.emit(Resource.Error(exception.message.toString()))

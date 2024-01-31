@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">koti</string>
+    <string name="app_name">Koti</string>
     <string name="default_web_client_id">759374855220-d2p49vcltrgcq27ol0bdut8ohv7oo8j5.apps.googleusercontent.com</string>
 
     <string name="welcome_text_prime">Online Home Store\nand Furniture</string>
@@ -11,7 +11,6 @@
     <string name="forgot_password">Forgot your password?</string>
     <string name="login">Log In</string>
     <string name="or_continue_with">Or continue with</string>
-    <string name="facebook_authentication_button_img_desc">facebook authentication</string>
     <string name="google_authentication_button_img_desc">google authentication</string>
     <string name="sign_up_text_button">Sign Up</string>
     <string name="register_title">Create Account</string>

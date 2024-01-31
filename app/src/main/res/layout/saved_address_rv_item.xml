@@ -8,7 +8,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="300dp"
+        android:layout_width="260dp"
         android:layout_height="130dp"
         android:background="@color/white"
         android:paddingBottom="14dp">
@@ -16,7 +16,7 @@
         <TextView
             android:id="@+id/tvShippingAddress"
             style="@style/textGreyNeutral"
-            android:textSize="19sp"
+            android:textSize="18sp"
             android:textColor="@color/neutral_90"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:text="Full Name"
                 style="@style/textGreyNeutral"
-                android:textSize="17sp"
+                android:textSize="16sp"
                 android:maxLines="1"
                 android:textColor="@color/neutral_90" />
 
@@ -61,7 +61,7 @@
                 android:text="Address"
                 style="@style/textGreyNeutral"
                 android:layout_marginTop="2dp"
-                android:textSize="17sp"
+                android:textSize="16sp"
                 android:maxLines="1"
                 android:textColor="@color/neutral_90"/>
 
@@ -72,7 +72,7 @@
                 android:text="Phone"
                 android:layout_marginTop="2dp"
                 style="@style/textGreyNeutral"
-                android:textSize="17sp"
+                android:textSize="16sp"
                 android:maxLines="1"
                 android:textColor="@color/neutral_90" />
 

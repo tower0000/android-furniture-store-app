@@ -68,7 +68,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageEdit"
-            style="@style/roundButtonStyle"
+            style="@style/searchBar"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginTop="50dp"

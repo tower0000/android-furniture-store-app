@@ -1,6 +1,6 @@
 package com.example.koti.ui.util
 
-sealed class RegisterValidation() {
+sealed class RegisterValidation {
     data object Success : RegisterValidation()
     data class Failed(val message: String) : RegisterValidation()
 }

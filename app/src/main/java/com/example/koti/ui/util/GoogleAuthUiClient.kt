@@ -16,6 +16,4 @@ import java.util.concurrent.CancellationException
 
 class GoogleAuthUiClient (
     private val context: Context,
-) {
-
-}
+)

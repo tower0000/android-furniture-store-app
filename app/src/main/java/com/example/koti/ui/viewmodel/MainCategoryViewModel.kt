@@ -155,10 +155,10 @@ class MainCategoryViewModel @Inject constructor(
     private fun checkForProductUpdates() {
         viewModelScope.launch {
             val dbProductsCount = getDatabaseProductsUseCase.execute().count()
-            getServerItemsCount.execute() { size ->
+            getServerItemsCount.execute { size ->
                 if (size!! > dbProductsCount) {
                     viewModelScope.launch {
-                        sharedPreferences.edit().putBoolean(Constants.BEST_PRODUCTS_KEY, false)
+                        sharedPreferences.edit().putBoolean(BEST_PRODUCTS_KEY, false)
                             .apply()
                     }
                 }

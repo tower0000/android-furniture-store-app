@@ -1,34 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="orange">#FF9E58</color>
-
     <color name="green">#156651</color>
     <color name="green_light">#AAD1B8</color>
-    <color name="red">#E44A4A</color>
+    <color name="swamp_green">#606134</color>
+    <color name="swamp_green_dark">#1C1D00</color>
+
     <color name="neutral_20">#F5F5F5</color>
     <color name="neutral_40">#E0E0E0</color>
     <color name="neutral_50">#C2C2C2</color>
     <color name="neutral_60">#9E9E9E</color>
     <color name="neutral_70">#757575</color>
     <color name="neutral_90">#404040</color>
+
+    <color name="orange">#FF9E58</color>
     <color name="orange_dark">#EBB65B</color>
-
-    <color name="swamp_green">#606134</color>
-    <color name="swamp_green_dark">#1C1D00</color>
+    <color name="red">#E44A4A</color>
     <color name="white">#FFFFFF</color>
-    <color name="grey">#3B3B3B</color>
-    <color name="grey_background">#636363</color>
-    <color name="grey_edit_text_background">#838383</color>
-    
-    <color name="card_grey_background">#C7C7C7</color>
-    <color name="card_black_background">#211E1E</color>
-
-
-    <color name="card_black_text">#CBD6D4</color>
-
-    <color name="white_icon_background">#F4F4F4</color>
-
-
 
 </resources>

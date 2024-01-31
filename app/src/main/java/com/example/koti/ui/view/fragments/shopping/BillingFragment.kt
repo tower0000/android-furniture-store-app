@@ -134,7 +134,7 @@ class BillingFragment : Fragment() {
 
         billingProductsAdapter.differ.submitList(products)
 
-        binding.tvTotalPrice.text = "$${totalPrice}"
+        binding.tvTotalPrice.text = "$${String.format("%.2f", totalPrice)}"
 
         addressAdapter.onClick = {
             selectedAddress = it

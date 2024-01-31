@@ -28,6 +28,7 @@ class BillingProductsAdapter : Adapter<BillingProductsAdapter.BillingProductsVie
                 }
                 tvCartProductOldPrice.text = "$${String.format("%.2f", billingProduct.product.price)}"
                 tvCartProductOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+                tvCartProductQuantity.text = billingProduct.quantity.toString()
 
                 tvProductCartName.text = billingProduct.product.name.uppercase()
             }

@@ -280,6 +280,21 @@ class FirebaseRepositoryImpl @Inject constructor(
         }
     }
 
+
+    override suspend fun getServerProductsCount(onResult: (Int?) -> Unit) {
+        withContext(Dispatchers.IO) {
+            store.collection(SHOP_PRODUCTS_COLLECTION)
+                .get()
+                .addOnSuccessListener { result ->
+                    val count = result.size()
+                    onResult(count)
+
+                }.addOnFailureListener {
+                    Log.e(TAG, it.message.toString())
+                }
+        }
+    }
+
     override suspend fun deleteCartProduct(documentId: String) {
         withContext(Dispatchers.IO) {
             store.collection(USER_COLLECTION).document(auth.uid!!).collection(CART_COLLECTION)

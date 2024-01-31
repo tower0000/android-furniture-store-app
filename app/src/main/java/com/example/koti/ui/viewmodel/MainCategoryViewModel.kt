@@ -4,6 +4,8 @@ import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.koti.domain.firebaseUseCases.GetAllProductsUseCase
+import com.example.koti.domain.firebaseUseCases.GetServerItemsCount
+import com.example.koti.domain.productsDatabaseUseCases.DeleteDatabaseProductsUseCase
 import com.example.koti.domain.productsDatabaseUseCases.GetDatabaseElementsCount
 import com.example.koti.domain.productsDatabaseUseCases.GetDatabaseProductsUseCase
 import com.example.koti.domain.productsDatabaseUseCases.InsertProductsUseCase
@@ -19,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -29,7 +32,8 @@ class MainCategoryViewModel @Inject constructor(
     private val getAllProductsUseCase: GetAllProductsUseCase,
     private val getDatabaseProductsUseCase: GetDatabaseProductsUseCase,
     private val insertProductsUseCase: InsertProductsUseCase,
-    private val getDatabaseElementsCount: GetDatabaseElementsCount
+    private val getDatabaseElementsCount: GetDatabaseElementsCount,
+    private val getServerItemsCount: GetServerItemsCount
 ) : ViewModel() {
 
     private val _specialProducts = MutableStateFlow<Resource<List<Product>>>(Resource.Unspecified())
@@ -47,8 +51,9 @@ class MainCategoryViewModel @Inject constructor(
     init {
         fetchSpecialProducts()
         fetchBestDeals()
+        checkForProductUpdates()
         if (!sharedPreferences.getBoolean(BEST_PRODUCTS_KEY, false)) {
-            downloadBestProducts(pagingInfo.maxElementsOnPage.toLong()/2)
+            downloadBestProducts(pagingInfo.maxElementsOnPage.toLong() / 2)
         }
         showNewBestProductsState()
     }
@@ -59,7 +64,7 @@ class MainCategoryViewModel @Inject constructor(
                 _specialProducts.emit(Resource.Loading())
                 firestore.collection(SHOP_PRODUCTS_COLLECTION)
                     .whereEqualTo(FIELD_CATEGORY, SPECIAL_PRODUCTS_CATEGORY)
-                    .limit(pagingInfo.bestProductsPage * 4).get()
+                    .limit(pagingInfo.specialOffersPage * 2).get()
                     .addOnSuccessListener { result ->
                         val specialOffers = result.toObjects(Product::class.java)
                         pagingInfo.isSpecialOffersPagingEnd =
@@ -84,7 +89,7 @@ class MainCategoryViewModel @Inject constructor(
                 _bestDealsProducts.emit(Resource.Loading())
                 firestore.collection(SHOP_PRODUCTS_COLLECTION)
                     .whereEqualTo(FIELD_CATEGORY, BEST_DEALS_CATEGORY)
-                    .limit(pagingInfo.bestProductsPage * 2).get()
+                    .limit(pagingInfo.bestDealsPage * 2).get()
                     .addOnSuccessListener { result ->
                         val bestDeals = result.toObjects(Product::class.java)
                         pagingInfo.isDealsPagingEnd = bestDeals == pagingInfo.oldBestDeals
@@ -144,6 +149,21 @@ class MainCategoryViewModel @Inject constructor(
         viewModelScope.launch {
             val products = getDatabaseProductsUseCase.execute()
             _bestProducts.emit(Resource.Success(products))
+        }
+    }
+
+    private fun checkForProductUpdates() {
+        viewModelScope.launch {
+            val dbProductsCount = getDatabaseProductsUseCase.execute().count()
+            getServerItemsCount.execute() { size ->
+                if (size!! > dbProductsCount) {
+                    viewModelScope.launch {
+                        sharedPreferences.edit().putBoolean(Constants.BEST_PRODUCTS_KEY, false)
+                            .apply()
+                    }
+                }
+            }
+
         }
     }
 

@@ -139,7 +139,7 @@ class ProductDetailsFragment : Fragment() {
             tvProductOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
 
             tvBestProductName.text = product.name.uppercase()
-
+            tvProductDescription.text = product.description
         }
 
         viewPagerAdapter.differ.submitList(product.images)

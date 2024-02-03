@@ -17,8 +17,8 @@ import com.example.koti.R
 import com.example.koti.databinding.FragmentAddressBinding
 import com.example.koti.databinding.FragmentOrdersBinding
 import com.example.koti.databinding.FragmentSavedAddressesBinding
-import com.example.koti.model.Address
-import com.example.koti.model.Order
+import com.example.koti.domain.model.Address
+import com.example.koti.domain.model.Order
 import com.example.koti.ui.adapters.AddressAdapter
 import com.example.koti.ui.adapters.AllOrdersAdapter
 import com.example.koti.ui.adapters.SavedAddressAdapter

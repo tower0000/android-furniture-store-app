@@ -97,7 +97,7 @@
         tools:layout="@layout/fragment_products_details">
         <argument
             android:name="product"
-            app:argType="com.example.koti.model.Product" />
+            app:argType="com.example.koti.domain.model.Product" />
     </fragment>
     <fragment
         android:id="@+id/addressFragment"
@@ -121,7 +121,7 @@
             app:argType="float" />
         <argument
             android:name="product"
-            app:argType="com.example.koti.model.CartProduct[]" />
+            app:argType="com.example.koti.domain.model.CartProduct[]" />
     </fragment>
     <fragment
         android:id="@+id/userAccountFragment"
@@ -148,7 +148,7 @@
         tools:layout="@layout/fragment_order_detail">
         <argument
             android:name="order"
-            app:argType="com.example.koti.model.Order" />
+            app:argType="com.example.koti.domain.model.Order" />
     </fragment>
     <fragment
         android:id="@+id/savedAddressesFragment"

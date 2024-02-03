@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.example.koti.model.Category
+import com.example.koti.domain.model.Category
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.viewmodel.CategoryViewModel
 import com.example.koti.ui.viewmodel.factory.BaseCategoryViewModelFactory

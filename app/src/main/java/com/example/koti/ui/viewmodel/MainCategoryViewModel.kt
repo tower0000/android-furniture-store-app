@@ -8,7 +8,7 @@ import com.example.koti.domain.firebaseUseCases.GetServerItemsCount
 import com.example.koti.domain.productsDatabaseUseCases.GetDatabaseElementsCount
 import com.example.koti.domain.productsDatabaseUseCases.GetDatabaseProductsUseCase
 import com.example.koti.domain.productsDatabaseUseCases.InsertProductsUseCase
-import com.example.koti.model.Product
+import com.example.koti.domain.model.Product
 import com.example.koti.ui.util.Constants.BEST_DEALS_CATEGORY
 import com.example.koti.ui.util.Constants.BEST_PRODUCTS_KEY
 import com.example.koti.ui.util.Constants.FIELD_CATEGORY

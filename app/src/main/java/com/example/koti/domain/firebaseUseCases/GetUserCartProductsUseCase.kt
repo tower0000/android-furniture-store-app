@@ -1,7 +1,7 @@
 package com.example.koti.domain.firebaseUseCases
 
 import com.example.koti.domain.repository.FirebaseRepository
-import com.example.koti.model.CartProduct
+import com.example.koti.domain.model.CartProduct
 import com.google.firebase.firestore.DocumentSnapshot
 import javax.inject.Inject
 

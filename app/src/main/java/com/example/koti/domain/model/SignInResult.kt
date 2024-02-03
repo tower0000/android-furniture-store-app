@@ -1,4 +1,4 @@
-package com.example.koti.model
+package com.example.koti.domain.model
 
 
 data class SignInResult(

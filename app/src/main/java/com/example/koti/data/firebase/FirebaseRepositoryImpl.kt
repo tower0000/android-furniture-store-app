@@ -3,11 +3,11 @@ package com.example.koti.data.firebase
 
 import android.util.Log
 import com.example.koti.domain.repository.FirebaseRepository
-import com.example.koti.model.Address
-import com.example.koti.model.CartProduct
-import com.example.koti.model.Order
-import com.example.koti.model.Product
-import com.example.koti.model.User
+import com.example.koti.domain.model.Address
+import com.example.koti.domain.model.CartProduct
+import com.example.koti.domain.model.Order
+import com.example.koti.domain.model.Product
+import com.example.koti.domain.model.User
 import com.example.koti.ui.util.Constants.ADDRESS_COLLECTION
 import com.example.koti.ui.util.Constants.CART_COLLECTION
 import com.example.koti.ui.util.Constants.FAVORITES_COLLECTION

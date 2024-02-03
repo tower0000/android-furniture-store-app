@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.koti.databinding.BillingProductsRvItemBinding
-import com.example.koti.model.CartProduct
+import com.example.koti.domain.model.CartProduct
 import kotlin.math.roundToInt
 
 class BillingProductsAdapter : Adapter<BillingProductsAdapter.BillingProductsViewHolder>() {

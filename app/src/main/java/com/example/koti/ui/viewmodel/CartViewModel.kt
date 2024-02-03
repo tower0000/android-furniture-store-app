@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.koti.domain.firebaseUseCases.ChangeCartProductQuantityUseCase
 import com.example.koti.domain.firebaseUseCases.DeleteCartProductUseCase
 import com.example.koti.domain.firebaseUseCases.GetUserCartProductsUseCase
-import com.example.koti.model.CartProduct
-import com.example.koti.model.QuantityChanging
+import com.example.koti.domain.model.CartProduct
+import com.example.koti.domain.model.QuantityChanging
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.util.getProductPrice
 import com.google.firebase.firestore.DocumentSnapshot

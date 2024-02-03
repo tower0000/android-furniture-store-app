@@ -2,7 +2,7 @@ package com.example.koti.ui.viewmodel.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.koti.model.Category
+import com.example.koti.domain.model.Category
 import com.example.koti.ui.viewmodel.CategoryViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 

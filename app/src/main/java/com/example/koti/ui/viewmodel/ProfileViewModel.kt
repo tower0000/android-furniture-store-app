@@ -6,7 +6,7 @@ import com.example.koti.domain.firebaseUseCases.GetUserInformationUseCase
 import com.example.koti.domain.firebaseUseCases.SendResetPasswordUseCase
 import com.example.koti.domain.firebaseUseCases.SignOutUseCase
 import com.example.koti.domain.productsDatabaseUseCases.DeleteDatabaseProductsUseCase
-import com.example.koti.model.User
+import com.example.koti.domain.model.User
 import com.example.koti.ui.util.Constants
 import com.example.koti.ui.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -1,7 +1,7 @@
 package com.example.koti.domain.productsDatabaseUseCases
 
 import com.example.koti.domain.repository.ProductsDatabaseRepository
-import com.example.koti.model.Product
+import com.example.koti.domain.model.Product
 import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 

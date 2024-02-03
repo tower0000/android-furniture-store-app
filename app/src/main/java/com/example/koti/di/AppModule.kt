@@ -11,7 +11,6 @@ import com.example.koti.data.roomDatabase.ProductsDatabaseRepositoryImpl
 import com.example.koti.domain.repository.FirebaseRepository
 import com.example.koti.domain.repository.ProductsDatabaseRepository
 import com.example.koti.ui.util.Constants.INTRODUCTION_SP
-import com.example.koti.ui.util.FirebaseCommon
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -41,13 +40,6 @@ object AppModule {
     fun provideIntroductionSharedPrefs(
         application: Application
     ) = application.getSharedPreferences(INTRODUCTION_SP, MODE_PRIVATE)
-
-    @Provides
-    @Singleton
-    fun provideFirebaseCommon(
-        firebaseAuth: FirebaseAuth,
-        firestore: FirebaseFirestore
-    ) = FirebaseCommon(firestore, firebaseAuth)
 
     @Provides
     @Singleton

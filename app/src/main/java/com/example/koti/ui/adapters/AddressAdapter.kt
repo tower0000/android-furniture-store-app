@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.koti.R
 import com.example.koti.databinding.AddressRvItemBinding
-import com.example.koti.model.Address
+import com.example.koti.domain.model.Address
 
 class AddressAdapter : Adapter<AddressAdapter.AddressViewHolder>() {
 

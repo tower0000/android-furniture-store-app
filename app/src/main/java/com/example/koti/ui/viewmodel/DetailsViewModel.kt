@@ -7,9 +7,9 @@ import com.example.koti.domain.firebaseUseCases.AddProductToFavoritesUseCase
 import com.example.koti.domain.firebaseUseCases.ChangeCartProductQuantityUseCase
 import com.example.koti.domain.firebaseUseCases.DeleteFavoritesProductUseCase
 import com.example.koti.domain.firebaseUseCases.GetUserFavoritesUseCase
-import com.example.koti.model.CartProduct
-import com.example.koti.model.Product
-import com.example.koti.model.QuantityChanging
+import com.example.koti.domain.model.CartProduct
+import com.example.koti.domain.model.Product
+import com.example.koti.domain.model.QuantityChanging
 import com.example.koti.ui.util.Constants.CART_COLLECTION
 import com.example.koti.ui.util.Constants.FAVORITES_COLLECTION
 import com.example.koti.ui.util.Constants.USER_COLLECTION

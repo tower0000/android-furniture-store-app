@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.koti.domain.firebaseUseCases.DeleteUserAddressUseCase
 import com.example.koti.domain.firebaseUseCases.GetUserAddressesUseCase
 import com.example.koti.domain.firebaseUseCases.PlaceOrderUseCase
-import com.example.koti.model.Address
-import com.example.koti.model.Order
+import com.example.koti.domain.model.Address
+import com.example.koti.domain.model.Order
 import com.example.koti.ui.util.Resource
 import com.google.firebase.firestore.DocumentSnapshot
 import dagger.hilt.android.lifecycle.HiltViewModel

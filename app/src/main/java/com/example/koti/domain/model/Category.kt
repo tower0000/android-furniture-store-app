@@ -1,4 +1,4 @@
-package com.example.koti.model
+package com.example.koti.domain.model
 
 sealed class Category(val category: String) {
     data object Chair : Category("Chair")

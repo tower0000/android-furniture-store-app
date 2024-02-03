@@ -5,7 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.koti.model.Product
+import com.example.koti.domain.model.Product
 import kotlinx.coroutines.flow.MutableStateFlow
 
 @Dao

@@ -17,7 +17,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.koti.databinding.FragmentUserAccountBinding
-import com.example.koti.model.User
+import com.example.koti.domain.model.User
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.viewmodel.UserAccountViewModel
 import dagger.hilt.android.AndroidEntryPoint

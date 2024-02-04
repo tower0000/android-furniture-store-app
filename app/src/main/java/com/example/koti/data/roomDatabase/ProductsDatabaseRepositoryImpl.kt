@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.room.ColumnInfo
 import androidx.room.PrimaryKey
 import com.example.koti.domain.repository.ProductsDatabaseRepository
-import com.example.koti.domain.model.Product
+import com.example.koti.data.model.Product
 import com.example.koti.ui.util.Constants
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers

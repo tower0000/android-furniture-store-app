@@ -1,8 +1,8 @@
 package com.example.koti.domain.firebaseUseCases
 
 import com.example.koti.domain.repository.FirebaseRepository
-import com.example.koti.domain.model.Order
-import com.example.koti.domain.model.User
+import com.example.koti.data.model.Order
+import com.example.koti.data.model.User
 import javax.inject.Inject
 
 class SaveUserInfoUseCase @Inject constructor (private val repo: FirebaseRepository) {

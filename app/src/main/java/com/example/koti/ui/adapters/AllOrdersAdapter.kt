@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.koti.R
 import com.example.koti.databinding.OrderItemBinding
-import com.example.koti.domain.model.Order
-import com.example.koti.domain.model.OrderStatus
-import com.example.koti.domain.model.getOrderStatus
+import com.example.koti.data.model.Order
+import com.example.koti.data.model.OrderStatus
+import com.example.koti.data.model.getOrderStatus
 
 class AllOrdersAdapter : Adapter<AllOrdersAdapter.OrdersViewHolder>() {
 

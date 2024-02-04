@@ -17,10 +17,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koti.R
 import com.example.koti.databinding.FragmentBillingBinding
-import com.example.koti.domain.model.Address
-import com.example.koti.domain.model.CartProduct
-import com.example.koti.domain.model.Order
-import com.example.koti.domain.model.OrderStatus
+import com.example.koti.data.model.Address
+import com.example.koti.data.model.CartProduct
+import com.example.koti.data.model.Order
+import com.example.koti.data.model.OrderStatus
 import com.example.koti.ui.adapters.AddressAdapter
 import com.example.koti.ui.adapters.BillingProductsAdapter
 import com.example.koti.ui.util.HorisontalItemDecoration

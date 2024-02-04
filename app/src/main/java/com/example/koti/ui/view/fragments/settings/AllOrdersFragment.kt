@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koti.databinding.FragmentOrdersBinding
-import com.example.koti.domain.model.Order
+import com.example.koti.data.model.Order
 import com.example.koti.ui.adapters.AllOrdersAdapter
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.util.VerticalItemDecoration

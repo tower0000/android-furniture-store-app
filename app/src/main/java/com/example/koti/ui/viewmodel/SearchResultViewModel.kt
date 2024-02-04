@@ -2,7 +2,7 @@ package com.example.koti.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.koti.domain.model.Product
+import com.example.koti.data.model.Product
 import com.example.koti.ui.util.Constants
 import com.example.koti.ui.util.Resource
 import com.google.firebase.firestore.FirebaseFirestore

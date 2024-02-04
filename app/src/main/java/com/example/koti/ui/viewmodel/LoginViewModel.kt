@@ -6,7 +6,7 @@ import com.example.koti.domain.firebaseUseCases.GetCurrentUserUseCase
 import com.example.koti.domain.firebaseUseCases.SaveUserInfoUseCase
 import com.example.koti.domain.firebaseUseCases.SendResetPasswordUseCase
 import com.example.koti.domain.firebaseUseCases.SignInWithEmailPasswordUseCase
-import com.example.koti.domain.model.User
+import com.example.koti.data.model.User
 import com.example.koti.ui.util.RegisterFieldsState
 import com.example.koti.ui.util.RegisterValidation
 import com.example.koti.ui.util.Resource

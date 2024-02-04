@@ -1,4 +1,4 @@
-package com.example.koti.domain.model
+package com.example.koti.data.model
 
 data class User(
     val firstName: String = "",

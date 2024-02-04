@@ -1,4 +1,4 @@
-package com.example.koti.domain.model
+package com.example.koti.data.model
 
 enum class QuantityChanging {
     INCREASE, DECREASE

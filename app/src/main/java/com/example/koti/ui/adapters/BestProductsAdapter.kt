@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.koti.databinding.ProductRvItemBinding
-import com.example.koti.domain.model.Product
+import com.example.koti.data.model.Product
 import kotlin.math.roundToInt
 
 

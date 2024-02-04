@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koti.R
 import com.example.koti.databinding.FragmentCartBinding
-import com.example.koti.domain.model.QuantityChanging
+import com.example.koti.data.model.QuantityChanging
 import com.example.koti.ui.adapters.CartProductAdapter
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.util.VerticalItemDecoration

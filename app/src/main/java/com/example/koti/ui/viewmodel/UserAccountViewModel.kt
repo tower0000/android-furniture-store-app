@@ -8,7 +8,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.koti.KotiApplication
 import com.example.koti.domain.firebaseUseCases.GetUserInformationUseCase
-import com.example.koti.domain.model.User
+import com.example.koti.data.model.User
 import com.example.koti.ui.util.Constants.USER_COLLECTION
 import com.example.koti.ui.util.Resource
 import com.google.firebase.auth.FirebaseAuth

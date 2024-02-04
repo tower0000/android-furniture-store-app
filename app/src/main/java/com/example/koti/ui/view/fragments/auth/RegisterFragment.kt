@@ -19,7 +19,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.koti.R
 import com.example.koti.databinding.FragmentRegisterBinding
-import com.example.koti.domain.model.User
+import com.example.koti.data.model.User
 import com.example.koti.ui.util.RegisterValidation
 import com.example.koti.ui.util.Resource
 import com.example.koti.ui.util.changeButtonBackgroundDrawable

@@ -1,4 +1,4 @@
-package com.example.koti.domain.model
+package com.example.koti.data.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

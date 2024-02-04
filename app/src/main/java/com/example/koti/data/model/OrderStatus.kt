@@ -1,4 +1,4 @@
-package com.example.koti.domain.model
+package com.example.koti.data.model
 
 sealed class OrderStatus(val status: String) {
 

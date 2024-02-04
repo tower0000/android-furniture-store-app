@@ -1,7 +1,7 @@
 package com.example.koti.domain.firebaseUseCases
 
 import com.example.koti.domain.repository.FirebaseRepository
-import com.example.koti.domain.model.QuantityChanging
+import com.example.koti.data.model.QuantityChanging
 import javax.inject.Inject
 
 class ChangeCartProductQuantityUseCase @Inject constructor(val repository: FirebaseRepository) {

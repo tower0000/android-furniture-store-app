@@ -1,6 +1,6 @@
 package com.example.koti.domain.repository
 
-import com.example.koti.domain.model.Product
+import com.example.koti.data.model.Product
 import kotlinx.coroutines.flow.MutableStateFlow
 
 interface ProductsDatabaseRepository {

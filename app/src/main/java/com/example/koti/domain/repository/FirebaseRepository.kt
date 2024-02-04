@@ -1,10 +1,10 @@
 package com.example.koti.domain.repository
 
-import com.example.koti.domain.model.Address
-import com.example.koti.domain.model.CartProduct
-import com.example.koti.domain.model.Order
-import com.example.koti.domain.model.Product
-import com.example.koti.domain.model.User
+import com.example.koti.data.model.Address
+import com.example.koti.data.model.CartProduct
+import com.example.koti.data.model.Order
+import com.example.koti.data.model.Product
+import com.example.koti.data.model.User
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
 

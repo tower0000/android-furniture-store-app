@@ -13,7 +13,23 @@ This is a pet project for a furniture store, showcasing the implementation of Cl
   
 ## Screenshots
 
-<img src="screenshots/login.png" width="200">  <img src="screenshots/register.png" width="200">
+<img src="screenshots/login.png" width="250">  <img src="screenshots/register.png" width="250">  <img src="screenshots/home_screen1.png" width="250">  <img src="screenshots/home_screen2.png" width="250">  <img src="screenshots/product_details.png" width="250">  <img src="screenshots/favorites.png" width="250">  <img src="screenshots/cart.png" width="250">  <img src="screenshots/billing.png" width="250">  <img src="screenshots/profile.png" width="250">  <img src="screenshots/order.png" width="250">
+
+## Features
+
+The app has the following features:
+
+- User authentication (sign up, sign in, sign out)
+- Browse furniture items by category
+- Search for furniture items by name or description
+- Add furniture items to cart
+- Add items to favorites
+- View cart items and total price
+- Checkout cart items and place order
+- View order history
+- Change profile info
+- Clean app cache
+- Add and remove shipping addresses
 
 ## Getting Started
 

@@ -31,12 +31,8 @@ The app has the following features:
 - Clean app cache
 - Add and remove shipping addresses
 
-## Getting Started
+## Installation
 
-To run the project locally, follow these steps:
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/tower0000/android-furniture-store-app.git
-2. Open the project in Android Studio
-3. Build and run the app on an emulator or physical device
+1. Find the latest release [here](https://github.com/tower0000/android-furniture-store-app/releases/tag/v.1.0.0).
+2. Download the `.apk` file onto your Android device.
+3. Open the downloaded file and follow the prompts to install the app.
